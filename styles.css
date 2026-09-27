@@ -276,8 +276,8 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .app-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; flex: none; }
 .app-icon svg { width: 14px; height: 14px; fill: #fff; }
 .app-linkedin { background: #0a66c2; }   /* LinkedIn's own blue */
-.app-email { background: var(--accent); }
-.app-email svg { fill: var(--accent-ink); }
+.app-email { background: #fff; }            /* Gmail's own colours need a white tile */
+.app-instagram { background: linear-gradient(45deg, #f9ce34 5%, #ee2a7b 50%, #6228d7 95%); }
 .app-cv { background: #e5484d; }        /* PDF red */
 .app-notes { background: var(--accent); }
 .side-link .ext { margin-left: auto; color: var(--muted); font-size: 0.72rem; }

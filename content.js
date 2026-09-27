@@ -11,7 +11,7 @@ window.SITE = {
 
   person: {
     name: 'Miguel Irfan Hameed',
-    shortName: 'Miguel Hameed',
+    shortName: 'Miguel Irfan Hameed', // what the header and every message shows
     role: 'Marketing Operations Specialist', // Miguel's main target (22 Sep); Technical Operations is the second track
     // Story line chosen by Miguel (22 Sep), shown two-tone (after alicezhao.work): the start in grey, the rest in full colour.
     storyStart: 'Grounded in science, fluent in data,',
