@@ -21,6 +21,7 @@ window.SITE = {
     email: 'miguelhameed@gmail.com',
     linkedin: 'https://www.linkedin.com/in/miguelhameed',
     linkedinLabel: 'linkedin.com/in/miguelhameed',
+    instagram: 'https://www.instagram.com/miggybop/', // set to null to take it off the site
     cv: 'cv.pdf',
     motto: "I get closer, fix what's broken, and keep things moving.", // chosen by Miguel 22 Sep
     headshot: 'images/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming

@@ -36,6 +36,7 @@
   const APPS = [
     { label: 'LinkedIn', href: P.linkedin, ext: true, icon: 'linkedin' },
     { label: 'Email', href: 'mailto:' + P.email, icon: 'email' },
+    ...(P.instagram ? [{ label: 'Instagram', href: P.instagram, ext: true, icon: 'instagram' }] : []),
     ...(S.showCv === false ? [] : [{ label: 'CV (PDF)', href: P.cv, ext: true, icon: 'cv' }]),
     ...(S.notes ? [{ label: 'Notes', href: S.notes, ext: true, icon: 'notes' }] : []),
   ];
