@@ -16,7 +16,7 @@
 
   // ---------- channels (in the order they appear in the conversation) ----------
   const CHANNELS = [
-    { id: 'selected-work', title: 'Selected work', sub: 'Results from systems I built' },
+    { id: 'selected-work', title: 'Work', sub: 'Results from systems I built' },
     { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
     { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
     { id: 'proof', title: 'Proof', sub: 'Certifications, training and projects' },
