@@ -16,13 +16,13 @@
 
   // ---------- channels (in the order they appear in the conversation) ----------
   const CHANNELS = [
-    { id: 'selected-work', title: 'selected-work', sub: 'Results from systems I built' },
-    { id: 'experience', title: 'experience', sub: 'Where I have worked' },
-    { id: 'skills', title: 'skills', sub: 'Tools and strengths' },
-    { id: 'proof', title: 'proof', sub: 'Certifications, training and projects' },
-    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'testimonials', sub: 'What people say' }] : []),
-    { id: 'about', title: 'about', sub: 'My story' },
-    { id: 'contact', title: 'contact', sub: 'Get in touch' },
+    { id: 'selected-work', title: 'Selected work', sub: 'Results from systems I built' },
+    { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
+    { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
+    { id: 'proof', title: 'Proof', sub: 'Certifications, training and projects' },
+    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'What people say' }] : []),
+    { id: 'about', title: 'About', sub: 'My story' },
+    { id: 'contact', title: 'Contact', sub: 'Get in touch' },
   ];
 
   // Small app icons for the sidebar, like app tiles in a chat workspace.
