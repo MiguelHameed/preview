@@ -24,7 +24,7 @@ window.SITE = {
     cv: 'cv.pdf',
     motto: "I get closer, fix what's broken, and keep things moving.", // chosen by Miguel 22 Sep
     headshot: 'images/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
-    avatar: 'images/headshot-avatar.jpg', // small chat icons: face crop of his portrait (28 Sep)
+    avatar: 'images/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
   },
 
   // What the intro message lists under "what I do".
