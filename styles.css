@@ -170,10 +170,12 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   display: grid; place-items: center;
   width: 38px; height: 38px; margin-bottom: 10px;
   border-radius: 10px;
-  background: var(--mark, #1f36e8); color: #fff;
-  font-weight: 700; font-size: 0.85rem; letter-spacing: -0.02em;
+  background: #0a1f44;              /* navy, Miguel's pick for the logo tile */
+  color: #fff;
   text-decoration: none;
+  overflow: hidden;
 }
+.rail-mark img { width: 72%; height: 72%; object-fit: contain; }
 
 .rail-btn {
   display: flex; flex-direction: column; align-items: center; gap: 3px;
@@ -332,7 +334,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   animation: rise 0.5s var(--ease) both;
 }
 .msg-avatar { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: var(--accent); }
-.avatar-mark { display: inline-grid; place-items: center; flex: none; background: var(--mark, #1f36e8); color: #fff; font-weight: 700; letter-spacing: -0.03em; font-size: 0.92rem; }
+.avatar-mark { display: inline-grid; place-items: center; flex: none; background: #0a1f44; color: #fff; font-weight: 700; letter-spacing: -0.03em; font-size: 0.92rem; }
 .side-avatar.avatar-mark { font-size: 0.5rem; }
 .msg-meta { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
 .msg-name { font-weight: 700; }
