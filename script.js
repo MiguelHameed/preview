@@ -83,7 +83,8 @@
   // The big photo in the intro. With no photo set, it shows a red "your photo goes here" frame.
   function introPhoto() {
     if (P.headshot && !/placeholder/.test(P.headshot)) {
-      return `<img class="intro-photo" src="${esc(P.headshot)}" alt="${esc(P.name)}" width="480" height="480" />`;
+      return `<img class="intro-photo" src="${esc(P.headshot)}" srcset="images/headshot-240.jpg 240w, ${esc(P.headshot)} 480w"
+                   sizes="(max-width: 767px) 110px, 220px" alt="${esc(P.name)}" width="480" height="480" fetchpriority="high" />`;
     }
     return `<div class="intro-photo is-empty" role="img" aria-label="Photo coming soon">
               <span class="empty-title">your photo<br />goes here</span>

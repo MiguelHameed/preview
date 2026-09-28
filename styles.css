@@ -62,7 +62,7 @@
 [data-theme="burgundy"] .attachment-deep  { background: linear-gradient(145deg, #5c1a3a 0%, #3b0f25 55%, #1e0713 100%); }
 
 :root {
-  --sans: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sans: 'Public Sans', 'Public Sans Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
   --radius: 14px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -271,6 +271,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-list[hidden] { display: none; }
 
 .side-list { list-style: none; }
+/* hold the space the lists will take, so nothing jumps while the page draws */
+#channel-list { min-height: 216px; }
+#app-list { min-height: 108px; }
+.feed { min-height: 100vh; }
 
 .side-link {
   display: flex; align-items: center; gap: 8px;
