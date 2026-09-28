@@ -258,7 +258,20 @@
     });
     if (id) { setActive(id); $('.pane').scrollTop = 0; }
   }
-  $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { showView(null); setActive('intro'); }));
+  $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
+
+  // the address bar follows the view, so Back works and a shared link opens the right thing
+  function openFromHash(replace) {
+    const id = location.hash.slice(1);
+    const isView = CHANNELS.some((c) => c.view && c.id === id);
+    showView(isView ? id : null);
+    if (replace) history.replaceState({ view: isView ? id : null }, '');
+  }
+  window.addEventListener('popstate', (e) => {
+    const id = e.state && e.state.view;
+    showView(CHANNELS.some((c) => c.view && c.id === id) ? id : null);
+    if (!id) setActive('intro');
+  });
 
   // Files tab + Messages tab, shown only when there are files to show
   if (S.files && S.files.length) {
@@ -321,7 +334,7 @@
     const id = link.getAttribute('href').slice(1);
     const isView = CHANNELS.some((c) => c.view && c.id === id);
     link.addEventListener('click', (e) => {
-      if (isView) { e.preventDefault(); showView(id); }
+      if (isView) { e.preventDefault(); history.pushState({ view: id }, '', '#' + id); showView(id); }
       else if (openView) { showView(null); }
     });
   });
@@ -335,6 +348,7 @@
   }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
   sections.forEach((s) => spy.observe(s));
   setActive('intro');
+  openFromHash(true); // honour a link like miguelhameed.com/#selected-work
 
   // ---------- gentle entrance as messages scroll into view ----------
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -372,8 +386,29 @@
   const app = $('#app');
   const menuBtn = $('[data-menu]');
   const scrim = $('[data-scrim]');
-  const openMenu = () => { app.classList.add('menu-open'); scrim.hidden = false; menuBtn.setAttribute('aria-expanded', 'true'); };
-  const closeMenu = () => { app.classList.remove('menu-open'); scrim.hidden = true; menuBtn.setAttribute('aria-expanded', 'false'); };
+  const sidebar = $('#sidebar');
+  const focusable = () => $$('a[href], button:not([disabled])', sidebar).filter((el) => el.offsetParent !== null);
+  const openMenu = () => {
+    app.classList.add('menu-open'); scrim.hidden = false;
+    menuBtn.setAttribute('aria-expanded', 'true');
+    const first = focusable()[0];
+    if (first) first.focus();
+  };
+  const closeMenu = () => {
+    const wasOpen = app.classList.contains('menu-open');
+    app.classList.remove('menu-open'); scrim.hidden = true;
+    menuBtn.setAttribute('aria-expanded', 'false');
+    if (wasOpen && menuBtn.offsetParent !== null) menuBtn.focus();
+  };
+  // while the drawer is open, Tab stays inside it
+  sidebar.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !app.classList.contains('menu-open')) return;
+    const items = focusable();
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   menuBtn.addEventListener('click', () => (app.classList.contains('menu-open') ? closeMenu() : openMenu()));
   scrim.addEventListener('click', closeMenu);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
