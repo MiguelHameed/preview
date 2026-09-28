@@ -1,6 +1,5 @@
-# preview
+# miguelhameed.com
 
-Staging copy of miguelhameed.com. Changes land here first so Miguel can check them
-at https://miguelhameed.github.io/preview/ before they are merged into the live site.
-
-Never add cv.pdf or anything with personal contact details to this repository — it is public.
+Miguel Hameed's personal site — one page, plain HTML, CSS and JavaScript.
+Words live in `content.js`; `script.js` draws the page; `styles.css` holds the two themes.
+The previous React version is kept on the `react-archive` branch.
