@@ -15,13 +15,14 @@
     : esc(t);
 
   // ---------- channels (in the order they appear in the conversation) ----------
+  // Order agreed with Miguel: Work opens as its own view; the rest read as one scroll.
   const CHANNELS = [
-    { id: 'selected-work', title: 'Work', sub: 'Results from systems I built' },
-    { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
+    { id: 'selected-work', title: 'Work', sub: 'Results from systems I built', view: true },
+    { id: 'about', title: 'About', sub: 'My story' },
     { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
+    { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
     { id: 'proof', title: 'Proof', sub: 'Certifications, training and projects' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'What people say' }] : []),
-    { id: 'about', title: 'About', sub: 'My story' },
     { id: 'contact', title: 'Contact', sub: 'Get in touch' },
   ];
 
@@ -231,7 +232,32 @@
 
   const builders = { 'selected-work': selectedWork, experience, skills, proof, testimonials, about, contact };
   const feed = $('#feed');
-  feed.innerHTML = intro() + CHANNELS.map((c) => builders[c.id](c)).join('');
+  const scrollChannels = CHANNELS.filter((c) => !c.view);
+  feed.innerHTML = intro() + scrollChannels.map((c) => builders[c.id](c)).join('');
+
+  // Channels marked `view: true` open on their own, like a separate page (after baileyelith.com).
+  const views = {};
+  CHANNELS.filter((c) => c.view).forEach((c) => {
+    const panel = document.createElement('div');
+    panel.className = 'channel-view';
+    panel.hidden = true;
+    panel.innerHTML = `<button class="view-back" type="button" data-view-back>← Back to messages</button>` + builders[c.id](c);
+    const heading = panel.querySelector('.channel-divider'); // the header already names the channel
+    if (heading) { heading.classList.add('sr-only'); }
+    feed.insertAdjacentElement('afterend', panel);
+    views[c.id] = panel;
+  });
+  let openView = null;
+  function showView(id) {
+    openView = id;
+    feed.hidden = !!id;
+    Object.entries(views).forEach(([k, el]) => {
+      el.hidden = k !== id;
+      if (k === id) el.querySelectorAll('.reveal').forEach((r) => r.classList.add('in'));
+    });
+    if (id) { setActive(id); $('.pane').scrollTop = 0; }
+  }
+  $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { showView(null); setActive('intro'); }));
 
   // Files tab + Messages tab, shown only when there are files to show
   if (S.files && S.files.length) {
@@ -290,9 +316,19 @@
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
       c ? (c.id === 'selected-work' ? b.dataset.rail === 'work' : false) : b.dataset.rail === 'home'));
   }
+  $$('a[href^="#"]').forEach((link) => {
+    const id = link.getAttribute('href').slice(1);
+    const isView = CHANNELS.some((c) => c.view && c.id === id);
+    link.addEventListener('click', (e) => {
+      if (isView) { e.preventDefault(); showView(id); }
+      else if (openView) { showView(null); }
+    });
+  });
+
   const sections = $$('[data-section]');
   let current = 'intro';
   const spy = new IntersectionObserver((entries) => {
+    if (openView) return; // the open view sets the title itself
     entries.forEach((e) => { if (e.isIntersecting) current = e.target.dataset.section; });
     setActive(current);
   }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });

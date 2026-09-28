@@ -208,6 +208,16 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-status i, .dot-good { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
 
 /* section headings with a fold arrow, after baileyelith.com: ▾ open, ▸ closed */
+/* a channel that opens on its own, like a separate page */
+.channel-view { flex: 1; overflow-y: auto; padding: 0 0 60px; }
+.view-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin: 18px 0 0 28px; padding: 8px 14px;
+  border-radius: 99px; border: 1px solid var(--line);
+  color: var(--muted); font-weight: 600; font-size: 0.86rem;
+}
+.view-back:hover { color: var(--ink); border-color: var(--accent); }
+
 /* Messages / Files tabs and the file gallery */
 .pane-tabs { display: flex; gap: 4px; padding: 8px 28px 0; border-bottom: 1px solid var(--line); background: var(--app); }
 .pane-tab {
@@ -555,6 +565,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 /* ---------------- phone ---------------- */
 /* The intro message IS the first screen. The channel list slides in from a button. */
 @media (max-width: 767px) {
+  .view-back { margin-left: 16px; }
   .pane-tabs { padding: 6px 16px 0; }
   .files-panel { padding: 16px 16px 48px; }
   .role-head { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: start; }
