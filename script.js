@@ -101,7 +101,7 @@
       <article class="msg reveal">
         ${avatarLive('msg-avatar', P.name)}
         <div class="msg-body">
-          <div class="msg-meta"><span class="msg-name">${esc(P.shortName)}</span><span class="msg-time mono"><span data-clock>${manilaTime()}</span> in Quezon City</span></div>
+          <div class="msg-meta"><span class="msg-name">${esc(P.shortName)}</span><span class="msg-time mono">${esc(P.location)} · UTC+8</span></div>
           <div class="intro-grid">
             <div class="intro-main">
               <p class="lede"><span class="before">${esc(P.storyStart)}</span> ${esc(P.story)}</p>
