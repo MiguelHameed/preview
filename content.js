@@ -40,50 +40,9 @@ window.SITE = {
     'AI-assisted workflows that save the team time',
   ],
 
-  selectedWork: [
-    // Card 1, approved by Miguel 22 Sep.
-    {
-      title: 'Content Pipeline for a Cybersecurity Blog',
-      tags: ['Content marketing', 'Workflow design'],
-      problem: 'Articles stalled between draft and publish, so the blog had no steady rhythm.',
-      did: 'Built a six-stage workflow in ClickUp (idea, drafting, editing, approved, staging, live), set twice-weekly approval windows on Tuesdays and Thursdays, and kept at least three weeks of articles ready in reserve. Wrote, edited and reviewed cybersecurity and compliance articles myself.',
-      result: '60 articles planned and moved through one clear pipeline, with a three-week reserve built in.',
-      metric: '60 articles',
-      pending: 'TODO: articles published and live', // Miguel to check the count (question C3)
-      shot: null, // TODO: cleaned-up screenshot, with client details removed
-    },
-    // Card 2, approved by Miguel 22 Sep.
-    {
-      title: 'LinkedIn Outreach Campaigns',
-      tags: ['Demand generation', 'LinkedIn outreach'],
-      problem: 'The team needed steady conversations with the right people, without sending one generic message to everyone.',
-      did: 'Found and checked prospects in LinkedIn Sales Navigator and Apollo, split them into three audience segments, and ran a separate Dripify campaign for each at the same time. Tracked invitations, acceptances, messages and replies every day, and rolled them into a weekly report.',
-      result: 'Three audience campaigns running at the same time, each with its own daily and weekly reporting.',
-      metric: '3 campaigns',
-      pending: 'TODO: acceptance and reply rates', // Miguel to pull real numbers from Dripify (question C2)
-      shot: null, // TODO: cleaned-up screenshot of a campaign report, with client details removed
-    },
-    // Card 3, approved by Miguel 22 Sep.
-    {
-      title: 'Partner Research and Qualification',
-      tags: ['Partnerships', 'Research'],
-      problem: "Promising partner leads weren't turning into real conversations in the pipeline.",
-      did: 'Researched 11 potential partner companies and wrote a short brief on each: who they are, why they fit, and who to contact. Verified the right contact person for 9 of them, set a six-week cycle to refresh the research, and built a clear hand-over step so qualified partners move straight into the partner pipeline.',
-      result: '8 of 11 potential partners qualified as worth pursuing, with contacts verified for 9 of them.',
-      metric: '8 / 11',
-      shot: null, // TODO: cleaned-up screenshot of a lead brief (blurred), with client details removed
-    },
-    // Card 4, approved by Miguel 22 Sep. (Pipeline Cleanup and Operating Model cards moved to Experience.)
-    {
-      title: 'AI Workflow Map for Marketing and Sales',
-      tags: ['AI workflows', 'Marketing operations'],
-      problem: 'The team had AI tools available, but no shared plan for where they actually help.',
-      did: "Mapped where AI fits into the team's daily work in ClickUp: turning one article into several posts, personalising outreach messages, preparing for sales calls, and summarising the pipeline into quick updates.",
-      result: 'A clear map of four places where AI saves the marketing and sales team time.',
-      metric: '4 AI workflows',
-      shot: null, // TODO: cleaned-up screenshot of the map, with client details removed
-    },
-  ],
+  // Emptied 29 Sep 2026 at Miguel's request: the four cards described work he did not do.
+  // The old text is parked in content-work-cards-removed.txt. The Work channel hides itself while this is empty.
+  selectedWork: [],
 
   experience: [
     {

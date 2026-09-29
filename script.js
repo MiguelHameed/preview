@@ -17,7 +17,7 @@
   // ---------- channels (in the order they appear in the conversation) ----------
   // Order agreed with Miguel: Work opens as its own view; the rest read as one scroll.
   const CHANNELS = [
-    { id: 'selected-work', title: 'Work', sub: 'Results from systems I built', view: true },
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'Results from systems I built', view: true }] : []),
     { id: 'about', title: 'About', sub: 'My story' },
     { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
     { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
@@ -55,6 +55,9 @@
   // the same icon with a green "available" dot, used where it stands for Miguel himself
   const avatarLive = (cls, alt) => `<span class="avatar-live">${avatarEl(cls, alt)}<i class="live-dot" title="Open to work anywhere"></i></span>`;
   $$('[data-headshot]').forEach((el) => { el.outerHTML = avatarLive('side-avatar', ''); });
+
+  // no work cards yet: hide the rail's Work button as well
+  if (!S.selectedWork.length) { const w = $('.rail [data-rail="work"]'); if (w) w.remove(); }
 
   const manilaTime = () => new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit' }).format(new Date());
 
