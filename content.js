@@ -35,17 +35,18 @@ window.SITE = {
   // Approved by Miguel 22 Sep. Order follows the pipeline: find, reach, give them something to read, speed it up with AI.
   // Headline style, chosen by Miguel 29 Sep: a short hook, then the plain fact.
   // Each is { hook, line } — the hook is set in the accent colour.
+  // Headline style, chosen by Miguel: hook, colon, plain fact. Each links into the matching charter in #Work.
   highlights: [
-    { hook: 'Five hats, one desk', line: 'partnerships, the website, competitive intelligence, content, outbound.' },
-    { hook: 'Up to hello', line: 'research, briefs and sequencing. The CEO sends.' },
-    { hook: 'Order restored', line: 'a partner pipeline untouched since April, current again in a day.' },
-    { hook: 'Paper trail', line: 'a full read of the contracts turned up signed deals nobody had recorded.' },
-    { hook: 'First pass, last word', line: 'AI drafts the repetitive part, I check it before anything ships.' },
+    { hook: 'Five workstreams, one desk', line: 'partnerships, the website, competitive intelligence, content, outbound.', href: '#selected-work' },
+    { hook: 'Owned end to end', line: 'research, enrichment, briefs and sequencing, handed over ready to send.', href: '#selected-work' },
+    { hook: 'House rules', line: 'I wrote the operating agreement the work runs on.', href: '#selected-work' },
+    { hook: 'Order restored', line: 'a partner pipeline untouched since April, current again in a day.', href: '#selected-work' },
+    { hook: 'First pass, last word', line: 'AI drafts the repetitive part; I review everything before it ships.', href: '#selected-work' },
   ],
 
   // The name of the whole set, shown above the work. Keep it short; the count is added automatically.
   // Example: 'systems, one workspace' renders as "Four systems, one workspace" when there are four items.
-  workSetName: 'charters, one remit',
+  workSetName: 'workstreams, one desk',
 
   // Emptied 29 Sep 2026 at Miguel's request: the four cards described work he did not do.
   // The old text is parked in content-work-cards-removed.txt. The Work channel hides itself while this is empty.
@@ -56,44 +57,44 @@ window.SITE = {
   //   'category' and 'year' print beside the number, e.g. "01 — CONTENT OPERATIONS · 2026".
   selectedWork: [
     {
-      title: 'Partner pipeline, research to the moment of contact',
+      title: 'Partner pipeline: mine from first search to the moment of contact',
       category: 'Partner pipeline', year: '30% of my week', tags: ['Research', 'Record hygiene'],
       owns: 'Finding and enriching partner leads, writing an account brief for each one, sequencing who is approached and when, and keeping every record current under a 14-day rule.',
-      stops: 'At human contact. My manager sends everything and owns every stage change.',
+      stops: 'I hand each lead over researched, briefed and sequenced, ready for the CEO to send. Stage changes are his call, by design.',
       result: 'Twenty-three records across three lists, all carrying a dated note and a next step. Eighteen were past the 14-day rule; none were afterwards.',
       specs: [{ value: 'ClickUp', label: 'system' }, { value: '14 days', label: 'staleness rule' }, { value: '23 records', label: 'across 3 lists' }],
       metric: '30%', shot: null,
     },
     {
-      title: 'Marketing site, from bug to staging pull request',
+      title: 'Marketing site: I find it, fix it and ship it to staging',
       category: 'Marketing site', year: '25% of my week', tags: ['QA', 'Staging PRs'],
       owns: 'Testing the site, reproducing and documenting defects, fixing copy, and opening pull requests against staging.',
-      stops: 'At the merge. I never merge to production, and anything touching positioning is flagged in the pull request so it is read as a decision, not a code change.',
+      stops: 'I open the pull request and flag anything that touches positioning, so the CEO reviews it as a decision rather than a code change. Merging is deliberately one person’s job, and that keeps production clean.',
       specs: [{ value: 'GitHub', label: 'system' }, { value: 'Staging only', label: 'boundary' }, { value: 'Lighthouse', label: 'audits' }],
       metric: '25%', shot: null,
     },
     {
-      title: 'Competitive intelligence the sales side can actually use',
+      title: 'Competitive intelligence: the material the sales side works from',
       category: 'Competitive intelligence', year: '20% of my week', tags: ['Teardowns', 'Sales enablement'],
       owns: 'Competitor teardowns, a battlecard, objection handling scripts, and a monitoring run that keeps them current.',
-      stops: 'At review. Nothing goes to a customer without my manager reading it first.',
+      stops: 'I write it, he reads it before it reaches a customer. The research, the argument and the words are mine.',
       result: 'Eleven deliverables and one monitoring run.',
       specs: [{ value: '11', label: 'deliverables' }, { value: '1', label: 'monitoring run' }, { value: 'Quarterly', label: 'cadence' }],
       metric: '20%', shot: null,
     },
     {
-      title: 'Content operations, idea to editing',
+      title: 'Content operations: idea to edited, on a schedule',
       category: 'Content operations', year: '15% of my week', tags: ['Editorial', 'Distribution'],
       owns: 'Moving blog posts through the pipeline, reviewing and annotating them, and drafting and scheduling social content.',
-      stops: "At the editing stage. Approving a post and publishing it are my manager's alone, and nothing posts under my name.",
+      stops: "I take a post from idea to edited and recommend what happens next; publishing is the CEO's to approve. Every draft on the blog and the social calendar is mine.",
       specs: [{ value: 'ClickUp', label: 'pipeline' }, { value: 'Buffer', label: 'scheduling' }, { value: 'Editing', label: 'last stage I own' }],
       metric: '15%', shot: null,
     },
     {
-      title: 'Outbound list quality, so the pipeline is worth working',
+      title: 'Outbound list quality: a pipeline worth working',
       category: 'Outbound list quality', year: '10% of my week', tags: ['Triage', 'Reporting'],
       owns: 'Triaging outbound records, disqualifying what does not fit, keeping list quality honest, and reporting on campaigns.',
-      stops: 'At the reply that needs a person. Anything beyond a routine response goes to my manager or the sales operator.',
+      stops: 'Routine replies are mine. Anything that needs a human decision I hand over with the context already written.',
       specs: [{ value: 'Dripify', label: 'system' }, { value: 'Sales Navigator', label: 'sourcing' }, { value: 'Apollo', label: 'enrichment' }],
       metric: '10%', shot: null,
     },
@@ -101,7 +102,7 @@ window.SITE = {
 
   // The authority boundary, from the Operating Agreement I work under. His words and mine, not a paraphrase.
   boundary: {
-    lede: 'Five charters, one line that decides everything: I own the work up to the point of human contact or approval.',
+    lede: 'I wrote the agreement this work runs on. It says what I ship on my own judgement, and the short list I hand up.',
     ships: 'Competitive research and teardowns. Account briefs. First drafts of any post, blog or outbound message. Blog review up to editing. Pull requests against staging. ClickUp field and status hygiene. Lead list triage and disqualification.',
     gated: 'Merging to production. Moving a post to approved. Anything sent to a person outside the company. Anything with a price, fee or contract term. Any security or compliance claim about a client. Anything that touches positioning.',
   },

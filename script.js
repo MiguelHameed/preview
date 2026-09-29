@@ -17,7 +17,7 @@
   // ---------- channels (in the order they appear in the conversation) ----------
   // Order agreed with Miguel: Work opens as its own view; the rest read as one scroll.
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I own, and where it stops', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I run, and how far it goes', view: true }] : []),
     { id: 'about', title: 'About', sub: 'My story' },
     { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
     { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
@@ -109,7 +109,9 @@
               ${buttons('data-intro-actions')}
               <ul class="highlights">${S.highlights.map((h) => (typeof h === 'string'
                 ? `<li>${esc(h)}</li>`
-                : `<li><span class="hook">${esc(h.hook)}</span> — ${esc(h.line)}</li>`)).join('')}</ul>
+                : `<li>${h.href
+                    ? `<a class="hook" href="${esc(h.href)}">${esc(h.hook)}</a>`
+                    : `<span class="hook">${esc(h.hook)}</span>`}: ${esc(h.line)}</li>`)).join('')}</ul>
               <div class="chips">
                 <span class="chip">${esc(P.role)}</span>
                 <span class="chip">${esc(P.location)}</span>
@@ -286,6 +288,7 @@
     showView(isView ? id : null);
     if (replace) history.replaceState({ view: isView ? id : null }, '');
   }
+  window.addEventListener('hashchange', () => openFromHash(true));
   window.addEventListener('popstate', (e) => {
     const id = e.state && e.state.view;
     showView(CHANNELS.some((c) => c.view && c.id === id) ? id : null);

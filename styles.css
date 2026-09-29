@@ -62,7 +62,9 @@
 [data-theme="burgundy"] .attachment-deep  { background: linear-gradient(145deg, #5c1a3a 0%, #3b0f25 55%, #1e0713 100%); }
 
 :root {
-  --sans: 'Public Sans', 'Public Sans Fallback', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Inter Fallback', system-ui, 'Segoe UI', sans-serif;
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --display: var(--serif); /* headings in Newsreader; switch to var(--sans) for all-Inter */
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
   /* one scale for corners: tiny marks, controls, cards, panels, pills */
   --r-xs: 3px;
@@ -218,7 +220,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 
 .side-head { padding: 0 8px 16px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
-.side-head strong { display: block; font-size: var(--t-base); letter-spacing: -0.01em; }
+.side-head strong { font-family: var(--display); display: block; font-size: var(--t-base); letter-spacing: -0.01em; }
 .side-status { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-sm); color: var(--muted); }
 .side-status i, .dot-good { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
 
@@ -328,7 +330,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   border-bottom: 1px solid var(--line);
   background: var(--app);
 }
-.pane-title .pane-h { color: var(--ink); font-weight: 700; font-size: var(--t-lg); letter-spacing: -0.01em; }
+.pane-title .pane-h { font-family: var(--display); color: var(--ink); font-weight: 700; font-size: var(--t-lg); letter-spacing: -0.01em; }
 .pane-title p { color: var(--muted); }
 .menu-btn, .mob-theme, .mob-mail { display: none; flex: none; } /* flex: none keeps phone header buttons a full 44px tap size */
 
@@ -359,7 +361,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .pin { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); }
 
 /* the intro message */
-.lede { font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.22; letter-spacing: -0.02em; font-weight: 600; max-width: 30ch; margin: 6px 0 14px; }
+.lede { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.22; letter-spacing: -0.02em; font-weight: 600; max-width: 30ch; margin: 6px 0 14px; }
 .lede .before { color: var(--muted); font-weight: 500; }
 
 /* intro photo: beside the text on wide screens, above it on phones */
@@ -375,7 +377,8 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .highlights { list-style: none; display: grid; gap: 6px; margin-bottom: 16px; }
 .highlights li { position: relative; padding-left: 18px; max-width: 60ch; }
-.highlights .hook { color: var(--accent); font-weight: 700; }
+a.hook, .highlights .hook { color: var(--accent); font-weight: 700; text-decoration: none; border-bottom: 1px solid transparent; }
+a.hook:hover { border-bottom-color: currentColor; }
 .highlights li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; border-radius: var(--r-xs); background: var(--accent); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
@@ -436,7 +439,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .scrim { display: none; }
 
 /* ---------------- sections of the conversation ---------------- */
-.channel-divider {
+.channel-divider { font-family: var(--display);
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px;
   margin: 44px 0 6px; padding-bottom: 10px;
   border-bottom: 1px solid var(--line);
@@ -458,14 +461,14 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 
 /* work messages: result first, then the attachment panel */
-.set-name { font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; margin: 4px 0 18px 58px; }
+.set-name { font-family: var(--display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; margin: 4px 0 18px 58px; }
 /* three hard facts under each piece of work, after the reference sites' specs (film stock, CCT, LCP) */
 .specs { list-style: none; display: flex; flex-wrap: wrap; gap: 28px; margin: 4px 0 16px; padding-top: 14px; border-top: 1px solid var(--line); max-width: 640px; }
 .specs li { display: flex; flex-direction: column; gap: 2px; }
-.spec-value { font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; }
+.spec-value { font-family: var(--display); font-size: var(--t-lg); font-weight: 700; letter-spacing: -0.02em; }
 .spec-label { color: var(--muted); }
 .work-no { color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
-.work-title { font-size: var(--t-lg); letter-spacing: -0.015em; line-height: 1.3; margin: 2px 0 8px; }
+.work-title { font-family: var(--display); font-size: var(--t-lg); letter-spacing: -0.015em; line-height: 1.3; margin: 2px 0 8px; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .tags li {
   padding: 2px 8px; border-radius: var(--r-sm);
@@ -593,7 +596,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 /* The intro message IS the first screen. The channel list slides in from a button. */
 @media (max-width: 767px) {
   .specs { gap: 18px 24px; }
-  .set-name { margin-left: 0; }
+  .set-name { font-family: var(--display); margin-left: 0; }
   .view-back { margin-left: 16px; }
   .pane-tabs { padding: 6px 16px 0; }
   .files-panel { padding: 16px 16px 48px; }
@@ -629,7 +632,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   .contact-list li { grid-template-columns: 1fr; gap: 2px; }
   .attachment { border-radius: var(--r-lg); }
   .msg-avatar { width: 38px; height: 38px; }
-  .lede { font-size: var(--t-xl); margin-bottom: 12px; }
+  .lede { font-family: var(--display); font-size: var(--t-xl); margin-bottom: 12px; }
   .actions .btn { flex: 1 1 auto; }
 
   /* Closed: fully off-screen, no shadow leaking in, and its links can't be tabbed to. */
