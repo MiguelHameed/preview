@@ -138,6 +138,8 @@
         <div><dt class="mono">problem</dt><dd>${esc(w.problem)}</dd></div>
         <div><dt class="mono">what I did</dt><dd>${esc(w.did)}</dd></div>
       </dl>
+      ${w.specs && w.specs.length ? `<ul class="specs">${w.specs.map((sp) => `
+        <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label mono">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
       <figure class="attachment attachment-${hues[i % hues.length]}">
         ${w.shot
           ? `<img src="${esc(w.shot)}" alt="${esc(w.title)} — screenshot" loading="lazy" />`

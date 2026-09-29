@@ -48,6 +48,8 @@ window.SITE = {
   // The old text is parked in content-work-cards-removed.txt. The Work channel hides itself while this is empty.
   // Each entry, when Miguel has real ones:
   //   { title, category, year, tags: [], result, problem, did, metric, specs: [{ label, value }], shot }
+  //   'specs' are two or three checkable facts, not claims: the tool, the cadence, the volume.
+  //   e.g. specs: [{ value: 'ClickUp', label: 'system' }, { value: 'Weekly', label: 'cadence' }, { value: '23', label: 'records' }]
   //   'category' and 'year' print beside the number, e.g. "01 — CONTENT OPERATIONS · 2026".
   selectedWork: [],
 
