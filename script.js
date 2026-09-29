@@ -122,9 +122,14 @@
 
   // Work cards: result first (after alicezhao.work), then a big rounded panel (after matthewdea.com)
   // that will hold a real screenshot. Until one is added, the panel shows the result number instead.
+  const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+
   function selectedWork(c) {
     const hues = ['sea', 'ocean', 'reef', 'deep'];
-    return divider(c) + S.selectedWork.map((w, i) => msg(`result ${i + 1} of ${S.selectedWork.length}`, `
+    const n = S.selectedWork.length;
+    const setName = S.workSetName ? `<p class="set-name">${esc(COUNT_WORDS[n] || n)} ${esc(S.workSetName)}</p>` : '';
+    return divider(c) + setName + S.selectedWork.map((w, i) => msg(`result ${i + 1} of ${n}`, `
+      <p class="work-no mono">${String(i + 1).padStart(2, '0')}${w.category ? ` — ${esc(w.category)}` : ''}${w.year ? ` · ${esc(w.year)}` : ''}</p>
       <h3 class="work-title">${esc(w.title)}</h3>
       <ul class="tags">${w.tags.map((t) => `<li class="mono">${esc(t)}</li>`).join('')}</ul>
       <p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>

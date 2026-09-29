@@ -40,8 +40,15 @@ window.SITE = {
     'AI-assisted workflows that save the team time',
   ],
 
+  // The name of the whole set, shown above the work. Keep it short; the count is added automatically.
+  // Example: 'systems, one workspace' renders as "Four systems, one workspace" when there are four items.
+  workSetName: 'systems, one workspace',
+
   // Emptied 29 Sep 2026 at Miguel's request: the four cards described work he did not do.
   // The old text is parked in content-work-cards-removed.txt. The Work channel hides itself while this is empty.
+  // Each entry, when Miguel has real ones:
+  //   { title, category, year, tags: [], result, problem, did, metric, specs: [{ label, value }], shot }
+  //   'category' and 'year' print beside the number, e.g. "01 — CONTENT OPERATIONS · 2026".
   selectedWork: [],
 
   experience: [
