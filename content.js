@@ -33,11 +33,14 @@ window.SITE = {
   tags: ['marketing-operations', 'business-development', 'ai-workflows'],
 
   // Approved by Miguel 22 Sep. Order follows the pipeline: find, reach, give them something to read, speed it up with AI.
+  // Headline style, chosen by Miguel 29 Sep: a short hook, then the plain fact.
+  // Each is { hook, line } — the hook is set in the accent colour.
   highlights: [
-    'Pipeline management: finding, checking and qualifying leads and partners',
-    'LinkedIn outreach campaigns with Dripify, Sales Navigator and Apollo',
-    'Content operations, from idea to published article',
-    'AI-assisted workflows that save the team time',
+    { hook: 'Five hats, one desk', line: 'partnerships, the website, competitive intelligence, content, outbound.' },
+    { hook: 'Up to hello', line: 'research, briefs and sequencing. The CEO sends.' },
+    { hook: 'Order restored', line: 'a partner pipeline untouched since April, current again in a day.' },
+    { hook: 'Paper trail', line: 'a full read of the contracts turned up signed deals nobody had recorded.' },
+    { hook: 'First pass, last word', line: 'AI drafts the repetitive part, I check it before anything ships.' },
   ],
 
   // The name of the whole set, shown above the work. Keep it short; the count is added automatically.

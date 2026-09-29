@@ -107,7 +107,9 @@
               <p class="lede"><span class="before">${esc(P.storyStart)}</span> ${esc(P.story)}</p>
               ${S.tags && S.tags.length ? `<p class="hash-tags">${S.tags.map((t) => `<span class="hash-tag mono">#${esc(t)}</span>`).join('')}</p>` : ''}
               ${buttons('data-intro-actions')}
-              <ul class="highlights">${S.highlights.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
+              <ul class="highlights">${S.highlights.map((h) => (typeof h === 'string'
+                ? `<li>${esc(h)}</li>`
+                : `<li><span class="hook">${esc(h.hook)}</span> — ${esc(h.line)}</li>`)).join('')}</ul>
               <div class="chips">
                 <span class="chip">${esc(P.role)}</span>
                 <span class="chip">${esc(P.location)}</span>

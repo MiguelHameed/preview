@@ -375,6 +375,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .highlights { list-style: none; display: grid; gap: 6px; margin-bottom: 16px; }
 .highlights li { position: relative; padding-left: 18px; max-width: 60ch; }
+.highlights .hook { color: var(--accent); font-weight: 700; }
 .highlights li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 6px; height: 6px; border-radius: var(--r-xs); background: var(--accent); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
