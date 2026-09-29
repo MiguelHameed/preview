@@ -42,7 +42,7 @@ window.SITE = {
 
   // The name of the whole set, shown above the work. Keep it short; the count is added automatically.
   // Example: 'systems, one workspace' renders as "Four systems, one workspace" when there are four items.
-  workSetName: 'systems, one workspace',
+  workSetName: 'charters, one remit',
 
   // Emptied 29 Sep 2026 at Miguel's request: the four cards described work he did not do.
   // The old text is parked in content-work-cards-removed.txt. The Work channel hides itself while this is empty.
@@ -51,7 +51,57 @@ window.SITE = {
   //   'specs' are two or three checkable facts, not claims: the tool, the cadence, the volume.
   //   e.g. specs: [{ value: 'ClickUp', label: 'system' }, { value: 'Weekly', label: 'cadence' }, { value: '23', label: 'records' }]
   //   'category' and 'year' print beside the number, e.g. "01 — CONTENT OPERATIONS · 2026".
-  selectedWork: [],
+  selectedWork: [
+    {
+      title: 'Partner pipeline, research to the moment of contact',
+      category: 'Partner pipeline', year: '30% of my week', tags: ['Research', 'Record hygiene'],
+      owns: 'Finding and enriching partner leads, writing an account brief for each one, sequencing who is approached and when, and keeping every record current under a 14-day rule.',
+      stops: 'At human contact. My manager sends everything and owns every stage change.',
+      result: 'Twenty-three records across three lists, all carrying a dated note and a next step. Eighteen were past the 14-day rule; none were afterwards.',
+      specs: [{ value: 'ClickUp', label: 'system' }, { value: '14 days', label: 'staleness rule' }, { value: '23 records', label: 'across 3 lists' }],
+      metric: '30%', shot: null,
+    },
+    {
+      title: 'Marketing site, from bug to staging pull request',
+      category: 'Marketing site', year: '25% of my week', tags: ['QA', 'Staging PRs'],
+      owns: 'Testing the site, reproducing and documenting defects, fixing copy, and opening pull requests against staging.',
+      stops: 'At the merge. I never merge to production, and anything touching positioning is flagged in the pull request so it is read as a decision, not a code change.',
+      specs: [{ value: 'GitHub', label: 'system' }, { value: 'Staging only', label: 'boundary' }, { value: 'Lighthouse', label: 'audits' }],
+      metric: '25%', shot: null,
+    },
+    {
+      title: 'Competitive intelligence the sales side can actually use',
+      category: 'Competitive intelligence', year: '20% of my week', tags: ['Teardowns', 'Sales enablement'],
+      owns: 'Competitor teardowns, a battlecard, objection handling scripts, and a monitoring run that keeps them current.',
+      stops: 'At review. Nothing goes to a customer without my manager reading it first.',
+      result: 'Eleven deliverables and one monitoring run.',
+      specs: [{ value: '11', label: 'deliverables' }, { value: '1', label: 'monitoring run' }, { value: 'Quarterly', label: 'cadence' }],
+      metric: '20%', shot: null,
+    },
+    {
+      title: 'Content operations, idea to editing',
+      category: 'Content operations', year: '15% of my week', tags: ['Editorial', 'Distribution'],
+      owns: 'Moving blog posts through the pipeline, reviewing and annotating them, and drafting and scheduling social content.',
+      stops: "At the editing stage. Approving a post and publishing it are my manager's alone, and nothing posts under my name.",
+      specs: [{ value: 'ClickUp', label: 'pipeline' }, { value: 'Buffer', label: 'scheduling' }, { value: 'Editing', label: 'last stage I own' }],
+      metric: '15%', shot: null,
+    },
+    {
+      title: 'Outbound list quality, so the pipeline is worth working',
+      category: 'Outbound list quality', year: '10% of my week', tags: ['Triage', 'Reporting'],
+      owns: 'Triaging outbound records, disqualifying what does not fit, keeping list quality honest, and reporting on campaigns.',
+      stops: 'At the reply that needs a person. Anything beyond a routine response goes to my manager or the sales operator.',
+      specs: [{ value: 'Dripify', label: 'system' }, { value: 'Sales Navigator', label: 'sourcing' }, { value: 'Apollo', label: 'enrichment' }],
+      metric: '10%', shot: null,
+    },
+  ],
+
+  // The authority boundary, from the Operating Agreement I work under. His words and mine, not a paraphrase.
+  boundary: {
+    lede: 'Five charters, one line that decides everything: I own the work up to the point of human contact or approval.',
+    ships: 'Competitive research and teardowns. Account briefs. First drafts of any post, blog or outbound message. Blog review up to editing. Pull requests against staging. ClickUp field and status hygiene. Lead list triage and disqualification.',
+    gated: 'Merging to production. Moving a post to approved. Anything sent to a person outside the company. Anything with a price, fee or contract term. Any security or compliance claim about a client. Anything that touches positioning.',
+  },
 
   experience: [
     {

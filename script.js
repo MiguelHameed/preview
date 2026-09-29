@@ -17,7 +17,7 @@
   // ---------- channels (in the order they appear in the conversation) ----------
   // Order agreed with Miguel: Work opens as its own view; the rest read as one scroll.
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'Results from systems I built', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I own, and where it stops', view: true }] : []),
     { id: 'about', title: 'About', sub: 'My story' },
     { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
     { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
@@ -132,11 +132,13 @@
       <p class="work-no mono">${String(i + 1).padStart(2, '0')}${w.category ? ` — ${esc(w.category)}` : ''}${w.year ? ` · ${esc(w.year)}` : ''}</p>
       <h3 class="work-title">${esc(w.title)}</h3>
       <ul class="tags">${w.tags.map((t) => `<li class="mono">${esc(t)}</li>`).join('')}</ul>
-      <p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>
+      ${w.result ? `<p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>` : ''}
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
       <dl class="work-detail">
-        <div><dt class="mono">problem</dt><dd>${esc(w.problem)}</dd></div>
-        <div><dt class="mono">what I did</dt><dd>${esc(w.did)}</dd></div>
+        ${w.owns ? `<div><dt class="mono">what I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
+        ${w.stops ? `<div><dt class="mono">where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
+        ${w.problem ? `<div><dt class="mono">problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
+        ${w.did ? `<div><dt class="mono">what I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
       </dl>
       ${w.specs && w.specs.length ? `<ul class="specs">${w.specs.map((sp) => `
         <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label mono">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
@@ -145,7 +147,12 @@
           ? `<img src="${esc(w.shot)}" alt="${esc(w.title)} — screenshot" loading="lazy" />`
           : `<div class="attach-metric">${esc(w.metric)}</div>
              <figcaption class="attach-note mono">screenshot coming — cleaned of client details before it goes live</figcaption>`}
-      </figure>`)).join('');
+      </figure>`)).join('') + (S.boundary ? msg('how I work', `
+      <p class="section-lede">${esc(S.boundary.lede)}</p>
+      <dl class="work-detail">
+        <div><dt class="mono">I ship</dt><dd>${esc(S.boundary.ships)}</dd></div>
+        <div><dt class="mono">he decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
+      </dl>`) : '');
   }
 
   // Employer logo on a white tile; initials badge when there is no logo (Cloud Sentry: Miguel's choice for now).
