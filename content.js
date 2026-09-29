@@ -111,7 +111,7 @@ window.SITE = {
       role: 'Operations & Business Development Associate', // Miguel's choice, 22 Sep: Work Summary title, shortened
       type: 'Independent contractor',
       org: 'Cloud Sentry Solutions',
-      logo: null, initials: 'CS', // no logo until Ken okays it (Miguel, 22 Sep)
+      logo: 'images/logos/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
       dates: 'April 2025 – Present', // alongside DOH until Jan 2026
       // Marketing-first draft, accepted by Miguel 22 Sep "for now" — he'll refine the details later.
