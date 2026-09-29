@@ -347,7 +347,7 @@
   function setActive(id) {
     const c = CHANNELS.find((x) => x.id === id);
     titleEl.textContent = c ? '#' + c.title : P.shortName;
-    subEl.textContent = c ? c.sub : `${P.role} · ${P.location.split(',')[0]}`;
+    subEl.textContent = c ? c.sub : `${P.role} · ${P.location}`;
     $$('[data-channel]').forEach((a) => a.classList.toggle('is-active', a.dataset.channel === (c ? c.id : 'intro')));
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
       c ? (c.id === 'selected-work' ? b.dataset.rail === 'work' : false) : b.dataset.rail === 'home'));

@@ -64,7 +64,7 @@
 :root {
   --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Inter Fallback', system-ui, 'Segoe UI', sans-serif;
   --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --display: var(--serif); /* headings in Newsreader; switch to var(--sans) for all-Inter */
+  --display: var(--sans); /* headings in the same face as the body: standard, and it matches Apple's own look */
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
   /* one scale for corners: tiny marks, controls, cards, panels, pills */
   --r-xs: 3px;
