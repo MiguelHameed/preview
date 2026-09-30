@@ -615,12 +615,21 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   border: 1px solid var(--line); background: var(--card);
 }
 .proof-kind { color: var(--accent); font-size: var(--t-xs); }
-/* Brand marks arrive as artwork drawn for white, same as the role logos, so they get a white tile. */
-.proof-logo { width: 44px; height: 44px; border-radius: var(--r-md); background: #fff; object-fit: contain; border: 1px solid var(--line); margin-bottom: 2px; }
+/* Brand marks arrive as artwork drawn for white, same as the role logos, so they get a white tile.
+   A credential card is not a timeline row, so the mark is given room to actually be looked at. */
+.proof-logo { width: 88px; height: 88px; border-radius: var(--r-lg); background: #fff; object-fit: contain; border: 1px solid var(--line); margin: 2px 0 4px; }
 .proof-title { font-size: var(--t-base); line-height: 1.35; }
 .proof-topic { color: var(--muted); font-size: var(--t-md); }
 .proof-link { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 600; text-decoration: none; }
 .proof-link.is-off { color: var(--muted); font-weight: 400; }
+/* A card that carries a link is clickable across its whole face, not just on the words. */
+a.proof-card { text-decoration: none; color: inherit; transition: border-color 0.15s var(--ease), background 0.15s var(--ease), transform 0.15s var(--ease); }
+a.proof-card:hover, a.proof-card:focus-visible { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
+a.proof-card:hover .proof-link, a.proof-card:focus-visible .proof-link { text-decoration: underline; text-underline-offset: 3px; }
+/* No hover on a touch screen, so the card carries the accent border from the start. */
+@media (hover: none) {
+  a.proof-card { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+}
 
 /* testimonials */
 .initials { display: grid; place-items: center; color: var(--accent-ink); font-weight: 700; font-size: var(--t-md); }

@@ -203,14 +203,20 @@
   function proof(c) {
     return divider(c) + msg('proof', `
       <p class="section-lede">Certifications, training and the project I'm building.</p>
-      <div class="proof-grid">${S.proof.map((p) => `
-        <div class="proof-card">
+      <div class="proof-grid">${S.proof.map((p) => {
+        // A card that has a link IS the link — a whole-card target instead of two words of "View",
+        // which was easy to miss. Cards without a link stay plain divs.
+        const tag = p.link ? 'a' : 'div';
+        const attrs = p.link ? ` href="${esc(p.link)}" target="_blank" rel="noopener"` : '';
+        return `
+        <${tag} class="proof-card${p.link ? ' is-link' : ''}"${attrs}>
           <span class="proof-kind">${esc(p.kind)}</span>
-          ${p.logo ? `<img class="proof-logo" src="${esc(p.logo)}" alt="" width="44" height="44" loading="lazy" />` : ''}
+          ${p.logo ? `<img class="proof-logo" src="${esc(p.logo)}" alt="" width="88" height="88" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
           ${txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
-          ${p.link ? `<a class="proof-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ↗</a>` : ''}
-        </div>`).join('')}
+          ${p.link ? '<span class="proof-link">Verify <span aria-hidden="true">↗</span></span>' : ''}
+        </${tag}>`;
+      }).join('')}
       </div>`);
   }
 
