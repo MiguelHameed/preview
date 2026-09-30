@@ -171,7 +171,7 @@
     const shortOrg = (o) => o.replace('Department of Health – Metro Manila Center for Health Development', 'Department of Health')
       .replace('DOST – Food and Nutrition Research Institute', 'DOST-FNRI');
     const list = S.experience.map((e) => `
-      <li><span class="tl-role"><strong>${esc(e.role)}</strong><span class="tl-org">${esc(shortOrg(e.org))}</span></span><span class="tl-dates">${txt(e.dates)}</span></li>`).join('');
+      <li><span class="tl-role"><strong>${esc(e.role)}</strong></span><span class="tl-org">${esc(shortOrg(e.org))}</span><span class="tl-dates">${txt(e.dates)}</span></li>`).join('');
     const summary = msg('overview', `
       <p class="section-lede">${S.experience.length} roles, from national health data to marketing and business development.</p>
       <ul class="timeline">${list}</ul>`);
@@ -255,7 +255,14 @@
   const builders = { 'selected-work': selectedWork, experience, skills, proof, testimonials, about, contact };
   const feed = $('#feed');
   const scrollChannels = CHANNELS.filter((c) => !c.view);
-  feed.innerHTML = intro() + scrollChannels.map((c) => builders[c.id](c)).join('');
+  const workChannel = CHANNELS.find((c) => c.view);
+  const workRow = workChannel ? `
+    <a class="section-row" href="#${workChannel.id}">
+      <span class="section-row-label">${esc(workChannel.title)}</span>
+      <span class="section-row-title">${esc(COUNT_WORDS[S.selectedWork.length] || S.selectedWork.length)} ${esc(S.workSetName || '')}</span>
+      <span class="section-row-go">Open &rarr;</span>
+    </a>` : '';
+  feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
 
   // Channels marked `view: true` open on their own, like a separate page (after baileyelith.com).
   const views = {};
