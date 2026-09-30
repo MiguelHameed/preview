@@ -124,18 +124,18 @@ window.SITE = {
         // 23 records / 3 lists / 21 notes: cleanup evidence §2, 2026-09-18. 18→0 is his own dated count,
         // no second source; Miguel decided 30 Sep to keep it. "all" deliberately left out — 3 more records
         // surfaced on 09-23 outside the original scope.
-        'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule',
+        'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
         // Charter 3 pack, 2026-09-22 to 23: 4 teardowns, 1 battlecard, 6 objection scripts, 1 one-pager,
         // 1 win/loss spec, 1 decision memo. Eleven deliverables in two days.
-        'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo',
+        'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
         // 24 blog docs 2025-07-01 to 07-25; 72-post corpus review 2026-09-24; a notes comment per post 09-28.
-        'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus',
+        'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus.',
         // 10 verified PRs in the week ending 2026-09-25; 12 Lighthouse reports; site crawl 41 pages at 370px.
         // He stops at merge — the manager merges — so this says "shipped to", not "shipped".
-        'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width',
+        'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width.',
         // Super agents Jan–Mar 2026 (KQL agent demoed 03-16 and 03-23); two AI Skills 2026-08-28
         // ("1-3-1 Rule", "Client Outreach"); AI credit task opened 2026-09-24, still open — no outcome to claim.
-        'Built Cloud Sentry\u2019s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use',
+        'Built Cloud Sentry\u2019s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use.',
       ],
     },
     {
@@ -145,9 +145,9 @@ window.SITE = {
       place: 'Mandaluyong City, Philippines',
       dates: 'April 2025 – January 2026',
       points: [
-        'Managed and validated health facility data for the Field Health Services Information System (FHSIS)',
-        'Coordinated with local health units and partner facilities for timely, complete, standardised data',
-        'Reviewed, consolidated and analysed routine health reports to support monitoring and planning',
+        'Managed and validated health facility data for the Field Health Services Information System (FHSIS).',
+        'Coordinated with local health units and partner facilities for timely, complete, standardised data.',
+        'Reviewed, consolidated and analysed routine health reports to support monitoring and planning.',
       ],
     },
     {
@@ -157,8 +157,8 @@ window.SITE = {
       place: 'Taguig City, Philippines',
       dates: 'November 2023 – August 2024',
       points: [
-        'Conducted data collection and validation for the National Nutrition Survey',
-        'Collected and processed biological samples through phlebotomy; performed laboratory analysis of biochemical markers',
+        'Conducted data collection and validation for the National Nutrition Survey.',
+        'Collected and processed biological samples through phlebotomy; performed laboratory analysis of biochemical markers.',
       ],
     },
     {
@@ -167,7 +167,7 @@ window.SITE = {
       logo: 'images/logos/dost-fnri.png', // FNRI emblem, from fnri.dost.gov.ph
       place: 'Taguig City, Philippines',
       dates: 'September – November 2023',
-      points: ['Encoded and validated National Nutrition Survey data'],
+      points: ['Encoded and validated National Nutrition Survey data.'],
     },
   ],
 
