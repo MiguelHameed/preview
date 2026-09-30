@@ -112,11 +112,6 @@
                 : `<li>${h.href
                     ? `<a class="hook" href="${esc(h.href)}">${esc(h.hook)}</a>`
                     : `<span class="hook">${esc(h.hook)}</span>`}: ${esc(h.line)}</li>`)).join('')}</ul>
-              <div class="chips">
-                <span class="chip">${esc(P.role)}</span>
-                <span class="chip">${esc(P.location)}</span>
-                <span class="chip"><i class="dot-good"></i>${esc(P.availability)}</span>
-              </div>
             </div>
             ${introPhoto()}
           </div>

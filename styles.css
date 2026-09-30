@@ -393,8 +393,9 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .highlights { list-style: none; display: grid; gap: 6px; margin-bottom: 16px; }
 .highlights li { position: relative; padding-left: 18px; max-width: 60ch; }
-a.hook, .highlights .hook { color: var(--ink); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; }
-a.hook:hover { border-bottom-color: currentColor; }
+a.hook, .highlights .hook { color: var(--ink); font-weight: 600; text-decoration: none; }
+a.hook { border-bottom: 1px solid var(--line); }
+a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: var(--accent); }
 .highlights li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
