@@ -393,16 +393,30 @@
   }
 
   // ---------- floating "Email me": only when no other contact buttons are on screen ----------
+  // Shaped like a macOS notification: the sending app's icon (Gmail, the same mark the Apps list uses),
+  // a title, the address underneath, and a timestamp. "now" is decorative — it never changes.
   const floatBtn = $('#float-btn');
-  floatBtn.href = 'mailto:' + P.email;
-  floatBtn.innerHTML = `${avatarEl('float-avatar', '')}<span class="float-text"><strong>Email me</strong><span class="float-sub">${esc(P.availability)}</span></span>`;
+  const floatLink = $('#float-link');
+  const floatX = $('#float-x');
+  floatLink.href = 'mailto:' + P.email;
+  floatLink.innerHTML = `<span class="float-app">${ICONS.email}</span>`
+    + `<span class="float-text"><strong>Email me</strong><span class="float-sub">${esc(P.email)}</span></span>`
+    + `<span class="float-when">now</span>`;
   $$('[data-mail]').forEach((a) => { a.href = 'mailto:' + P.email; });
+  // Dismissed for this visit only, so it comes back next time rather than being gone for good.
+  let floatDismissed = false;
+  floatX.addEventListener('click', () => {
+    floatDismissed = true;
+    setFloat();
+    floatLink.blur();
+  });
   const visibleButtons = new Set();
   function setFloat() {
-    const show = visibleButtons.size === 0;
+    const show = visibleButtons.size === 0 && !floatDismissed;
     floatBtn.classList.toggle('is-hidden', !show);
     floatBtn.setAttribute('aria-hidden', String(!show));
-    floatBtn.tabIndex = show ? 0 : -1;
+    floatLink.tabIndex = show ? 0 : -1;
+    floatX.tabIndex = show ? 0 : -1;
   }
   const btnObs = new IntersectionObserver((entries) => {
     entries.forEach((e) => (e.isIntersecting ? visibleButtons.add(e.target) : visibleButtons.delete(e.target)));

@@ -286,11 +286,8 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   font-size: var(--t-lg); line-height: 1; text-decoration: none;
 }
 .side-plus:hover { background: var(--accent); color: var(--accent-ink); }
-.float-avatar { width: 30px; height: 30px; border-radius: var(--r-md); font-size: var(--t-sm); }
-.float-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
-/* This label sits on the accent colour, not the page, so it must NOT use --muted like the other small
-   labels — that is pale blue on bright blue, about 1.4:1. It takes the button's own ink instead. */
-.float-sub { color: currentColor; opacity: 0.78; font-size: var(--t-xs); letter-spacing: var(--track-caps); }
+.float-text { display: flex; flex-direction: column; line-height: 1.32; text-align: left; flex: 1; min-width: 0; padding-top: 1px; }
+.float-sub { font-size: 1rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .side-label {
   display: flex; align-items: center; gap: 4px; width: 100%;
   margin-top: 10px; padding: 6px 8px; border-radius: var(--r-sm);
@@ -433,23 +430,57 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 }
 .building strong { color: var(--ink); }
 
-/* floating contact button (after Bailey's "Book a call") */
-.float-btn {
+/* Floating contact banner, shaped like a macOS notification (Miguel, 30 Sep).
+   Frosted translucent material, the sending app's squircle icon, a timestamp, and a dismiss
+   that only appears on hover. The wrapper is positioned; the link inside carries the material. */
+.float-wrap {
   position: fixed;
   right: max(24px, env(safe-area-inset-right));
   bottom: max(24px, env(safe-area-inset-bottom));
   z-index: 30;
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 48px; padding: 8px 18px 8px 8px;
-  border-radius: var(--r-pill);
-  background: var(--accent); color: var(--accent-ink);
-  font-weight: 600; text-decoration: none;
-  box-shadow: 0 12px 30px -10px rgba(31, 54, 232, 0.6);
+  transition: transform 0.2s var(--ease), opacity 0.25s;
+}
+.float-wrap.is-hidden { opacity: 0; pointer-events: none; transform: translateY(10px); }
+.float-btn {
+  display: flex; align-items: flex-start; gap: 12px;
+  width: 428px; max-width: calc(100vw - 48px);
+  padding: 16px 17px;
+  border-radius: 18px;
+  /* Translucent enough to read the page through, with the blur keeping the text legible. */
+  background: color-mix(in srgb, var(--app) 52%, transparent);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  backdrop-filter: blur(26px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--ink); font-weight: 400; text-decoration: none;
+  box-shadow: 0 18px 44px -14px rgba(0, 0, 0, 0.65), 0 2px 8px -2px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s var(--ease);
 }
-.float-btn:hover { transform: translateY(-2px); }
-.float-btn.is-hidden { opacity: 0; pointer-events: none; transform: translateY(10px); }
-.float-btn { transition: transform 0.2s var(--ease), opacity 0.25s; }
+.float-wrap:hover .float-btn { transform: translateY(-2px); }
+/* The app tile: Gmail's own colours need a white square, exactly as in the Apps list. */
+.float-app {
+  width: 50px; height: 50px; border-radius: 13px; flex: none;
+  display: grid; place-items: center; background: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.float-app svg { width: 30px; height: 30px; }
+.float-btn strong { font-weight: 600; font-size: var(--t-lg); letter-spacing: var(--track-head); }
+.float-when { flex: none; font-size: var(--t-sm); color: var(--muted); padding-top: 3px; }
+.float-x {
+  position: absolute; top: -7px; left: -7px;
+  width: 24px; height: 24px; border-radius: 50%; border: 0; padding: 0;
+  display: grid; place-items: center; cursor: pointer;
+  background: rgba(72, 78, 88, 0.92); color: #e9eef7;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  opacity: 0; transform: scale(0.8);
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+.float-wrap:hover .float-x, .float-x:focus-visible { opacity: 1; transform: scale(1); }
+.float-x svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+/* Touch devices have no hover, so the dismiss is always there rather than never. */
+@media (hover: none) {
+  .float-x { opacity: 1; transform: scale(1); }
+}
 
 .actions { margin-bottom: 20px; }
 .pane-title { min-width: 0; }
@@ -695,7 +726,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   .scrim[hidden] { display: none; }
 
   /* On phones the floating button would cover text while reading; an envelope in the top bar replaces it. */
-  .float-btn { display: none; }
+  .float-wrap { display: none; }
   .mob-mail { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border-radius: var(--r-md); color: var(--accent); }
   .mob-mail + .mob-theme { margin-left: 0; }
 }
