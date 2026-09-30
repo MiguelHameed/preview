@@ -115,13 +115,27 @@ window.SITE = {
       logo: 'images/logos/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
       dates: 'April 2025 – Present', // alongside DOH until Jan 2026
-      // Marketing-first draft, accepted by Miguel 22 Sep "for now" — he'll refine the details later.
+      // Rewritten 30 Sep, approved by Miguel. Every figure traces to a dated entry in the ClickUp evidence
+      // files (E:\Downloads\work-inventory-evidence.md and partner-pipeline-cleanup-evidence.md).
+      // These are finished work; what he OWNS and where it STOPS lives in the Work channel, not here.
+      // Do not add outreach he sent (the manager sends), ClickUp automations (not supported) or any
+      // pipeline outcome — meetings, reply rates, conversions and revenue are all "not found".
       points: [
-        'Manage a 60-article content pipeline for the company blog, and write, edit and review cybersecurity and compliance articles',
-        'Run three LinkedIn outreach campaigns at once in Dripify, with daily and weekly reporting',
-        'Research and qualify partner leads, and cleaned up the partner pipeline so overdue follow-ups dropped from 18 to 0',
-        'Map where AI saves the marketing and sales team time, and build ClickUp automations that cut manual work',
-        'Wrote the operating guide for five workstreams, and run weekly speed and quality checks on the marketing website',
+        // 23 records / 3 lists / 21 notes: cleanup evidence §2, 2026-09-18. 18→0 is his own dated count,
+        // no second source; Miguel decided 30 Sep to keep it. "all" deliberately left out — 3 more records
+        // surfaced on 09-23 outside the original scope.
+        'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule',
+        // Charter 3 pack, 2026-09-22 to 23: 4 teardowns, 1 battlecard, 6 objection scripts, 1 one-pager,
+        // 1 win/loss spec, 1 decision memo. Eleven deliverables in two days.
+        'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo',
+        // 24 blog docs 2025-07-01 to 07-25; 72-post corpus review 2026-09-24; a notes comment per post 09-28.
+        'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus',
+        // 10 verified PRs in the week ending 2026-09-25; 12 Lighthouse reports; site crawl 41 pages at 370px.
+        // He stops at merge — the manager merges — so this says "shipped to", not "shipped".
+        'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width',
+        // Super agents Jan–Mar 2026 (KQL agent demoed 03-16 and 03-23); two AI Skills 2026-08-28
+        // ("1-3-1 Rule", "Client Outreach"); AI credit task opened 2026-09-24, still open — no outcome to claim.
+        'Built Cloud Sentry\u2019s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use',
       ],
     },
     {
