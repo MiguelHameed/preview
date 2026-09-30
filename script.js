@@ -11,7 +11,7 @@
   // Anything still marked TODO in content.js shows as a visible "to confirm" placeholder.
   const isTodo = (t) => typeof t === 'string' && /^TODO/i.test(t);
   const txt = (t) => isTodo(t)
-    ? (S.hideTodos ? '' : `<span class="todo">${esc(t.replace(/^TODO:?\s*/i, '')) || 'to be added'}<span class="todo-tag mono">to confirm</span></span>`)
+    ? (S.hideTodos ? '' : `<span class="todo">${esc(t.replace(/^TODO:?\s*/i, '')) || 'to be added'}<span class="todo-tag">to confirm</span></span>`)
     : esc(t);
 
   // ---------- channels (in the order they appear in the conversation) ----------
@@ -46,7 +46,7 @@
     `<li><a class="side-link" href="#${c.id}" data-channel="${c.id}"><span class="hash">#</span>${c.title}</a></li>`
   ).join('');
   $('#app-list').innerHTML = APPS.map((a) =>
-    `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext mono" aria-hidden="true">↗</span>' : ''}</a></li>`
+    `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext" aria-hidden="true">↗</span>' : ''}</a></li>`
   ).join('');
   // Small chat icons: Miguel's avatar photo if set, otherwise the mh mark (the big intro photo is separate).
   const avatarEl = (cls, alt) => P.avatar
@@ -73,7 +73,7 @@
     </article>`;
   const divider = (c) => `
     <h2 class="channel-divider" id="${c.id}" data-section="${c.id}">
-      <span class="hash">#</span>${c.title}<span class="divider-sub mono">${esc(c.sub)}</span>
+      <span class="hash">#</span>${c.title}<span class="divider-sub">${esc(c.sub)}</span>
     </h2>`;
   const buttons = (attr = '') => `
     <div class="actions" ${attr}>
@@ -91,7 +91,7 @@
     }
     return `<div class="intro-photo is-empty" role="img" aria-label="Photo coming soon">
               <span class="empty-title">your photo<br />goes here</span>
-              <span class="empty-note mono">square · head and shoulders</span>
+              <span class="empty-note">square · head and shoulders</span>
             </div>`;
   }
 
@@ -133,29 +133,29 @@
     const n = S.selectedWork.length;
     const setName = S.workSetName ? `<p class="set-name">${esc(COUNT_WORDS[n] || n)} ${esc(S.workSetName)}</p>` : '';
     return divider(c) + setName + S.selectedWork.map((w, i) => msg(`result ${i + 1} of ${n}`, `
-      <p class="work-no mono">${String(i + 1).padStart(2, '0')}${w.category ? ` — ${esc(w.category)}` : ''}${w.year ? ` · ${esc(w.year)}` : ''}</p>
+      <p class="work-no">${String(i + 1).padStart(2, '0')}${w.category ? ` — ${esc(w.category)}` : ''}${w.year ? ` · ${esc(w.year)}` : ''}</p>
       <h3 class="work-title">${esc(w.title)}</h3>
-      <ul class="tags">${w.tags.map((t) => `<li class="mono">${esc(t)}</li>`).join('')}</ul>
+      <ul class="tags">${w.tags.map((t) => `<li class="label">${esc(t)}</li>`).join('')}</ul>
       ${w.result ? `<p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>` : ''}
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
       <dl class="work-detail">
-        ${w.owns ? `<div><dt class="mono">what I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
-        ${w.stops ? `<div><dt class="mono">where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
-        ${w.problem ? `<div><dt class="mono">problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
-        ${w.did ? `<div><dt class="mono">what I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
+        ${w.owns ? `<div><dt class="label">what I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
+        ${w.stops ? `<div><dt class="label">where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
+        ${w.problem ? `<div><dt class="label">problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
+        ${w.did ? `<div><dt class="label">what I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
       </dl>
       ${w.specs && w.specs.length ? `<ul class="specs">${w.specs.map((sp) => `
-        <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label mono">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
+        <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
       <figure class="attachment attachment-${hues[i % hues.length]}">
         ${w.shot
           ? `<img src="${esc(w.shot)}" alt="${esc(w.title)} — screenshot" loading="lazy" />`
           : `<div class="attach-metric">${esc(w.metric)}</div>
-             <figcaption class="attach-note mono">screenshot coming — cleaned of client details before it goes live</figcaption>`}
+             <figcaption class="attach-note">screenshot coming — cleaned of client details before it goes live</figcaption>`}
       </figure>`)).join('') + (S.boundary ? msg('how I work', `
       <p class="section-lede">${esc(S.boundary.lede)}</p>
       <dl class="work-detail">
-        <div><dt class="mono">I ship</dt><dd>${esc(S.boundary.ships)}</dd></div>
-        <div><dt class="mono">he decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
+        <div><dt class="label">I ship</dt><dd>${esc(S.boundary.ships)}</dd></div>
+        <div><dt class="label">he decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
       </dl>`) : '');
   }
 
@@ -171,7 +171,7 @@
     const shortOrg = (o) => o.replace('Department of Health – Metro Manila Center for Health Development', 'Department of Health')
       .replace('DOST – Food and Nutrition Research Institute', 'DOST-FNRI');
     const list = S.experience.map((e) => `
-      <li><span class="tl-role"><strong>${esc(e.role)}</strong><span class="tl-org">${esc(shortOrg(e.org))}</span></span><span class="tl-dates mono">${txt(e.dates)}</span></li>`).join('');
+      <li><span class="tl-role"><strong>${esc(e.role)}</strong><span class="tl-org">${esc(shortOrg(e.org))}</span></span><span class="tl-dates">${txt(e.dates)}</span></li>`).join('');
     const summary = msg('overview', `
       <p class="section-lede">${S.experience.length} roles, from national health data to marketing and business development.</p>
       <ul class="timeline">${list}</ul>`);
@@ -181,7 +181,7 @@
         <div>
           <h3 class="work-title">${esc(e.role)}</h3>
           <p class="org">${esc(e.org)}${e.type ? ` · ${esc(e.type)}` : ''}</p>
-          <p class="where mono">${esc(e.place)} · ${txt(e.dates)}</p>
+          <p class="where">${esc(e.place)} · ${txt(e.dates)}</p>
         </div>
       </div>
       <ul class="points">${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`)).join('');
@@ -192,10 +192,10 @@
   function skills(c) {
     return divider(c) + msg('skills', S.skills.map((g) => `
       <div class="skill-group">
-        <h3 class="skill-head mono">${esc(g.group)}</h3>
+        <h3 class="skill-head">${esc(g.group)}</h3>
         <ul class="tags tags-lg">${g.items.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
       </div>`).join('') + (S.learning ? `
-      <p class="learning"><span class="mono">currently learning</span> ${esc(S.learning)}</p>` : ''));
+      <p class="learning"><span class="label">currently learning</span> ${esc(S.learning)}</p>` : ''));
   }
 
   function proof(c) {
@@ -203,7 +203,7 @@
       <p class="section-lede">Certifications, training and the project I'm building.</p>
       <div class="proof-grid">${S.proof.map((p) => `
         <div class="proof-card">
-          <span class="proof-kind mono">${esc(p.kind)}</span>
+          <span class="proof-kind">${esc(p.kind)}</span>
           <strong class="proof-title">${txt(p.title)}</strong>
           ${txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
           ${p.link ? `<a class="proof-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ↗</a>` : ''}
@@ -226,7 +226,7 @@
     return divider(c) + msg('about', `
       ${[].concat(S.about).map((t) => `<p class="about-text">${txt(t)}</p>`).join('')}
       <ul class="tags tags-lg">${S.interests.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <p class="word mono">my word · <strong>${esc(S.word)}</strong></p>
+      <p class="word">my word · <strong>${esc(S.word)}</strong></p>
       <blockquote class="motto">“${esc(P.motto)}”</blockquote>`);
   }
 
@@ -235,12 +235,12 @@
       <!-- closing line: Miguel's favourite, keep as is (22 Sep) -->
       <p class="section-lede">If you're building a team that needs work to run on rails, I'd like to hear about it.</p>
       <ul class="contact-list">
-        <li><span class="mono">email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
-        <li><span class="mono">linkedin</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>
-        <li><span class="mono">based in</span><span>${esc(P.location)} · <span data-clock>${manilaTime()}</span> local time</span></li>
-        <li><span class="mono">status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
+        <li><span class="label">email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
+        <li><span class="label">linkedin</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>
+        <li><span class="label">based in</span><span>${esc(P.location)} · <span data-clock>${manilaTime()}</span> local time</span></li>
+        <li><span class="label">status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
       </ul>
-      ${buttons('data-contact-actions')}`) + `<p class="end mono">— end of conversation —</p>`;
+      ${buttons('data-contact-actions')}`) + `<p class="end">— end of conversation —</p>`;
   }
 
   // The Files tab: a gallery of work pictures, with the file name under each (after baileyelith.com).
@@ -301,7 +301,7 @@
     tabs.className = 'pane-tabs';
     tabs.innerHTML = `
       <button class="pane-tab is-on" type="button" data-tab="messages">Messages</button>
-      <button class="pane-tab" type="button" data-tab="files">Files <span class="tab-count mono">${S.files.length}</span></button>`;
+      <button class="pane-tab" type="button" data-tab="files">Files <span class="tab-count">${S.files.length}</span></button>`;
     $('.pane-head').insertAdjacentElement('afterend', tabs);
     const panel = document.createElement('div');
     panel.className = 'files-panel';
@@ -386,7 +386,7 @@
   // ---------- floating "Email me": only when no other contact buttons are on screen ----------
   const floatBtn = $('#float-btn');
   floatBtn.href = 'mailto:' + P.email;
-  floatBtn.innerHTML = `${avatarEl('float-avatar', '')}<span class="float-text"><strong>Email me</strong><span class="float-sub mono">${esc(P.availability)}</span></span>`;
+  floatBtn.innerHTML = `${avatarEl('float-avatar', '')}<span class="float-text"><strong>Email me</strong><span class="float-sub">${esc(P.availability)}</span></span>`;
   $$('[data-mail]').forEach((a) => { a.href = 'mailto:' + P.email; });
   const visibleButtons = new Set();
   function setFloat() {
