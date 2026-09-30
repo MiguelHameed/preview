@@ -141,7 +141,7 @@
 
   function orgLogo(src, initials, org) {
     return src
-      ? `<img class="org-logo" src="${esc(src)}" alt="${esc(org)} logo" width="48" height="48" loading="lazy" />`
+      ? `<img class="org-logo" src="${esc(src)}" alt="${esc(org)} logo" width="96" height="96" loading="lazy" />`
       : `<span class="org-logo org-initials" aria-hidden="true">${esc(initials || '')}</span>`;
   }
 
