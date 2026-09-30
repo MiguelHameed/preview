@@ -615,6 +615,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   border: 1px solid var(--line); background: var(--card);
 }
 .proof-kind { color: var(--accent); font-size: var(--t-xs); }
+/* Brand marks arrive as artwork drawn for white, same as the role logos, so they get a white tile. */
+.proof-logo { width: 44px; height: 44px; border-radius: var(--r-md); background: #fff; object-fit: contain; border: 1px solid var(--line); margin-bottom: 2px; }
 .proof-title { font-size: var(--t-base); line-height: 1.35; }
 .proof-topic { color: var(--muted); font-size: var(--t-md); }
 .proof-link { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 600; text-decoration: none; }

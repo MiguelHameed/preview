@@ -206,6 +206,7 @@
       <div class="proof-grid">${S.proof.map((p) => `
         <div class="proof-card">
           <span class="proof-kind">${esc(p.kind)}</span>
+          ${p.logo ? `<img class="proof-logo" src="${esc(p.logo)}" alt="" width="44" height="44" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
           ${txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
           ${p.link ? `<a class="proof-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ↗</a>` : ''}

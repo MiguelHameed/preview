@@ -205,9 +205,20 @@ window.SITE = {
   // Proof, agreed with Miguel 22 Sep: current and marketing-relevant items first; lab-only certificates left out.
   // Items come from his CV. Add `link: 'https://…'` to any card to show a "View" link.
   proof: [
-    { kind: 'Certification', title: 'Certified ClickUp Expert', topic: 'TODO: year earned' },
+    // Details taken from Miguel's own certificate (images/Certified ClickUp Expert.jpg, not published):
+    // issued 16 June 2025, certificate 8a2eyxevcezx. The verify link is Skilljar's public check and was
+    // confirmed live on 30 Sep — it is the only item on this channel anyone can actually verify.
+    // `logo` is the EXPERT badge cropped out of that certificate.
+    {
+      kind: 'Certification', title: 'Certified ClickUp Expert',
+      topic: "ClickUp's own certification, June 2025. It's the system five of my workstreams run on.",
+      logo: 'images/logos/clickup.png',
+      link: 'https://verify.skilljar.com/c/8a2eyxevcezx',
+    },
     { kind: 'In progress · startup project', title: 'MAPA: Multi-route Advisory for Passable Alternatives', topic: "A real-time navigation and road-passability app for Metro Manila's drivers and on-demand riders, including flood-prone roads." },
-    { kind: 'Course · Coursera', title: 'Online Course in Management', topic: 'TODO: course name and year' },
+    // Hidden 30 Sep with Miguel's agreement until he has the course name. With no name and no year it read as
+    // an empty card, and an unnamed course is weak proof anyway. Restore it when the details arrive.
+    // { kind: 'Course · Coursera', title: 'Online Course in Management', topic: 'TODO: course name and year' },
     { kind: 'Training · Department of Health', title: 'Health data quality and analysis', topic: 'Data management, data quality checks for Universal Health Care, and a recognition for cross-program data analysis (2025).' },
     { kind: 'Certificate · NIDA Clinical Trials Network', title: 'Clinical research foundations', topic: 'Foundational principles of clinical research (2022).' },
   ],
