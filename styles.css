@@ -134,11 +134,11 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
 /* small labels: Inter, quiet, slightly open — replaces the monospace that had spread across the page */
-.label, .divider-sub, .work-no, .spec-label, .proof-kind, .skill-head, .tl-dates, .where,
+.label, .divider-sub, .work-no, .spec-label, .proof-kind, .tl-dates, .where,
 .attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
 }
-.work-no, .proof-kind, .skill-head { text-transform: uppercase; }
+.work-no, .proof-kind { text-transform: uppercase; }
 
 /* ---------------- desk + app window ---------------- */
 .desk {
@@ -599,13 +599,22 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .points li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
 /* skills */
-.skill-group + .skill-group { margin-top: 20px; }
+/* Skills reads as hairline rows, the same structure as the Experience timeline and the Work row:
+   the group name holds a left column, what he does fills the rest, the products sit quietly beneath. */
+.skill-rows { list-style: none; display: grid; gap: 0; max-width: 760px; }
+.skill-rows li {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr); gap: 4px 24px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+}
+.skill-rows li:first-child { border-top: 1px solid var(--line); }
+.skill-group-name { font-size: var(--t-base); font-weight: 600; letter-spacing: var(--track-head); color: var(--ink); }
+.skill-body { min-width: 0; }
 .skill-does { color: var(--ink); line-height: 1.55; }
-.skill-does .sep { color: var(--muted); }
-.skill-tools { margin-top: 5px; color: var(--muted); font-size: var(--t-sm); display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 8px; }
+.skill-does .sep { color: var(--muted); opacity: 0.5; padding: 0 2px; }
+.skill-tools { margin-top: 6px; color: var(--muted); font-size: var(--t-sm); }
+.skill-tools .label { margin-right: 8px; }
 .learning { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-weight: 600; }
 .learning .mono { color: var(--accent); font-weight: 400; }
-.skill-head { color: var(--muted); font-weight: 400; margin-bottom: 8px; font-size: var(--t-sm); }
 
 /* proof */
 .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; max-width: 760px; }
@@ -716,6 +725,8 @@ body.sheet-open { overflow: hidden; }
 /* The intro message IS the first screen. The channel list slides in from a button. */
 @media (max-width: 767px) {
   .timeline li { grid-template-columns: 1fr; gap: 2px; }
+  /* Two columns are too tight on a phone: the group name becomes a heading over its own row. */
+  .skill-rows li { grid-template-columns: 1fr; gap: 6px; }
   .tl-dates { text-align: left; }
   .section-row { grid-template-columns: 1fr; gap: 6px; }
   .specs { gap: 18px 24px; }

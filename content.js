@@ -148,10 +148,7 @@ window.SITE = {
       tools: ['Claude', 'ClickUp AI'] },
     { group: 'Operations and process',
       does: ['Workflow design', 'Process documentation', 'Website quality checks'],
-      tools: ['ClickUp', 'GitHub', 'Lighthouse'] },
-    { group: 'Data and code',
-      does: ['Health data validation'],
-      tools: ['R', 'HTML/CSS'] },
+      tools: ['ClickUp', 'GitHub', 'Lighthouse', 'HTML/CSS'] },
   ],
   learning: 'Microsoft SC-300 and SC-200', // shown under the skills as "currently learning"
 

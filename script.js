@@ -168,17 +168,19 @@
   }
 
   function skills(c) {
-    return divider(c) + msg('skills', S.skills.map((g) => {
+    return divider(c) + msg('skills', `<ul class="skill-rows">${S.skills.map((g) => {
       const does = g.does || g.items || [];
       const tools = g.tools || [];
       return `
-      <div class="skill-group">
-        <h3 class="skill-head">${esc(g.group)}</h3>
-        ${does.length ? `<p class="skill-does">${does.map(esc).join('<span class="sep"> &middot; </span>')}</p>` : ''}
-        ${tools.length ? `<p class="skill-tools"><span class="label">tools</span> ${tools.map(esc).join(', ')}</p>` : ''}
-      </div>`;
-    }).join('') + (S.learning ? `
-      <p class="learning"><span class="label">currently learning</span> ${esc(S.learning)}</p>` : ''));
+      <li>
+        <h3 class="skill-group-name">${esc(g.group)}</h3>
+        <div class="skill-body">
+          ${does.length ? `<p class="skill-does">${does.map(esc).join('<span class="sep"> / </span>')}</p>` : ''}
+          ${tools.length ? `<p class="skill-tools"><span class="label">Tools</span> ${tools.map(esc).join(' &middot; ')}</p>` : ''}
+        </div>
+      </li>`;
+    }).join('')}</ul>` + (S.learning ? `
+      <p class="learning"><span class="label">Currently learning</span> ${esc(S.learning)}</p>` : ''));
   }
 
   const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
