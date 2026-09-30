@@ -28,6 +28,10 @@
   <meta name="twitter:image" content="https://miguelhameed.com/og-image.png" />
   <link rel="preload" href="../fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- The page is drawn by these two, so the browser should start fetching them now rather than when it
+       reaches the bottom of the body. Without this, the opening line waits on their discovery. -->
+  <link rel="preload" href="../content.js" as="script" />
+  <link rel="preload" href="../script.js" as="script" />
   <link rel="stylesheet" href="../fonts/fonts.css" />
   <link rel="manifest" href="../site.webmanifest" />
   <script type="application/ld+json">
