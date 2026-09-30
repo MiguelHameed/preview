@@ -566,7 +566,10 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .points li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
 /* skills */
-.skill-group + .skill-group { margin-top: 16px; }
+.skill-group + .skill-group { margin-top: 20px; }
+.skill-does { color: var(--ink); line-height: 1.55; }
+.skill-does .sep { color: var(--muted); }
+.skill-tools { margin-top: 5px; color: var(--muted); font-size: var(--t-sm); display: flex; flex-wrap: wrap; align-items: baseline; gap: 3px 8px; }
 .learning { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-weight: 600; }
 .learning .mono { color: var(--accent); font-weight: 400; }
 .skill-head { color: var(--muted); font-weight: 400; margin-bottom: 8px; font-size: var(--t-sm); }

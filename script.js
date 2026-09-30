@@ -19,7 +19,7 @@
   const CHANNELS = [
     ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I run, and how far it goes', view: true }] : []),
     { id: 'about', title: 'About', sub: 'My story' },
-    { id: 'skills', title: 'Skills', sub: 'Tools and strengths' },
+    { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
     { id: 'proof', title: 'Proof', sub: 'Certifications, training and projects' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'What people say' }] : []),
@@ -185,11 +185,18 @@
   }
 
   function skills(c) {
-    return divider(c) + msg('skills', S.skills.map((g) => `
+    // What he does leads; the products sit under it in a quieter line. Older groups that still use
+    // `items` fall back to showing everything on the "does" line, so nothing disappears.
+    return divider(c) + msg('skills', S.skills.map((g) => {
+      const does = g.does || g.items || [];
+      const tools = g.tools || [];
+      return `
       <div class="skill-group">
         <h3 class="skill-head">${esc(g.group)}</h3>
-        <ul class="tags tags-lg">${g.items.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-      </div>`).join('') + (S.learning ? `
+        ${does.length ? `<p class="skill-does">${does.map(esc).join('<span class="sep"> &middot; </span>')}</p>` : ''}
+        ${tools.length ? `<p class="skill-tools"><span class="label">tools</span> ${tools.map(esc).join(', ')}</p>` : ''}
+      </div>`;
+    }).join('') + (S.learning ? `
       <p class="learning"><span class="label">currently learning</span> ${esc(S.learning)}</p>` : ''));
   }
 

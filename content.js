@@ -174,13 +174,30 @@ window.SITE = {
   education: 'BS Medical Technology, Far Eastern University Manila, 2022. Licensed.',
   educationLogo: 'images/logos/feu.png', // official FEU seal (Wikipedia)
 
-  // Marketing-first groups, approved by Miguel 22 Sep. Only tools he has actually used.
+  // Rewritten 30 Sep. Each group leads with what Miguel DOES; the products he uses sit quieter underneath.
+  // Audited against the ClickUp evidence files. Removed as unevidenced: SEO tools (no SEO tool is named
+  // anywhere), ChatGPT (not in the systems list), Slack (the workspace runs on Teams), ClickUp automations
+  // ("not supported" in the evidence), SOC 2 compliance analysis (also forbidden — the Operating Agreement
+  // puts any compliance claim about a client on the manager's side). Google Analytics became GA4, which he
+  // reads rather than runs. Added, all well evidenced: GitHub (staging PRs), Lighthouse (12 reports) and
+  // competitive research (an entire charter at 20% of his week that was missing here).
+  // "Outreach sequencing and replies" is deliberate: he sequences and drafts, the manager sends.
   skills: [
-    { group: 'Marketing operations', items: ['Content pipeline management', 'Editorial workflows', 'Content writing and editing', 'SEO tools', 'Buffer', 'Google Analytics'] },
-    { group: 'Pipeline and outreach', items: ['Lead and partner research', 'Lead qualification', 'Pipeline management', 'LinkedIn outreach', 'Dripify', 'LinkedIn Sales Navigator', 'Apollo'] },
-    { group: 'AI and automation', items: ['ChatGPT', 'Claude', 'ClickUp AI', 'AI workflow mapping', 'ClickUp automations'] },
-    { group: 'Operations and tools', items: ['ClickUp', 'Slack', 'Workflow design', 'Process documentation', 'Website quality checks'] },
-    { group: 'Data and compliance', items: ['Health data validation', 'R programming', 'HTML/CSS', 'SOC 2 compliance analysis'] },
+    { group: 'Marketing operations',
+      does: ['Content pipeline management', 'Editorial workflows', 'Content writing and editing'],
+      tools: ['Buffer', 'GA4'] },
+    { group: 'Pipeline and outreach',
+      does: ['Lead and partner research', 'Lead qualification', 'Pipeline management', 'Competitive research and teardowns', 'Outreach sequencing and replies'],
+      tools: ['Dripify', 'LinkedIn Sales Navigator', 'Apollo'] },
+    { group: 'AI and automation',
+      does: ['AI workflow mapping'],
+      tools: ['Claude', 'ClickUp AI'] },
+    { group: 'Operations and process',
+      does: ['Workflow design', 'Process documentation', 'Website quality checks'],
+      tools: ['ClickUp', 'GitHub', 'Lighthouse'] },
+    { group: 'Data and code',
+      does: ['Health data validation'],
+      tools: ['R', 'HTML/CSS'] },
   ],
   learning: 'Microsoft SC-300 and SC-200', // shown under the skills as "currently learning"
 
