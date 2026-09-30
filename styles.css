@@ -618,6 +618,9 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 /* A credential card is not a timeline row, so the mark gets room to actually be looked at. It sits on
    the card with no tile: badge artwork is cut out, so a white square behind it is just a bright block.
    A mark that is drawn FOR white paper sets `logoTile: true` in content.js and gets the tile back. */
+/* With a badge across the card, left-aligned wording under a centred mark reads as a mistake,
+   so a card carrying a mark centres everything on it. Text-only cards stay left-aligned. */
+.proof-card.has-mark { align-items: center; text-align: center; }
 .proof-logo { display: block; width: 100%; height: auto; margin: 6px 0 10px; }
 .proof-logo.has-tile { border-radius: var(--r-lg); background: #fff; border: 1px solid var(--line); }
 .proof-title { font-size: var(--t-base); line-height: 1.35; }

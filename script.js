@@ -216,7 +216,7 @@
         const cue = opens ? 'Open <span aria-hidden="true">&rarr;</span>'
           : (p.link ? 'Verify <span aria-hidden="true">↗</span>' : '');
         return `
-        <${tag} class="proof-card${opens || p.link ? ' is-link' : ''}"${attrs}>
+        <${tag} class="proof-card${opens || p.link ? ' is-link' : ''}${p.logo ? ' has-mark' : ''}"${attrs}>
           <span class="proof-kind">${esc(p.kind)}</span>
           ${p.logo ? `<img class="proof-logo${p.logoTile ? ' has-tile' : ''}" src="${esc(p.logo)}" alt="" width="480" height="494" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
