@@ -134,7 +134,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
 /* small labels: Inter, quiet, slightly open — replaces the monospace that had spread across the page */
-.label, .divider-sub, .work-no, .spec-label, .proof-kind, .skill-head, .tl-dates, .where, .float-sub,
+.label, .divider-sub, .work-no, .spec-label, .proof-kind, .skill-head, .tl-dates, .where,
 .attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
 }
@@ -288,7 +288,9 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-plus:hover { background: var(--accent); color: var(--accent-ink); }
 .float-avatar { width: 30px; height: 30px; border-radius: var(--r-md); font-size: var(--t-sm); }
 .float-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
-.float-sub { opacity: 0.75; font-size: var(--t-xs); }
+/* This label sits on the accent colour, not the page, so it must NOT use --muted like the other small
+   labels — that is pale blue on bright blue, about 1.4:1. It takes the button's own ink instead. */
+.float-sub { color: currentColor; opacity: 0.78; font-size: var(--t-xs); letter-spacing: var(--track-caps); }
 .side-label {
   display: flex; align-items: center; gap: 4px; width: 100%;
   margin-top: 10px; padding: 6px 8px; border-radius: var(--r-sm);
