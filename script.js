@@ -64,11 +64,11 @@
     <h2 class="channel-divider" id="${c.id}" data-section="${c.id}">
       <span class="hash">#</span>${c.title}<span class="divider-sub">${esc(c.sub)}</span>
     </h2>`;
-  const buttons = (attr = '') => `
+  const buttons = (attr = '', withLinkedIn = true) => `
     <div class="actions" ${attr}>
       ${S.showCv === false ? '' : `<a class="btn btn-primary" href="${esc(P.cv)}" target="_blank" rel="noopener">Download CV</a>`}
       <a class="btn ${S.showCv === false ? 'btn-primary' : ''}" href="mailto:${esc(P.email)}">Let's find a time!</a>
-      <a class="btn" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>
+      ${withLinkedIn ? `<a class="btn" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>` : ''}
     </div>`;
 
   function introPhoto() {
@@ -234,7 +234,7 @@
         <li><span class="label">based in</span><span>${esc(P.location)} · <span data-clock>${manilaTime()}</span> local time</span></li>
         <li><span class="label">status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
       </ul>
-      ${buttons('data-contact-actions')}`) + `<p class="end">— end of conversation —</p>`;
+      ${buttons('data-contact-actions', false)}`) + `<p class="end">— end of conversation —</p>`;
   }
 
   function filesPanel() {

@@ -144,7 +144,7 @@ window.SITE = {
       does: ['Lead and partner research', 'Lead qualification', 'Pipeline management', 'Competitive research and teardowns', 'Outreach sequencing and replies'],
       tools: ['Dripify', 'LinkedIn Sales Navigator', 'Apollo'] },
     { group: 'AI and automation',
-      does: ['AI workflow mapping'],
+      does: ['Agent and AI Skill building', 'AI workflow mapping'],
       tools: ['Claude', 'ClickUp AI'] },
     { group: 'Operations and process',
       does: ['Workflow design', 'Process documentation', 'Website quality checks'],

@@ -666,6 +666,9 @@ body.sheet-open { overflow: hidden; }
 @media (max-width: 767px) {
   .sheet { padding: 20px; width: calc(100vw - 20px); max-height: 92vh; }
   .sheet-meta { gap: 8px 20px; }
+  /* A proof card goes full width on a phone, so an unchecked badge fills most of the first screen of the
+     channel and the cards under it never get seen. Capped, and centred in the space it gives back. */
+  .proof-logo { max-width: 170px; margin-left: auto; margin-right: auto; }
 }
 
 /* testimonials */
