@@ -220,7 +220,7 @@
           <span class="proof-kind">${esc(p.kind)}</span>
           ${p.logo ? `<img class="proof-logo${p.logoTile ? ' has-tile' : ''}" src="${esc(p.logo)}" alt="" width="88" height="88" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
-          ${txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
+          ${!opens && txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
           ${cue ? `<span class="proof-link">${cue}</span>` : ''}
         </${tag}>`;
       }).join('')}
