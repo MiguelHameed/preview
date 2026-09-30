@@ -209,11 +209,28 @@ window.SITE = {
     // issued 16 June 2025, certificate 8a2eyxevcezx. The verify link is Skilljar's public check and was
     // confirmed live on 30 Sep — it is the only item on this channel anyone can actually verify.
     // `logo` is the EXPERT badge cropped out of that certificate.
+    // A card with `image`, `meta` or `story` opens a panel on the page instead of leaving the site.
+    // `link` then lives inside that panel as the outward verification, not as the card itself.
     {
       kind: 'Certification', title: 'Certified ClickUp Expert',
       topic: "ClickUp's own certification, June 2025. It's the system five of my workstreams run on.",
       logo: 'images/logos/clickup.png',
       link: 'https://verify.skilljar.com/c/8a2eyxevcezx',
+      linkLabel: 'Verify on Skilljar',
+      image: 'images/proof/clickup-certificate.jpg',
+      imageAlt: 'ClickUp Certificate of Completion, Expert level, issued 16 June 2025',
+      meta: [
+        { label: 'Issuer', value: 'ClickUp' },
+        { label: 'Issued', value: '16 June 2025' },
+        { label: 'Certificate', value: '8a2eyxevcezx' },
+      ],
+      // DRAFT — Miguel to confirm or rewrite. Built only from the ClickUp evidence file: the workspace holds
+      // his charters, partner records, blog pipeline and weekly figures; he built the super agents and two
+      // AI Skills (2026-08-28); the AI credit audit was handed to him and is still open.
+      story: [
+        'ClickUp is where my work actually happens. Five workstreams, their charters, the partner records, the blog pipeline and the weekly figures all live in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
+        'I took the certification in June 2025. Since then I have built the super agents the team uses, written two AI Skills, and taken on the audit into the workspace’s AI credit use.',
+      ],
     },
     { kind: 'In progress · startup project', title: 'MAPA: Multi-route Advisory for Passable Alternatives', topic: "A real-time navigation and road-passability app for Metro Manila's drivers and on-demand riders, including flood-prone roads." },
     // Hidden 30 Sep with Miguel's agreement until he has the course name. With no name and no year it read as

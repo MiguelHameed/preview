@@ -200,21 +200,28 @@
       <p class="learning"><span class="label">currently learning</span> ${esc(S.learning)}</p>` : ''));
   }
 
+  // A Proof card earns a panel when it has more behind it than fits on the card.
+  const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
+
   function proof(c) {
     return divider(c) + msg('proof', `
       <p class="section-lede">Certifications, training and the project I'm building.</p>
-      <div class="proof-grid">${S.proof.map((p) => {
-        // A card that has a link IS the link — a whole-card target instead of two words of "View",
-        // which was easy to miss. Cards without a link stay plain divs.
-        const tag = p.link ? 'a' : 'div';
-        const attrs = p.link ? ` href="${esc(p.link)}" target="_blank" rel="noopener"` : '';
+      <div class="proof-grid">${S.proof.map((p, i) => {
+        // A card with a picture, dates or a story opens a panel on this page — the reader never leaves.
+        // A card with only an outward link stays a plain link. A card with neither is not clickable.
+        const opens = hasSheet(p);
+        const tag = opens ? 'button' : (p.link ? 'a' : 'div');
+        const attrs = opens ? ` type="button" data-sheet="${i}"`
+          : (p.link ? ` href="${esc(p.link)}" target="_blank" rel="noopener"` : '');
+        const cue = opens ? 'Open <span aria-hidden="true">&rarr;</span>'
+          : (p.link ? 'Verify <span aria-hidden="true">↗</span>' : '');
         return `
-        <${tag} class="proof-card${p.link ? ' is-link' : ''}"${attrs}>
+        <${tag} class="proof-card${opens || p.link ? ' is-link' : ''}"${attrs}>
           <span class="proof-kind">${esc(p.kind)}</span>
           ${p.logo ? `<img class="proof-logo" src="${esc(p.logo)}" alt="" width="88" height="88" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
           ${txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
-          ${p.link ? '<span class="proof-link">Verify <span aria-hidden="true">↗</span></span>' : ''}
+          ${cue ? `<span class="proof-link">${cue}</span>` : ''}
         </${tag}>`;
       }).join('')}
       </div>`);
@@ -433,6 +440,59 @@
 
   // live Manila clock (intro + contact)
   setInterval(() => $$('[data-clock]').forEach((el) => { el.textContent = manilaTime(); }), 30000);
+
+  // ---------- Proof panel: opens over the page, closes on ×, Escape or a click outside ----------
+  const sheet = $('#sheet');
+  const sheetScrim = $('#sheet-scrim');
+  const sheetBody = $('#sheet-body');
+  const sheetX = $('#sheet-x');
+  let sheetOpener = null;
+
+  const sheetFocusable = () => $$('a[href], button:not([disabled])', sheet).filter((el) => el.offsetParent !== null);
+
+  function openSheet(p, opener) {
+    sheetOpener = opener || null;
+    sheetBody.innerHTML = `
+      <span class="proof-kind">${esc(p.kind)}</span>
+      <h2 class="sheet-title" id="sheet-title">${esc(p.title)}</h2>
+      ${p.image ? `<img class="sheet-image" src="${esc(p.image)}" alt="${esc(p.imageAlt || '')}" />` : ''}
+      ${p.meta && p.meta.length ? `<dl class="sheet-meta">${p.meta.map((m) => `
+        <div><dt class="label">${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}</dl>` : ''}
+      ${p.story && p.story.length ? p.story.map((s) => `<p class="sheet-para">${esc(s)}</p>`).join('') : ''}
+      ${p.link ? `<a class="btn btn-primary sheet-cta" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || 'Verify')} <span aria-hidden="true">↗</span></a>` : ''}`;
+    sheet.hidden = false; sheetScrim.hidden = false;
+    document.body.classList.add('sheet-open');
+    sheetX.focus();
+  }
+
+  function closeSheet() {
+    if (sheet.hidden) return;
+    sheet.hidden = true; sheetScrim.hidden = true;
+    document.body.classList.remove('sheet-open');
+    sheetBody.innerHTML = '';
+    if (sheetOpener && sheetOpener.offsetParent !== null) sheetOpener.focus();
+    sheetOpener = null;
+  }
+
+  sheetX.addEventListener('click', closeSheet);
+  sheetScrim.addEventListener('click', closeSheet);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
+  // while the panel is open, Tab stays inside it
+  sheet.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || sheet.hidden) return;
+    const items = sheetFocusable();
+    if (!items.length) return;
+    const first = items[0], last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  // The cards are redrawn whenever the feed renders, so listen on the feed rather than each card.
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest ? e.target.closest('[data-sheet]') : null;
+    if (!card) return;
+    const p = S.proof[Number(card.dataset.sheet)];
+    if (p) openSheet(p, card);
+  });
 
   // ---------- phone: channel drawer ----------
   const app = $('#app');
