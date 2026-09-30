@@ -280,11 +280,22 @@
   }
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
+  const VIEW_PATH = { 'selected-work': 'work/' };
+  const ROOT = location.pathname.replace(/index\.html$/, '').replace(/work\/?$/, '').replace(/\/?$/, '/');
+  const urlFor = (id) => ROOT + (id && VIEW_PATH[id] ? VIEW_PATH[id] : '');
+  const viewFromPath = () => {
+    const rest = location.pathname.slice(ROOT.length).replace(/index\.html$/, '');
+    const hit = Object.keys(VIEW_PATH).find((id) => VIEW_PATH[id].replace(/\/$/, '') === rest.replace(/\/$/, ''));
+    return hit || null;
+  };
+
   function openFromHash(replace) {
-    const id = location.hash.slice(1);
-    const isView = CHANNELS.some((c) => c.view && c.id === id);
-    showView(isView ? id : null);
-    if (replace) history.replaceState({ view: isView ? id : null }, '');
+    const hashId = location.hash.slice(1);
+    const hashIsView = CHANNELS.some((c) => c.view && c.id === hashId);
+    const id = hashIsView ? hashId : viewFromPath();
+    showView(id);
+    if (hashIsView) history.replaceState({ view: id }, '', urlFor(id));
+    else if (replace) history.replaceState({ view: id }, '');
   }
   window.addEventListener('hashchange', () => openFromHash(true));
   window.addEventListener('popstate', (e) => {
@@ -350,9 +361,17 @@
   $$('a[href^="#"]').forEach((link) => {
     const id = link.getAttribute('href').slice(1);
     const isView = CHANNELS.some((c) => c.view && c.id === id);
+    if (isView) link.setAttribute('href', urlFor(id));
     link.addEventListener('click', (e) => {
-      if (isView) { e.preventDefault(); history.pushState({ view: id }, '', '#' + id); showView(id); }
-      else if (openView) { showView(null); }
+      if (isView) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let the browser open a new tab
+        e.preventDefault();
+        history.pushState({ view: id }, '', urlFor(id));
+        showView(id);
+      } else if (openView) {
+        history.pushState({ view: null }, '', urlFor(null) + link.getAttribute('href'));
+        showView(null);
+      }
     });
   });
 
