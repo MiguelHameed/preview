@@ -1,6 +1,3 @@
-// Miguel's workspace — renders content.js into one continuous conversation.
-// The whole site is a single scroll (a recruiter never has to tap to find anything);
-// the channel list jumps to each part and highlights where you are.
 (function () {
   const S = window.SITE;
   const P = S.person;
@@ -8,14 +5,11 @@
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // Anything still marked TODO in content.js shows as a visible "to confirm" placeholder.
   const isTodo = (t) => typeof t === 'string' && /^TODO/i.test(t);
   const txt = (t) => isTodo(t)
     ? (S.hideTodos ? '' : `<span class="todo">${esc(t.replace(/^TODO:?\s*/i, '')) || 'to be added'}<span class="todo-tag">to confirm</span></span>`)
     : esc(t);
 
-  // ---------- channels (in the order they appear in the conversation) ----------
-  // Order agreed with Miguel: Work opens as its own view; the rest read as one scroll.
   const CHANNELS = [
     ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I run, and how far it goes', view: true }] : []),
     { id: 'about', title: 'About', sub: 'My story' },
@@ -26,7 +20,6 @@
     { id: 'contact', title: 'Contact', sub: 'Get in touch' },
   ];
 
-  // Small app icons for the sidebar, like app tiles in a chat workspace.
   const ICONS = {
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92zM20.44 13.2c0-3.1-1.65-4.94-4.3-4.94-1.94 0-2.8 1.07-3.29 1.82V8.5H9.48V20h3.37v-5.7c0-1.5.28-2.96 2.14-2.96 1.83 0 1.86 1.72 1.86 3.06V20h3.38l.01-6.8z"/></svg>',
     email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M3 6h18v12H3z"/><path fill="#4285F4" d="M20.4 19h-2.1V9.9L12 14.3 5.7 9.9V19H3.6A1.6 1.6 0 0 1 2 17.4V6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v10.8c0 .9-.7 1.6-1.6 1.6z"/><path fill="#34A853" d="M2 17.4V8.1l3.7 2.6V19H3.6A1.6 1.6 0 0 1 2 17.4z"/><path fill="#FBBC04" d="M22 17.4c0 .9-.7 1.6-1.6 1.6h-2.1v-8.3L22 8.1z"/><path fill="#EA4335" d="M2 6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v1.5L12 14.9 2 8.1z"/></svg>',
@@ -48,20 +41,16 @@
   $('#app-list').innerHTML = APPS.map((a) =>
     `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext" aria-hidden="true">↗</span>' : ''}</a></li>`
   ).join('');
-  // Small chat icons: Miguel's avatar photo if set, otherwise the mh mark (the big intro photo is separate).
   const avatarEl = (cls, alt) => P.avatar
     ? `<img class="${cls}" src="${esc(P.avatar)}" alt="${esc(alt)}" width="44" height="44" loading="lazy" />`
     : `<span class="${cls} avatar-mark"${alt ? ` role="img" aria-label="${esc(alt)}"` : ' aria-hidden="true"'}>mh</span>`;
-  // the same icon with a green "available" dot, used where it stands for Miguel himself
   const avatarLive = (cls, alt) => `<span class="avatar-live">${avatarEl(cls, alt)}<i class="live-dot" title="Open to work anywhere"></i></span>`;
   $$('[data-headshot]').forEach((el) => { el.outerHTML = avatarLive('side-avatar', ''); });
 
-  // no work cards yet: hide the rail's Work button as well
   if (!S.selectedWork.length) { const w = $('.rail [data-rail="work"]'); if (w) w.remove(); }
 
   const manilaTime = () => new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit' }).format(new Date());
 
-  // ---------- building blocks ----------
   const avatar = avatarEl('msg-avatar', '');
   const msg = (label, body, extraClass = '') => `
     <article class="msg reveal ${extraClass}">
@@ -82,8 +71,6 @@
       <a class="btn" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>
     </div>`;
 
-  // ---------- sections ----------
-  // The big photo in the intro. With no photo set, it shows a red "your photo goes here" frame.
   function introPhoto() {
     if (P.headshot && !/placeholder/.test(P.headshot)) {
       return `<img class="intro-photo" src="${esc(P.headshot)}" srcset="images/headshot-240.jpg 240w, ${esc(P.headshot)} 480w"
@@ -119,8 +106,6 @@
       </article>`;
   }
 
-  // Work cards: result first (after alicezhao.work), then a big rounded panel (after matthewdea.com)
-  // that will hold a real screenshot. Until one is added, the panel shows the result number instead.
   const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
   function selectedWork(c) {
@@ -154,7 +139,6 @@
       </dl>`) : '');
   }
 
-  // Employer logo on a white tile; initials badge when there is no logo (Cloud Sentry: Miguel's choice for now).
   function orgLogo(src, initials, org) {
     return src
       ? `<img class="org-logo" src="${esc(src)}" alt="${esc(org)} logo" width="48" height="48" loading="lazy" />`
@@ -162,7 +146,6 @@
   }
 
   function experience(c) {
-    // Short employer names for the overview line (the full names appear in each role below).
     const shortOrg = (o) => o.replace('Department of Health – Metro Manila Center for Health Development', 'Department of Health')
       .replace('DOST – Food and Nutrition Research Institute', 'DOST-FNRI');
     const list = S.experience.map((e) => `
@@ -185,8 +168,6 @@
   }
 
   function skills(c) {
-    // What he does leads; the products sit under it in a quieter line. Older groups that still use
-    // `items` fall back to showing everything on the "does" line, so nothing disappears.
     return divider(c) + msg('skills', S.skills.map((g) => {
       const does = g.does || g.items || [];
       const tools = g.tools || [];
@@ -200,15 +181,12 @@
       <p class="learning"><span class="label">currently learning</span> ${esc(S.learning)}</p>` : ''));
   }
 
-  // A Proof card earns a panel when it has more behind it than fits on the card.
   const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
 
   function proof(c) {
     return divider(c) + msg('proof', `
       <p class="section-lede">Certifications, training and the project I'm building.</p>
       <div class="proof-grid">${S.proof.map((p, i) => {
-        // A card with a picture, dates or a story opens a panel on this page — the reader never leaves.
-        // A card with only an outward link stays a plain link. A card with neither is not clickable.
         const opens = hasSheet(p);
         const tag = opens ? 'button' : (p.link ? 'a' : 'div');
         const attrs = opens ? ` type="button" data-sheet="${i}"`
@@ -259,7 +237,6 @@
       ${buttons('data-contact-actions')}`) + `<p class="end">— end of conversation —</p>`;
   }
 
-  // The Files tab: a gallery of work pictures, with the file name under each (after baileyelith.com).
   function filesPanel() {
     return `<div class="files-grid">${S.files.map((f) => `
       <figure class="file-card">
@@ -280,7 +257,6 @@
     </a>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
 
-  // Channels marked `view: true` open on their own, like a separate page (after baileyelith.com).
   const views = {};
   CHANNELS.filter((c) => c.view).forEach((c) => {
     const panel = document.createElement('div');
@@ -304,7 +280,6 @@
   }
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
-  // the address bar follows the view, so Back works and a shared link opens the right thing
   function openFromHash(replace) {
     const id = location.hash.slice(1);
     const isView = CHANNELS.some((c) => c.view && c.id === id);
@@ -318,7 +293,6 @@
     if (!id) setActive('intro');
   });
 
-  // Files tab + Messages tab, shown only when there are files to show
   if (S.files && S.files.length) {
     const tabs = document.createElement('div');
     tabs.className = 'pane-tabs';
@@ -339,7 +313,6 @@
     }));
   }
 
-  // Live sites: links out to real published work, above the channel list
   if (S.liveSites && S.liveSites.length) {
     const head = document.createElement('button');
     head.className = 'side-label';
@@ -362,7 +335,6 @@
     });
   }
 
-  // ---------- where am I? (highlight the channel you're reading) ----------
   const headIcon = $('[data-head-avatar]');
   if (headIcon) headIcon.outerHTML = avatarLive('head-avatar', '');
   const titleEl = $('#pane-title');
@@ -395,7 +367,6 @@
   setActive('intro');
   openFromHash(true); // honour a link like miguelhameed.com/#selected-work
 
-  // ---------- gentle entrance as messages scroll into view ----------
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) {
     $$('.reveal').forEach((el) => el.classList.add('in'));
@@ -406,9 +377,6 @@
     $$('.reveal').forEach((el) => rev.observe(el));
   }
 
-  // ---------- floating contact banner: only when no other contact buttons are on screen ----------
-  // Shaped like a macOS notification: the sending app's icon (Gmail, the same mark the Apps list uses),
-  // a title, the address underneath, and a timestamp. "now" is decorative — it never changes.
   const floatBtn = $('#float-btn');
   const floatLink = $('#float-link');
   const floatX = $('#float-x');
@@ -417,7 +385,6 @@
     + `<span class="float-text"><strong>Let's connect!</strong><span class="float-sub">${esc(P.email)}</span></span>`
     + `<span class="float-when">now</span>`;
   $$('[data-mail]').forEach((a) => { a.href = 'mailto:' + P.email; });
-  // Dismissed for this visit only, so it comes back next time rather than being gone for good.
   let floatDismissed = false;
   floatX.addEventListener('click', () => {
     floatDismissed = true;
@@ -438,10 +405,8 @@
   });
   $$('[data-intro-actions], [data-contact-actions]').forEach((el) => btnObs.observe(el));
 
-  // live Manila clock (intro + contact)
   setInterval(() => $$('[data-clock]').forEach((el) => { el.textContent = manilaTime(); }), 30000);
 
-  // ---------- Proof panel: opens over the page, closes on ×, Escape or a click outside ----------
   const sheet = $('#sheet');
   const sheetScrim = $('#sheet-scrim');
   const sheetBody = $('#sheet-body');
@@ -477,7 +442,6 @@
   sheetX.addEventListener('click', closeSheet);
   sheetScrim.addEventListener('click', closeSheet);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheet(); });
-  // while the panel is open, Tab stays inside it
   sheet.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab' || sheet.hidden) return;
     const items = sheetFocusable();
@@ -486,7 +450,6 @@
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
-  // The cards are redrawn whenever the feed renders, so listen on the feed rather than each card.
   document.addEventListener('click', (e) => {
     const card = e.target.closest ? e.target.closest('[data-sheet]') : null;
     if (!card) return;
@@ -494,7 +457,6 @@
     if (p) openSheet(p, card);
   });
 
-  // ---------- phone: channel drawer ----------
   const app = $('#app');
   const menuBtn = $('[data-menu]');
   const scrim = $('[data-scrim]');
@@ -512,7 +474,6 @@
     menuBtn.setAttribute('aria-expanded', 'false');
     if (wasOpen && menuBtn.offsetParent !== null) menuBtn.focus();
   };
-  // while the drawer is open, Tab stays inside it
   sidebar.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab' || !app.classList.contains('menu-open')) return;
     const items = focusable();
@@ -526,7 +487,6 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
   $$('#sidebar a[href^="#"], .rail a[href^="#"]').forEach((a) => a.addEventListener('click', closeMenu));
 
-  // ---------- sidebar: fold a section open/closed (the ▾/▸ arrows), and hide the whole sidebar (desktop) ----------
   $$('[data-fold]').forEach((btn) => btn.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') !== 'true';
     btn.setAttribute('aria-expanded', String(open));
@@ -538,7 +498,6 @@
     sideBtn.setAttribute('aria-expanded', String(!hidden));
   });
 
-  // ---------- theme: aquarium blue (dark) by default, burgundy on the button (Miguel, 22 Sep) ----------
   const root = document.documentElement;
   const fromUrl = new URLSearchParams(location.search).get('theme');
   let saved = null;
@@ -548,7 +507,6 @@
     const meta = $('meta[name="theme-color"]');
     if (meta) meta.content = t === 'burgundy' ? '#1a0710' : '#020810';
   }
-  // The button switches blue <-> burgundy (the plain light theme was retired 22 Sep).
   setTheme(fromUrl === 'burgundy' || (fromUrl !== 'dark' && saved === 'burgundy') ? 'burgundy' : 'dark');
   $$('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {
     const next = root.dataset.theme === 'burgundy' ? 'dark' : 'burgundy';
