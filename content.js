@@ -225,12 +225,29 @@ window.SITE = {
 
   // Miguel's own words (22 Sep), lightly tidied for grammar only. One string per paragraph.
   about: [
-    'Staying relevant has never been more important than in these fast-changing times, and my own path keeps proving it. From a start in medical science to arriving at the intersection of technical operations, compliance and marketing, my career has already evolved more than once.',
-    'I started in medical laboratory science, earning my degree and license from Far Eastern University – Manila, then spent years handling medical data, research and contextual analysis at the DOST Food and Nutrition Research Institute and later the Department of Health, Metro Manila Center for Health Development. Somewhere in that work I noticed how close I already was to living inside data.',
-    'Then came a stretch of sudden, quiet unhappiness, not tied to any one bad day, just a feeling that had settled in and stayed. So I made a decision that did not look like a career move at the time. I started working as a virtual assistant, and it became the opening that pointed me toward where I am now.',
-    'That path led to my current role as an Operations & Business Development Associate at Cloud Sentry Solutions, a managed security and compliance platform, working across ClickUp workflow management, LinkedIn outreach, compliance automation and tool configuration.',
-    'If there is one thing tying all of this together, it is the willingness to keep learning and outgrowing myself. Working with a startup means wearing a lot of hats, and embracing them has been one of the most fulfilling things I have ventured into so far. I feel more alive doing this than I have in a long time.',
-    'My quest for learning and growing continues.',
+    // Rewritten 30 Sep, approved by Miguel. Assembled only from sentences he said himself — the system he
+    // fixed, wanting to be in the frontline, aiming at Operations Manager. The old opening was a general
+    // observation about staying relevant that he said was someone else's idea, and it carried "compliance",
+    // a claim his Operating Agreement puts on his manager's side.
+    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I trained as a medical technologist and spent years inside health data before I understood what I actually liked was making the work run — finding what was broken, fixing it, and keeping it moving. That’s the job I want now, and I want to be doing it where people can see it.',
+    // Cut 30 Sep with Miguel's agreement: the old paragraph 2 repeated the new opening and listed FEU, FNRI
+    // and DOH again. Those names are already in the Experience timeline and on the education line, so About
+    // was spending its second paragraph on the record instead of on his voice.
+    // Tightened 30 Sep with Miguel's agreement. Same story and same candour; the low point was taking more
+    // words than the decision, so it now lands on the turn sooner. His call to keep "virtual assistant" in.
+    'Then came a stretch of quiet unhappiness — no single bad day, just a feeling that settled in and stayed. So I made a decision that did not look like a career move: I took work as a virtual assistant, and it turned out to be the opening that led here.',
+    // Rewritten 30 Sep with Miguel's agreement. The old version claimed "compliance automation" — the same
+    // claim removed from Skills, since the Operating Agreement puts any compliance claim about a client on
+    // his manager's side — and "tool configuration", which is not in the evidence. The rest was a task list
+    // that Experience and Work already cover with dates, figures and boundaries. This is now just the bridge.
+    'That path led to Cloud Sentry Solutions, a managed security and compliance company, and to the operations work I do there now.',
+    // Tightened 30 Sep with Miguel's agreement. His last sentence is untouched — it is the strongest line in
+    // About. The two before it were "the willingness to keep learning" (a claim nobody ever makes in reverse)
+    // and "wearing a lot of hats", which the intro already says better as "Five workstreams, one desk".
+    'I did not expect to enjoy carrying this much at once, but I do. I feel more alive doing this than I have in a long time.',
+    // Cut 30 Sep with Miguel's agreement: "My quest for learning and growing continues." repeated the note
+    // removed above it and took the reader down from the strongest line in About. His ambition is already
+    // stated in paragraph 1, so About now ends on "I feel more alive doing this than I have in a long time."
   ],
 
   // From what Miguel has said he loves doing (May 2026 chat). Shown as small tags in #about.
