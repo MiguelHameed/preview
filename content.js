@@ -97,11 +97,6 @@ window.SITE = {
         'Automation of recurring L1 controls monitoring (onboarding, access reviews, evidence collection).',
         'Standard Operations Procedure and runbook authoring for client delivery.',
         'Cross-tool integration (ClickUp, identity tools, DLP, audit tooling).',
-        'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
-        'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
-        'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus.',
-        'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width.',
-        'Built Cloud Sentry\u2019s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use.',
       ],
     },
     {
