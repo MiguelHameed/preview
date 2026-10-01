@@ -193,9 +193,11 @@
       <div class="school-line"><span class="label">Dean's Lister</span>
         <ul class="honours">${e.honours.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
       </div>` : ''}`)).join('');
+    const lic = S.licence ? msg('licence', `
+      <p class="school-line"><span class="label">${esc(S.licence.label)}</span> ${esc(S.licence.text)}</p>`) : '';
     const now = S.learning ? msg('next', `
       <p class="school-line"><span class="label">Studying now</span> ${esc(S.learning)}</p>`) : '';
-    return divider(c) + schools + now;
+    return divider(c) + schools + lic + now;
   }
 
   function skills(c) {

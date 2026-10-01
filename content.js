@@ -160,6 +160,11 @@ window.SITE = {
       research: 'The Perception of Students on Self Diagnosed Clinical Depression & Anxiety: A Phenomenological Study',
     },
   ],
+  licence: {
+    label: 'Licensed',
+    text: 'Medical Technologist · Professional Regulation Commission · September 29, 2023',
+  },
+
   learning: 'Microsoft SC-300 and SC-200', // shown at the foot of Education as "studying now"
 
   skills: [
