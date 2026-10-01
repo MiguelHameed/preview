@@ -137,7 +137,7 @@ window.SITE = {
   schools: [
     {
       school: 'Far Eastern University – Manila',
-      logo: 'images/logos/feu.png', // official FEU seal (Wikipedia)
+      logo: 'images/logos/feu.png', // Miguel supplied a cleaner seal, 2 Oct 2026, replacing the Wikipedia one
       initials: 'FEU',
       award: 'Bachelor of Science, Major in Medical Technology',
       place: 'Sampaloc, Manila',
@@ -152,7 +152,8 @@ window.SITE = {
     },
     {
       school: 'Centro Escolar University – Manila',
-      initials: 'CEU', // no logo file yet; the initials tile stands in until Miguel supplies one
+      logo: 'images/logos/ceu.png', // Miguel supplied the mark, 2 Oct 2026
+      initials: 'CEU',
       award: 'Science, Technology, Engineering and Mathematics',
       place: 'San Miguel, Manila',
       dates: 'June, 2018',
