@@ -93,6 +93,10 @@ window.SITE = {
       place: 'New Hampshire, New England',
       dates: 'April, 2025 – Present', // alongside DOH until Jan 2026
       points: [
+        'ClickUp workspace architecture for Service Pyramid delivery.',
+        'Automation of recurring L1 controls monitoring (onboarding, access reviews, evidence collection).',
+        'Standard Operations Procedure and runbook authoring for client delivery.',
+        'Cross-tool integration (ClickUp, identity tools, DLP, audit tooling).',
         'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
         'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
         'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus.',
