@@ -10,6 +10,7 @@
 [data-theme="dark"] {
   --desk: #020810;
   --desk-glow: radial-gradient(120% 70% at 50% -10%, rgba(64, 132, 255, 0.28) 0%, rgba(20, 60, 140, 0.14) 38%, transparent 70%);
+  --desk-veil: linear-gradient(rgba(2, 8, 16, 0.86), rgba(2, 8, 16, 0.86));
   --desk-dot: rgba(160, 200, 255, 0.07);
   --app: #06101f;
   --app-bar: #040b17;
@@ -36,6 +37,7 @@
   --desk: #1a0710;
   --mark: #9b2c4f;         /* the mh mark in wine instead of blue */
   --desk-glow: radial-gradient(120% 70% at 50% -10%, rgba(200, 70, 105, 0.26) 0%, rgba(120, 30, 60, 0.14) 38%, transparent 70%);
+  --desk-veil: linear-gradient(rgba(26, 7, 16, 0.88), rgba(26, 7, 16, 0.88));
   --desk-dot: rgba(255, 190, 205, 0.06);
   --app: #210b15;
   --app-bar: #18070e;
@@ -114,7 +116,9 @@ body {
   background-color: var(--desk);
   /* The desk: Miguel's photograph, with the theme's own glow laid over it so blue stays blue and wine
      stays wine. The dot grid comes off — a texture over a photograph is two textures. */
-  background-image: var(--desk-glow), url('images/desk/mountains.jpg');
+  /* No glow on the desk (Miguel, 1 Oct): a radial light behind the window made it look as though the
+     window was emitting it. The photograph just sits there, under one even veil in the theme colour. */
+  background-image: var(--desk-veil), url('images/desk/mountains.jpg');
   background-size: 100% 100%, cover;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
