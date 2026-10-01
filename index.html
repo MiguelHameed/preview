@@ -71,9 +71,17 @@
   <div class="desk">
     <div class="app" id="app">
       <!-- window bar -->
+      <!-- Window bar, after Safari in its compact state: traffic lights and a URL pill, nothing else.
+           No tabs, no back arrows — a fake toolbar under the visitor's real one is what makes these look
+           like mockups. aria-hidden because it is scenery; the real address is in the real address bar. -->
       <div class="app-bar" aria-hidden="true">
         <span class="dots"><i></i><i></i><i></i></span>
-        <span class="app-bar-title">miguel's workspace</span>
+        <span class="url-pill">
+          <svg class="url-lock" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 10V8a5 5 0 0 1 10 0v2" /><rect x="5" y="10" width="14" height="10" rx="2.5" />
+          </svg>
+          miguelhameed.com
+        </span>
       </div>
 
       <!-- icon rail (desktop) -->

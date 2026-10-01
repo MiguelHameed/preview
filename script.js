@@ -100,7 +100,7 @@
                     ? `<a class="hook" href="${esc(h.href)}">${esc(h.hook)}</a>`
                     : `<span class="hook">${esc(h.hook)}</span>`}: ${esc(h.line)}</li>`)).join('')}</ul>
             </div>
-            ${introPhoto()}
+            <!-- Photo removed 1 Oct at Miguel's request. introPhoto() is still defined; put it back here. -->
           </div>
         </div>
       </article>`;

@@ -1,5 +1,5 @@
-/* =========================================================
-   Miguel's workspace — styles
+﻿/* =========================================================
+   Miguel's workspace â€” styles
    Structure after baileyelith.com, work cards after matthewdea.com,
    outcome-first writing after alicezhao.work. Two themes: aquarium blue (default) and burgundy.
    ========================================================= */
@@ -58,6 +58,16 @@
 }
 [data-theme="burgundy"] .attachment-sea   { background: linear-gradient(145deg, #7a1f3d 0%, #4f1228 55%, #2a0915 100%); }
 [data-theme="burgundy"] .attachment-ocean { background: linear-gradient(145deg, #8a2f2f 0%, #5a1a1f 55%, #2e0b10 100%); }
+/* The pane is light in burgundy too, but warm rather than blue, and the accent stays gold-adjacent. */
+[data-theme="burgundy"] .pane {
+  --card: #faf6f7;
+  --line: #ebe2e5;
+  --ink: #1d1316;
+  --muted: #6b6065;
+  --accent: #9b2c4f;          /* 6.9:1 on white, and it is the mark colour */
+  --accent-soft: rgba(155, 44, 79, 0.09);
+}
+
 [data-theme="burgundy"] .attachment-reef  { background: linear-gradient(145deg, #6b2a4f 0%, #451733 55%, #240a1b 100%); }
 [data-theme="burgundy"] .attachment-deep  { background: linear-gradient(145deg, #5c1a3a 0%, #3b0f25 55%, #1e0713 100%); }
 
@@ -102,8 +112,12 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background-color: var(--desk);
-  background-image: var(--desk-glow), radial-gradient(var(--desk-dot) 1px, transparent 1.2px);
-  background-size: 100% 100%, 22px 22px;
+  /* The desk: Miguel's photograph, with the theme's own glow laid over it so blue stays blue and wine
+     stays wine. The dot grid comes off — a texture over a photograph is two textures. */
+  background-image: var(--desk-glow), url('images/desk/mountains.jpg');
+  background-size: 100% 100%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
   background-attachment: fixed, fixed;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s;
@@ -133,7 +147,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .noscript a { color: var(--accent); }
 
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
-/* small labels: Inter, quiet, slightly open — replaces the monospace that had spread across the page */
+/* small labels: Inter, quiet, slightly open â€” replaces the monospace that had spread across the page */
 .label, .divider-sub, .work-no, .spec-label, .proof-kind, .tl-dates, .where,
 .attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
@@ -161,14 +175,16 @@ svg { width: 20px; height: 20px; fill: currentColor; }
     "bar bar bar"
     "rail side pane";
   background: var(--app);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  /* A real window edge: a faint light ring rather than a hard hairline, and a wider corner. */
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--r-xl);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
 .app-bar {
   grid-area: bar;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -183,6 +199,20 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .dots i:nth-child(2) { background: #febc2e; }
 .dots i:nth-child(3) { background: #28c840; }
 .app-bar-title { font-family: var(--mono); font-size: var(--t-sm); }
+
+/* The address pill. Centred in the bar the way Safari centres it, and narrow — a wide one reads as a
+   toolbar waiting to be typed into. */
+.url-pill {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 7px;
+  max-width: 46%; padding: 3px 14px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.07);
+  font-size: var(--t-sm); letter-spacing: var(--track-body);
+  color: var(--rail-ink);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.url-lock { width: 11px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; opacity: 0.75; }
 
 /* ---------------- icon rail ---------------- */
 .rail {
@@ -239,7 +269,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-status { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-sm); color: var(--muted); }
 .side-status i, .dot-good { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
 
-/* section headings with a fold arrow, after baileyelith.com: ▾ open, ▸ closed */
+/* section headings with a fold arrow, after baileyelith.com: â–¾ open, â–¸ closed */
 /* a channel that opens on its own, like a separate page */
 .channel-view { flex: 1; overflow-y: auto; padding: 0 0 60px; }
 .view-back {
@@ -329,8 +359,30 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-avatar { width: 20px; height: 20px; border-radius: var(--r-sm); object-fit: cover; }
 
 /* ---------------- message pane ---------------- */
+/* The message pane is light inside both themes (Miguel, 1 Oct, after baileyelith.com): the frame keeps its
+   colour — deep ocean or wine on the desk, the rail and the channel list with it — and the conversation
+   itself sits on white, the way a chat app actually looks. These are the same token names redefined on this
+   one element, so everything inside the pane picks them up and nothing outside it changes. */
 .pane {
+  --app: #ffffff;
+  --app-bar: #f4f4f4;
+  --card: #f7f8fa;
+  --line: #e4e6ea;
+  --ink: #16181d;
+  --muted: #65696f;          /* 5.9:1 on white */
+  --accent: #1f54dd;         /* the sea-blue is 1.9:1 on white; this is 6.6:1 */
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(31, 84, 221, 0.09);
+  --good: #137a3a;
+  --todo: #c2282f;
+  --todo-soft: rgba(194, 40, 47, 0.09);
+  color-scheme: light;
+
   grid-area: pane;
+  background: var(--app);
+  /* colour is inherited, so it was already resolved to the dark theme ink at body: it has to be set
+     again here or every element that does not name a colour stays near-white on white. */
+  color: var(--ink);
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -380,7 +432,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .lede .before { color: var(--muted); font-weight: 400; }
 
 /* intro photo: beside the text on wide screens, above it on phones */
-.intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 32px; align-items: start; }
+/* One column while there is no photo beside the text (1 Oct). The two-column rule is kept below for
+   when it comes back. */
+.intro-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
+.intro-grid:has(.intro-photo) { grid-template-columns: minmax(0, 1fr) 220px; }
 .intro-photo { width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: var(--r-xl); object-fit: cover; margin-top: 8px; box-shadow: var(--shadow); }
 .intro-photo.is-empty {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
@@ -577,8 +632,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 
 .timeline { list-style: none; display: grid; gap: 0; max-width: 760px; }
 /* Each row is its own grid, so a content-sized date column made every row a different width: a row
-   reading "November 2023 – August 2024" squeezed the first two columns left of one reading
-   "April 2025 – Present". A fixed last column gives all four rows the same three columns. */
+   reading "November 2023 â€“ August 2024" squeezed the first two columns left of one reading
+   "April 2025 â€“ Present". A fixed last column gives all four rows the same three columns. */
 .timeline li {
   display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 12rem; gap: 4px 20px;
   padding: 16px 0; border-bottom: 1px solid var(--line); align-items: baseline;
@@ -592,7 +647,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .tl-dates { color: var(--muted); }
 .org { font-weight: 400; }
 .role-head { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; margin-bottom: 4px; }
-/* A role header is three lines, so centring put the mark level with the middle one — it looked as though
+/* A role header is three lines, so centring put the mark level with the middle one â€” it looked as though
    the title had slipped above it. It sits with the title now, and is sized to the block it stands beside. */
 .role-head-multi { align-items: start; grid-template-columns: 56px minmax(0, 1fr); }
 .role-head-multi .org-logo { width: 56px; height: 56px; margin-top: 1px; }
@@ -694,13 +749,13 @@ body.sheet-open { overflow: hidden; }
 /* about */
 .about-text { font-size: var(--t-base); max-width: 62ch; margin-bottom: 14px; }
 /* The closing line of About, centred as a block. The accent rule stays on its left edge, so the text
-   inside stays left-aligned against it — centring the words as well would leave the rule attached to
+   inside stays left-aligned against it â€” centring the words as well would leave the rule attached to
    nothing. Miguel chose this treatment; it is the one place on the page that carries it. */
 .motto {
   font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 600; font-style: italic;
   letter-spacing: var(--track-head); line-height: 1.3; max-width: 32ch;
   padding-left: 16px; border-left: 3px solid var(--accent);
-  margin: 28px auto 0;
+  margin: 16px 0 0;
 }
 
 /* contact */
@@ -722,7 +777,8 @@ body.sheet-open { overflow: hidden; }
 
 /* ---------------- tablet ---------------- */
 @media (max-width: 1023px) {
-  .intro-grid { grid-template-columns: minmax(0, 1fr) 170px; gap: 24px; }
+  .intro-grid:has(.intro-photo) { grid-template-columns: minmax(0, 1fr) 170px; }
+  .intro-grid { gap: 24px; }
   .app { grid-template-columns: 232px 1fr; grid-template-areas: "bar bar" "side pane"; }
   .rail { display: none; }
   .desk { padding: 20px; }
@@ -813,4 +869,29 @@ body.sheet-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* ---- scrollbars ----
+   The default Windows scrollbar is a wide grey bar flush against the edge, which is the first thing that
+   gives away that this is a web page rather than an app. A slim rounded thumb, inset from the edge by a
+   transparent border, is what a real client shows. Firefox gets the two-property version; everything else
+   gets the full one. The pane is light and the sidebar is dark, so each takes its own thumb colour. */
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.22) transparent; }
+.pane, .pane * { scrollbar-color: rgba(0, 0, 0, 0.22) transparent; }
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: var(--r-pill);
+  border: 3.5px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.34); background-clip: content-box; }
+.pane ::-webkit-scrollbar-thumb, .pane::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.20); background-clip: content-box;
+}
+.pane ::-webkit-scrollbar-thumb:hover, .pane::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.34); background-clip: content-box;
 }
