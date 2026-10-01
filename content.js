@@ -91,7 +91,7 @@ window.SITE = {
       org: 'Cloud Sentry Solutions',
       logo: 'images/logos/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
-      dates: 'April 2025 – Present', // alongside DOH until Jan 2026
+      dates: 'April, 2025 – Present', // alongside DOH until Jan 2026
       points: [
         'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
         'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
@@ -105,7 +105,7 @@ window.SITE = {
       org: 'Department of Health – Metro Manila Center for Health Development',
       logo: 'images/logos/doh.png', // official DOH seal (Wikimedia Commons)
       place: 'Mandaluyong City, Philippines',
-      dates: 'April 2025 – January 2026',
+      dates: 'April, 2025 – January, 2026',
       points: [
         'Managed and validated health facility data for the Field Health Services Information System (FHSIS), to support accurate regional and national health reporting.',
         'Coordinated with local health units and partner facilities to ensure timely, complete and standardised submission of public health data.',
@@ -117,8 +117,8 @@ window.SITE = {
       org: 'DOST – Food and Nutrition Research Institute',
       logo: 'images/logos/dost-fnri.png',
       place: 'Taguig City, Philippines',
-      dates: 'September 2023 – August 2024',
-      ownDates: 'November 2023 – August 2024', // this title alone; the row header carries the whole FNRI span
+      dates: 'September, 2023 – August, 2024',
+      ownDates: 'November, 2023 – August, 2024', // this title alone; the row header carries the whole FNRI span
       points: [
         'Conducted data collection and validation for the National Nutrition Survey, ensuring the accuracy and completeness of nutritional data.',
         'Collected, aliquoted and processed biological fluid samples through phlebotomy, to support the analysis of biochemical markers for the survey.',
@@ -126,7 +126,7 @@ window.SITE = {
       ],
       earlier: {
         role: 'Project Technical Assistant II',
-        dates: 'September – November 2023',
+        dates: 'September – November, 2023',
         points: [
           'Encoded and validated the data collected throughout the National Nutrition Survey.',
           'Received and designated the biochemical markers collected from the survey.',
