@@ -682,7 +682,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
    and the detail beneath in the quieter tone. Title and date stack on narrow screens. */
 .certs { list-style: none; display: grid; gap: 8px; }
 .cert-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 18px; align-items: baseline; }
-.cert-title { font-size: var(--t-sm); font-weight: 400; }
+.cert-title { font-size: var(--t-sm); font-weight: 500; font-style: italic; }
 .cert-date { font-style: italic; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
 
 /* skills */
