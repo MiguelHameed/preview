@@ -151,7 +151,7 @@
     const list = S.experience.map((e) => `
       <li><span class="tl-role"><strong>${esc(e.role)}</strong></span><span class="tl-org">${esc(shortOrg(e.org))}</span><span class="tl-dates">${txt(e.dates)}</span></li>`).join('');
     const summary = msg('overview', `
-      <p class="section-lede">${S.experience.length} roles, from national health data to marketing and business development.</p>
+      <p class="section-lede">${S.experience.length} roles, from national nutrition surveys to marketing and business development.</p>
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
       <div class="role-head role-head-multi">
@@ -220,9 +220,7 @@
   function about(c) {
     return divider(c) + msg('about', `
       ${[].concat(S.about).map((t) => `<p class="about-text">${txt(t)}</p>`).join('')}
-      <ul class="tags tags-lg">${S.interests.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <!-- No quotation marks: he is not quoting anyone, these are his own words on his own page. -->
-      <p class="motto">${esc(P.motto)}</p>`);
+      <blockquote class="motto">“${esc(P.motto)}”</blockquote>`);
   }
 
   function contact(c) {

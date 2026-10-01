@@ -182,13 +182,12 @@ window.SITE = {
   testimonials: [], // TODO: real quotes only, with name and role. The channel stays hidden until there are two.
 
   about: [
-    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I qualified as a medical technologist and went straight into research instead of a hospital. Years inside health data before I understood what I actually liked was making the work run. That’s the job I want now, and I want to be doing it where people can see it.',
+    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I qualified as a medical technologist and went straight into research instead of a hospital. Years on national nutrition surveys and health programmes before I understood what I actually liked was making the work run. That’s the job I want now, and I want to be doing it where people can see it.',
     'Then came a stretch of quiet unhappiness — no single bad day, just a feeling that settled in and stayed. So I made a decision that did not look like a career move: I took work as a virtual assistant, and it turned out to be the opening that led here.',
     'That path led to Cloud Sentry Solutions, a managed security and compliance company, and to the operations work I do there now.',
     'I did not expect to enjoy carrying this much at once, but I do. I feel more alive doing this than I have in a long time.',
+    'Outside work I travel, dive, hike and trek, and I spend a good part of the week in the gym. All of it is movement, which is probably why I ended up in work that never sits still.',
   ],
-
-  interests: ['Travel', 'Diving', 'Hiking', 'Trekking', 'The gym'],
 
   notes: null, // No Substack yet; the Notes link stays hidden while this is null.
 };
