@@ -12,11 +12,11 @@
 
   const CHANNELS = [
     ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I run, and how far it goes', view: true }] : []),
-    { id: 'about', title: 'About', sub: 'My story' },
+    { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
-    { id: 'experience', title: 'Experience', sub: 'Where I have worked' },
-    { id: 'proof', title: 'Proof', sub: 'Certifications, training and projects' },
-    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'What people say' }] : []),
+    { id: 'experience', title: 'Experience' },
+    { id: 'proof', title: 'Credentials', sub: 'What can be checked' },
+    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
     { id: 'contact', title: 'Contact', sub: 'Find a time to talk' },
   ];
 
@@ -62,7 +62,7 @@
     </article>`;
   const divider = (c) => `
     <h2 class="channel-divider" id="${c.id}" data-section="${c.id}">
-      <span class="hash">#</span>${c.title}<span class="divider-sub">${esc(c.sub)}</span>
+      <span class="hash">#</span>${c.title}${c.sub ? `<span class="divider-sub">${esc(c.sub)}</span>` : ''}
     </h2>`;
   const buttons = (attr = '', withLinkedIn = true) => `
     <div class="actions" ${attr}>
@@ -119,10 +119,10 @@
       ${w.result ? `<p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>` : ''}
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
       <dl class="work-detail">
-        ${w.owns ? `<div><dt class="label">what I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
-        ${w.stops ? `<div><dt class="label">where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
-        ${w.problem ? `<div><dt class="label">problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
-        ${w.did ? `<div><dt class="label">what I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
+        ${w.owns ? `<div><dt class="label">What I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
+        ${w.stops ? `<div><dt class="label">Where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
+        ${w.problem ? `<div><dt class="label">Problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
+        ${w.did ? `<div><dt class="label">What I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
       </dl>
       ${w.specs && w.specs.length ? `<ul class="specs">${w.specs.map((sp) => `
         <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
@@ -135,7 +135,7 @@
       <p class="section-lede">${esc(S.boundary.lede)}</p>
       <dl class="work-detail">
         <div><dt class="label">I ship</dt><dd>${esc(S.boundary.ships)}</dd></div>
-        <div><dt class="label">he decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
+        <div><dt class="label">He decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
       </dl>`) : '');
   }
 
@@ -154,7 +154,7 @@
       <p class="section-lede">${S.experience.length} roles, from national health data to marketing and business development.</p>
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
-      <div class="role-head">
+      <div class="role-head role-head-multi">
         ${orgLogo(e.logo, e.initials, e.org)}
         <div>
           <h3 class="work-title">${esc(e.role)}</h3>
@@ -186,8 +186,7 @@
   const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
 
   function proof(c) {
-    return divider(c) + msg('proof', `
-      <p class="section-lede">Certifications, training and the project I'm building.</p>
+    return divider(c) + msg('credentials', `
       <div class="proof-grid">${S.proof.map((p, i) => {
         const opens = hasSheet(p);
         const tag = opens ? 'button' : (p.link ? 'a' : 'div');
@@ -231,10 +230,12 @@
       <!-- closing line: Miguel's favourite, keep as is (22 Sep) -->
       <p class="section-lede">If you're building a team that needs work to run on rails, I'd like to hear about it.</p>
       <ul class="contact-list">
-        <li><span class="label">email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
-        <li><span class="label">linkedin</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>
-        <li><span class="label">based in</span><span>${esc(P.location)} · <span data-clock>${manilaTime()}</span> local time</span></li>
-        <li><span class="label">status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
+        <li><span class="label">Email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
+        <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>
+        <!-- "local time" said what "based in" already said. The offset lets anyone work out the gap
+             without arithmetic; the clock saves them doing it at all. -->
+        <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
+        <li><span class="label">Status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
       </ul>
       ${buttons('data-contact-actions', false)}`) + `<p class="end">— end of conversation —</p>`;
   }
@@ -355,7 +356,7 @@
   function setActive(id) {
     const c = CHANNELS.find((x) => x.id === id);
     titleEl.textContent = c ? '#' + c.title : P.shortName;
-    subEl.textContent = c ? c.sub : `${P.role} · ${P.location}`;
+    subEl.textContent = c ? (c.sub || '') : `${P.role} · ${P.location}`;
     $$('[data-channel]').forEach((a) => a.classList.toggle('is-active', a.dataset.channel === (c ? c.id : 'intro')));
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
       c ? (c.id === 'selected-work' ? b.dataset.rail === 'work' : false) : b.dataset.rail === 'home'));

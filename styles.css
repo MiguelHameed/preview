@@ -576,8 +576,11 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .section-row:hover .section-row-go { color: var(--accent); }
 
 .timeline { list-style: none; display: grid; gap: 0; max-width: 760px; }
+/* Each row is its own grid, so a content-sized date column made every row a different width: a row
+   reading "November 2023 – August 2024" squeezed the first two columns left of one reading
+   "April 2025 – Present". A fixed last column gives all four rows the same three columns. */
 .timeline li {
-  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) auto; gap: 4px 20px;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 12rem; gap: 4px 20px;
   padding: 16px 0; border-bottom: 1px solid var(--line); align-items: baseline;
 }
 .timeline li:first-child { border-top: 1px solid var(--line); }
@@ -589,6 +592,10 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .tl-dates { color: var(--muted); }
 .org { font-weight: 400; }
 .role-head { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; margin-bottom: 4px; }
+/* A role header is three lines, so centring put the mark level with the middle one — it looked as though
+   the title had slipped above it. It sits with the title now, and is sized to the block it stands beside. */
+.role-head-multi { align-items: start; grid-template-columns: 56px minmax(0, 1fr); }
+.role-head-multi .org-logo { width: 56px; height: 56px; margin-top: 1px; }
 .role-head .where { margin-bottom: 0; }
 .org-logo { width: 48px; height: 48px; border-radius: var(--r-md); background: #fff; object-fit: contain; border: 1px solid var(--line); }
 .org-initials { display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: var(--t-base); letter-spacing: -0.02em; }
@@ -735,6 +742,9 @@ body.sheet-open { overflow: hidden; }
   .pane-tabs { padding: 6px 16px 0; }
   .files-panel { padding: 16px 16px 48px; }
   .role-head { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: start; }
+  .role-head-multi { grid-template-columns: 44px minmax(0, 1fr); }
+  .role-head-multi .org-logo { width: 44px; height: 44px; }
+  .timeline li { grid-template-columns: 1fr; }
   .org-logo { width: 36px; height: 36px; border-radius: var(--r-md); }
   .org-initials { font-size: var(--t-sm); }
   .intro-grid { grid-template-columns: 1fr; gap: 0; }

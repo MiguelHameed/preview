@@ -10,7 +10,7 @@ window.SITE = {
     storyStart: 'Grounded in science, fluent in data,',
     story: 'I now build the systems that turn strangers into partners.',
     location: 'Quezon City, Philippines',
-    availability: 'Open to work anywhere',
+    availability: 'Open to new opportunities, remote or relocation',
     email: 'miguelhameed@gmail.com',
     linkedin: 'https://www.linkedin.com/in/miguelhameed',
     linkedinLabel: 'linkedin.com/in/miguelhameed',
@@ -86,8 +86,8 @@ window.SITE = {
 
   experience: [
     {
-      role: 'Operations & Business Development Associate', // Miguel's choice, 22 Sep: Work Summary title, shortened
-      type: 'Independent contractor',
+      role: 'Technical Operations Specialist', // Miguel's choice, 22 Sep: Work Summary title, shortened
+      type: 'Freelance',
       org: 'Cloud Sentry Solutions',
       logo: 'images/logos/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
@@ -171,7 +171,6 @@ window.SITE = {
         'I took the certification in June 2025. Since then I have built the super agents the team uses, written two AI Skills, and taken on the audit into the workspace’s AI credit use.',
       ],
     },
-    { kind: 'In progress · startup project', title: 'MAPA: Multi-route Advisory for Passable Alternatives', topic: "A real-time navigation and road-passability app for Metro Manila's drivers and on-demand riders, including flood-prone roads." },
     { kind: 'Training · Department of Health', title: 'Health data quality and analysis', topic: 'Data management, data quality checks for Universal Health Care, and a recognition for cross-program data analysis (2025).' },
     { kind: 'Certificate · NIDA Clinical Trials Network', title: 'Clinical research foundations', topic: 'Foundational principles of clinical research (2022).' },
   ],
@@ -183,7 +182,7 @@ window.SITE = {
   testimonials: [], // TODO: real quotes only, with name and role. The channel stays hidden until there are two.
 
   about: [
-    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I trained as a medical technologist and spent years inside health data before I understood what I actually liked was making the work run — finding what was broken, fixing it, and keeping it moving. That’s the job I want now, and I want to be doing it where people can see it.',
+    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I qualified as a medical technologist and went straight into research instead of a hospital. Years inside health data before I understood what I actually liked was making the work run — finding what was broken, fixing it, and keeping it moving. That’s the job I want now, and I want to be doing it where people can see it.',
     'Then came a stretch of quiet unhappiness — no single bad day, just a feeling that settled in and stayed. So I made a decision that did not look like a career move: I took work as a virtual assistant, and it turned out to be the opening that led here.',
     'That path led to Cloud Sentry Solutions, a managed security and compliance company, and to the operations work I do there now.',
     'I did not expect to enjoy carrying this much at once, but I do. I feel more alive doing this than I have in a long time.',
