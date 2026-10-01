@@ -16,7 +16,7 @@ window.SITE = {
     linkedinLabel: 'linkedin.com/in/miguelhameed',
     instagram: 'https://www.instagram.com/miggybop/', // set to null to take it off the site
     cv: 'cv.pdf',
-    motto: "I get closer, fix what's broken, and keep things moving.", // chosen by Miguel 22 Sep
+    motto: "I find what's broken, fix it, and keep it moving.",
     headshot: 'images/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
     avatar: 'images/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
   },
@@ -182,15 +182,13 @@ window.SITE = {
   testimonials: [], // TODO: real quotes only, with name and role. The channel stays hidden until there are two.
 
   about: [
-    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I qualified as a medical technologist and went straight into research instead of a hospital. Years inside health data before I understood what I actually liked was making the work run — finding what was broken, fixing it, and keeping it moving. That’s the job I want now, and I want to be doing it where people can see it.',
+    'I fixed a system nobody else could get working, and that was the moment the job changed for me. I qualified as a medical technologist and went straight into research instead of a hospital. Years inside health data before I understood what I actually liked was making the work run. That’s the job I want now, and I want to be doing it where people can see it.',
     'Then came a stretch of quiet unhappiness — no single bad day, just a feeling that settled in and stayed. So I made a decision that did not look like a career move: I took work as a virtual assistant, and it turned out to be the opening that led here.',
     'That path led to Cloud Sentry Solutions, a managed security and compliance company, and to the operations work I do there now.',
     'I did not expect to enjoy carrying this much at once, but I do. I feel more alive doing this than I have in a long time.',
   ],
 
   interests: ['Travel', 'Diving', 'Hiking', 'Trekking', 'The gym'],
-
-  word: 'Movement',
 
   notes: null, // No Substack yet; the Notes link stays hidden while this is null.
 };

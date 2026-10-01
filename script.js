@@ -221,8 +221,8 @@
     return divider(c) + msg('about', `
       ${[].concat(S.about).map((t) => `<p class="about-text">${txt(t)}</p>`).join('')}
       <ul class="tags tags-lg">${S.interests.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
-      <p class="word">my word · <strong>${esc(S.word)}</strong></p>
-      <blockquote class="motto">“${esc(P.motto)}”</blockquote>`);
+      <!-- No quotation marks: he is not quoting anyone, these are his own words on his own page. -->
+      <p class="motto">${esc(P.motto)}</p>`);
   }
 
   function contact(c) {
