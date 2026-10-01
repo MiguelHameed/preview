@@ -109,7 +109,7 @@ window.SITE = {
         {
           title: 'Certificate of Completion of the Field Health Services and Information System Data Management and Analysis Training',
           date: 'August, 2025',
-          note: 'Developed technical skills in organizing, validating, and maintaining structured health data for administrative reporting.',
+          note: 'Developed technical skills in organising, validating, and maintaining structured health data for administrative reporting.',
         },
         {
           title: 'Certificate of Completion for Data Quality Check Training: Critical Program for Universal Health Care Coverage',
@@ -197,7 +197,7 @@ window.SITE = {
       {
         title: 'Certification of Attendance for Transporting Dangerous Goods Training',
         date: 'July, 2022',
-        note: 'Completed training on the safe handling, labeling, and transportation of dangerous goods in compliance with safety standards.',
+        note: 'Completed training on the safe handling, labelling, and transportation of dangerous goods in compliance with safety standards.',
       },
       {
         title: 'Certificate of Completion on The Manual of Operations for Screening Drug Testing Laboratories',
