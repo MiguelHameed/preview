@@ -693,8 +693,12 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .skill-does .sep { color: var(--muted); opacity: 0.5; padding: 0 2px; }
 .skill-tools { margin-top: 6px; color: var(--muted); font-size: var(--t-sm); }
 .skill-tools .label { margin-right: 8px; }
-.learning { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-weight: 600; }
-.learning .mono { color: var(--accent); font-weight: 400; }
+/* education — the school card reuses the Experience role head; these are the rows under it.
+   Each row is a label in the left column and its value beside it, the same shape as the Skills rows. */
+.school-note { color: var(--muted); margin-bottom: 10px; }
+.school-line { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px 14px; margin-top: 10px; align-items: baseline; }
+.school-line .label { padding-top: 0.1em; }
+.honours { list-style: none; display: grid; gap: 4px; }
 
 /* proof */
 .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; max-width: 760px; }
@@ -810,6 +814,7 @@ body.sheet-open { overflow: hidden; }
   .timeline li { grid-template-columns: 1fr; gap: 2px; }
   /* Two columns are too tight on a phone: the group name becomes a heading over its own row. */
   .skill-rows li { grid-template-columns: 1fr; gap: 6px; }
+  .school-line { grid-template-columns: 1fr; gap: 2px; }
   .tl-dates { text-align: left; }
   .section-row { grid-template-columns: 1fr; gap: 6px; }
   .specs { gap: 18px 24px; }

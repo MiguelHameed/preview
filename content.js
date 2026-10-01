@@ -134,8 +134,33 @@ window.SITE = {
     },
   ],
 
-  education: 'BS Medical Technology, Far Eastern University Manila, 2022. Licensed.',
-  educationLogo: 'images/logos/feu.png', // official FEU seal (Wikipedia)
+  schools: [
+    {
+      school: 'Far Eastern University – Manila',
+      logo: 'images/logos/feu.png', // official FEU seal (Wikipedia)
+      initials: 'FEU',
+      award: 'Bachelor of Science, Major in Medical Technology',
+      place: 'Sampaloc, Manila',
+      dates: 'June, 2022',
+      note: 'Cumulative GPA: 3.34',
+      research: 'Antimicrobial Property of MgO Nanoparticles: A Narrative Review',
+      honours: [
+        "Second Honors · Academic Year 2018 – 2019",
+        "Second Honors · Academic Year 2019 – 2020",
+        "First Honors · Academic Year 2020 – 2021",
+      ],
+    },
+    {
+      school: 'Centro Escolar University – Manila',
+      initials: 'CEU', // no logo file yet; the initials tile stands in until Miguel supplies one
+      award: 'Science, Technology, Engineering and Mathematics',
+      place: 'San Miguel, Manila',
+      dates: 'June, 2018',
+      note: 'Medical Transcriptionist',
+      research: 'The Perception of Students on Self Diagnosed Clinical Depression & Anxiety: A Phenomenological Study',
+    },
+  ],
+  learning: 'Microsoft SC-300 and SC-200', // shown at the foot of Education as "studying now"
 
   skills: [
     { group: 'Marketing operations',
@@ -151,7 +176,6 @@ window.SITE = {
       does: ['Workflow design', 'Process documentation', 'Website quality checks'],
       tools: ['ClickUp', 'GitHub', 'Lighthouse', 'HTML/CSS'] },
   ],
-  learning: 'Microsoft SC-300 and SC-200', // shown under the skills as "currently learning"
 
   proof: [
     {

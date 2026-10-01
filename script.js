@@ -15,6 +15,7 @@
     { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience' },
+    { id: 'education', title: 'Education', sub: 'Where I trained' },
     { id: 'proof', title: 'Credentials', sub: 'What can be checked' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
     { id: 'contact', title: 'Contact', sub: 'Find a time to talk' },
@@ -172,8 +173,29 @@
         <p class="earlier-head"><span class="label">Before this</span> <strong>${esc(e.earlier.role)}</strong> &middot; ${txt(e.earlier.dates)}</p>
         <ul class="points">${e.earlier.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
       </div>` : ''}`)).join('');
-    const edu = msg('education', `<div class="role-head">${orgLogo(S.educationLogo, 'FEU', 'Far Eastern University')}<p class="org"><strong>${esc(S.education)}</strong></p></div>`);
-    return divider(c) + summary + roles + edu;
+    return divider(c) + summary + roles;
+  }
+
+  function education(c) {
+    const schools = S.schools.map((e, i) => msg(`school ${i + 1} of ${S.schools.length}`, `
+      <div class="role-head role-head-multi">
+        ${orgLogo(e.logo, e.initials, e.school)}
+        <div>
+          <h3 class="work-title">${esc(e.school)}</h3>
+          <p class="org">${esc(e.award)}</p>
+          <p class="where">${esc(e.place)} &middot; ${txt(e.dates)}</p>
+        </div>
+      </div>
+      ${e.note ? `<p class="school-note">${esc(e.note)}</p>` : ''}
+      ${e.research ? `
+      <p class="school-line"><span class="label">Research</span> ${esc(e.research)}</p>` : ''}
+      ${(e.honours || []).length ? `
+      <div class="school-line"><span class="label">Dean's Lister</span>
+        <ul class="honours">${e.honours.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
+      </div>` : ''}`)).join('');
+    const now = S.learning ? msg('next', `
+      <p class="school-line"><span class="label">Studying now</span> ${esc(S.learning)}</p>`) : '';
+    return divider(c) + schools + now;
   }
 
   function skills(c) {
@@ -188,8 +210,7 @@
           ${tools.length ? `<p class="skill-tools"><span class="label">Tools</span> ${tools.map(esc).join(' &middot; ')}</p>` : ''}
         </div>
       </li>`;
-    }).join('')}</ul>` + (S.learning ? `
-      <p class="learning"><span class="label">Currently learning</span> ${esc(S.learning)}</p>` : ''));
+    }).join('')}</ul>`);
   }
 
   const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
@@ -255,7 +276,7 @@
       </figure>`).join('')}</div>`;
   }
 
-  const builders = { 'selected-work': selectedWork, experience, skills, proof, testimonials, about, contact };
+  const builders = { 'selected-work': selectedWork, experience, skills, education, proof, testimonials, about, contact };
   const feed = $('#feed');
   const scrollChannels = CHANNELS.filter((c) => !c.view);
   const workChannel = CHANNELS.find((c) => c.view);
