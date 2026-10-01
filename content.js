@@ -190,11 +190,6 @@ window.SITE = {
     text: 'Medical Technologist · Professional Regulation Commission · September 29, 2023',
     certificates: [
       {
-        title: 'Certificate of Completion on The Manual of Operations for Screening Drug Testing Laboratories',
-        date: 'August, 2024',
-        note: 'Completed formal training on the Manual of Operations for Screening Drug Testing Laboratories, covering compliance, workflow, and quality procedures.',
-      },
-      {
         title: 'Certification of Completion for NIDA Clinical Trials Network',
         date: 'July, 2022',
         note: 'Trained in foundational clinical research principles through the NIDA Clinical Trials Network certification program.',
@@ -203,6 +198,11 @@ window.SITE = {
         title: 'Certification of Attendance for Transporting Dangerous Goods Training',
         date: 'July, 2022',
         note: 'Completed training on the safe handling, labeling, and transportation of dangerous goods in compliance with safety standards.',
+      },
+      {
+        title: 'Certificate of Completion on The Manual of Operations for Screening Drug Testing Laboratories',
+        date: 'August, 2024',
+        note: 'Completed formal training on the Manual of Operations for Screening Drug Testing Laboratories, covering compliance, workflow, and quality procedures.',
       },
     ],
   },

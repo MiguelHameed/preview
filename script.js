@@ -154,7 +154,6 @@
         <ul class="certs">${items.map((x) => `
           <li>
             <p class="cert-head"><span class="cert-title">${esc(x.title)}</span><span class="cert-date">${txt(x.date)}</span></p>
-            ${x.note ? `<p class="cert-note">${esc(x.note)}</p>` : ''}
           </li>`).join('')}</ul>
       </div>`;
   }
