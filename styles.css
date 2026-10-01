@@ -8,62 +8,62 @@
    and a clear sea-blue accent that reads well on dark water. */
 :root,
 [data-theme="dark"] {
-  --desk: #020810;
-  --desk-dot: rgba(160, 200, 255, 0.07);
-  --app: #06101f;
-  --app-bar: #040b17;
-  --line: #13233d;
-  --ink: #e6eefb;
-  --muted: #9db0cd;          /* 8:1 on the app background */
-  --todo: #ff7b7b;
-  --todo-soft: rgba(255, 123, 123, 0.14);
-  --rail: #030914;
-  --rail-ink: rgba(214, 228, 250, 0.7);
-  --side: #050d1b;
-  --side-hover: #0b1a31;
-  --accent: #5ea9ff;         /* sea-blue, 7.6:1 on the app background */
-  --accent-ink: #03101f;
-  --accent-soft: rgba(94, 169, 255, 0.13);
-  --good: #3ddc97;
-  --card: #081629;
-  --shadow: 0 40px 100px -40px rgba(0, 20, 60, 0.9), 0 0 0 1px rgba(120, 170, 255, 0.05);
+  --desk: #151a1d;
+  --desk-dot: rgba(200, 220, 228, 0.06);
+  --app: #0f1518;
+  --app-bar: #11171a;
+  --line: #26333a;
+  --ink: #e9eff1;
+  --muted: #9fb1b7;          /* 7.4:1 on the sidebar */
+  --todo: #ff8f87;
+  --todo-soft: rgba(255, 143, 135, 0.14);
+  --rail: #0e1316;
+  --rail-ink: rgba(233, 239, 241, 0.72);
+  --side: #182024;
+  --side-hover: #222d32;
+  --accent: #6fb2c9;         /* the photograph's own slate, lifted — 7.0:1 on the sidebar */
+  --accent-ink: #06131a;
+  --accent-soft: rgba(111, 178, 201, 0.13);
+  --good: #5fd3a3;
+  --card: #1a2327;
+  --shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(200, 225, 235, 0.05);
   color-scheme: dark;
 }
 
 /* Burgundy (trial, 22 Sep): deep wine instead of deep ocean, warm light from above, soft gold accent. */
 [data-theme="burgundy"] {
-  --desk: #1a0710;
-  --mark: #9b2c4f;         /* the mh mark in wine instead of blue */
-  --desk-dot: rgba(255, 190, 205, 0.06);
-  --app: #210b15;
-  --app-bar: #18070e;
-  --line: #3a1924;
-  --ink: #f7eaee;
-  --muted: #d3adb8;          /* ~9:1 on the app background */
-  --todo: #ff8f8f;
-  --todo-soft: rgba(255, 143, 143, 0.14);
-  --rail: #10040a;
-  --rail-ink: rgba(250, 225, 232, 0.7);
-  --side: #1c0911;
-  --side-hover: #2a111b;
-  --accent: #e9c27b;         /* soft gold on wine */
-  --accent-ink: #1a0910;
-  --accent-soft: rgba(233, 194, 123, 0.13);
-  --good: #7ddc9e;
-  --card: #2b1220;
-  --shadow: 0 40px 100px -40px rgba(40, 0, 15, 0.9), 0 0 0 1px rgba(255, 170, 190, 0.05);
+  --desk: #1b1413;
+  --mark: #8d4536;         /* the mh mark in the photograph's rose instead of blue */
+  --desk-dot: rgba(255, 225, 218, 0.055);
+  --app: #15100f;
+  --app-bar: #170f0f;
+  --line: #3a2a28;
+  --ink: #f3eae8;
+  --muted: #bba8a3;          /* 7.5:1 on the sidebar */
+  --todo: #ff9a8e;
+  --todo-soft: rgba(255, 154, 142, 0.14);
+  --rail: #140e0e;
+  --rail-ink: rgba(243, 234, 232, 0.72);
+  --side: #241a19;
+  --side-hover: #302321;
+  --accent: #d29a8d;         /* the rose in the sunrise — 7.1:1 on the sidebar */
+  --accent-ink: #1a0f0d;
+  --accent-soft: rgba(210, 154, 141, 0.13);
+  --good: #7fd4a6;
+  --card: #241b19;
+  --shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 225, 218, 0.05);
   color-scheme: dark;
 }
-[data-theme="burgundy"] .attachment-sea   { background: linear-gradient(145deg, #7a1f3d 0%, #4f1228 55%, #2a0915 100%); }
-[data-theme="burgundy"] .attachment-ocean { background: linear-gradient(145deg, #8a2f2f 0%, #5a1a1f 55%, #2e0b10 100%); }
+[data-theme="burgundy"] .attachment-sea   { background: linear-gradient(145deg, #a79189 0%, #6d5751 55%, #352723 100%); }
+[data-theme="burgundy"] .attachment-ocean { background: linear-gradient(145deg, #8d4536 0%, #5c2d24 55%, #2d1613 100%); }
 /* The pane is light in burgundy too, but warm rather than blue, and the accent stays gold-adjacent. */
 [data-theme="burgundy"] .pane {
-  --card: #faf6f7;
-  --line: #ebe2e5;
-  --ink: #1d1316;
-  --muted: #6b6065;
-  --accent: #9b2c4f;          /* 6.9:1 on white, and it is the mark colour */
-  --accent-soft: rgba(155, 44, 79, 0.09);
+  --card: #faf7f6;
+  --line: #ece4e2;
+  --ink: #1b1413;
+  --muted: #6b6160;
+  --accent: #8d4536;          /* 6.9:1 on white, and the mark colour */
+  --accent-soft: rgba(141, 69, 54, 0.09);
 }
 
 [data-theme="burgundy"] .attachment-reef  { background: linear-gradient(145deg, #6b2a4f 0%, #451733 55%, #240a1b 100%); }
@@ -165,7 +165,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .app {
   position: relative;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1500px;
   height: calc(100vh - 64px);
   min-height: 560px;
   display: grid;
@@ -370,9 +370,9 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   --line: #e4e6ea;
   --ink: #16181d;
   --muted: #65696f;          /* 5.9:1 on white */
-  --accent: #1f54dd;         /* the sea-blue is 1.9:1 on white; this is 6.6:1 */
+  --accent: #1f5f78;         /* the photograph's slate, darkened — 7.1:1 on white */
   --accent-ink: #ffffff;
-  --accent-soft: rgba(31, 84, 221, 0.09);
+  --accent-soft: rgba(31, 95, 120, 0.09);
   --good: #137a3a;
   --todo: #c2282f;
   --todo-soft: rgba(194, 40, 47, 0.09);
@@ -604,8 +604,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   container-type: inline-size; /* lets the big number size itself to the panel */
 }
 .attachment img { width: 100%; height: 100%; object-fit: cover; }
-.attachment-sea   { background: linear-gradient(145deg, #0c4a6e 0%, #0a2f52 55%, #061a33 100%); }
-.attachment-ocean { background: linear-gradient(145deg, #1e3a8a 0%, #13286b 55%, #0a163f 100%); }
+.attachment-sea   { background: linear-gradient(145deg, #435c63 0%, #2a3b42 55%, #161f24 100%); }
+.attachment-ocean { background: linear-gradient(145deg, #30464c 0%, #22333a 55%, #141c20 100%); }
 .attachment-reef  { background: linear-gradient(145deg, #115e59 0%, #0b3f47 55%, #062331 100%); }
 .attachment-deep  { background: linear-gradient(145deg, #312e81 0%, #1f1d5c 55%, #110f36 100%); }
 .attach-metric {
