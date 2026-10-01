@@ -105,6 +105,23 @@ window.SITE = {
       logo: 'images/logos/doh.png', // official DOH seal (Wikimedia Commons)
       place: 'Mandaluyong City, Philippines',
       dates: 'April, 2025 – January, 2026',
+      certificates: [
+        {
+          title: 'Certificate of Completion of the Field Health Services and Information System Data Management and Analysis Training',
+          date: 'August, 2025',
+          note: 'Developed technical skills in organizing, validating, and maintaining structured health data for administrative reporting.',
+        },
+        {
+          title: 'Certificate of Completion for Data Quality Check Training: Critical Program for Universal Health Care Coverage',
+          date: 'September, 2025',
+          note: 'Completed Data Quality Check training for the Critical Program on Universal Health Care, strengthening accuracy and validation of records.',
+        },
+        {
+          title: 'Certificate of Recognition for Workshop on Data Analysis for Different Health Programs',
+          date: 'October, 2025',
+          note: 'Demonstrated analytical skills through engagement in cross-program data interpretation and review activities.',
+        },
+      ],
       points: [
         'Managed and validated health facility data for the Field Health Services Information System (FHSIS), to support accurate regional and national health reporting.',
         'Coordinated with local health units and partner facilities to ensure timely, complete and standardised submission of public health data.',
@@ -144,6 +161,13 @@ window.SITE = {
       dates: 'June, 2022',
       note: 'Cumulative GPA: 3.34',
       research: 'Antimicrobial Property of MgO Nanoparticles: A Narrative Review',
+      certificates: [
+        {
+          title: 'Certificate of Participation in the International Undergraduate Research Conference for Philippine Association of Schools of Medical Technology and Public Health, Inc.',
+          date: 'November, 2021',
+          note: 'Built foundational experience in academic research through involvement in an international conference on Medical Technology and Public Health.',
+        },
+      ],
       honours: [
         "Second Honors · Academic Year 2018 – 2019",
         "Second Honors · Academic Year 2019 – 2020",
@@ -164,6 +188,23 @@ window.SITE = {
   licence: {
     label: 'Licensed',
     text: 'Medical Technologist · Professional Regulation Commission · September 29, 2023',
+    certificates: [
+      {
+        title: 'Certificate of Completion on The Manual of Operations for Screening Drug Testing Laboratories',
+        date: 'August, 2024',
+        note: 'Completed formal training on the Manual of Operations for Screening Drug Testing Laboratories, covering compliance, workflow, and quality procedures.',
+      },
+      {
+        title: 'Certification of Completion for NIDA Clinical Trials Network',
+        date: 'July, 2022',
+        note: 'Trained in foundational clinical research principles through the NIDA Clinical Trials Network certification program.',
+      },
+      {
+        title: 'Certification of Attendance for Transporting Dangerous Goods Training',
+        date: 'July, 2022',
+        note: 'Completed training on the safe handling, labeling, and transportation of dangerous goods in compliance with safety standards.',
+      },
+    ],
   },
 
   learning: 'Microsoft SC-300 and SC-200', // shown at the foot of Education as "studying now"

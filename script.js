@@ -146,6 +146,19 @@
       : `<span class="org-logo org-initials" aria-hidden="true">${esc(initials || '')}</span>`;
   }
 
+  function certList(items) {
+    if (!items || !items.length) return '';
+    return `
+      <div class="role-earlier">
+        <p class="earlier-head"><span class="label">Certificates</span></p>
+        <ul class="certs">${items.map((x) => `
+          <li>
+            <p class="cert-head"><span class="cert-title">${esc(x.title)}</span><span class="cert-date">${txt(x.date)}</span></p>
+            ${x.note ? `<p class="cert-note">${esc(x.note)}</p>` : ''}
+          </li>`).join('')}</ul>
+      </div>`;
+  }
+
   function experience(c) {
     const shortOrg = (o) => o.replace('Department of Health – Metro Manila Center for Health Development', 'Department of Health')
       .replace('DOST – Food and Nutrition Research Institute', 'DOST-FNRI');
@@ -168,6 +181,7 @@
         </div>
       </div>
       <ul class="points">${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+      ${certList(e.certificates)}
       ${e.earlier ? `
       <div class="role-earlier">
         <p class="earlier-head"><span class="label">Before this</span> <strong>${esc(e.earlier.role)}</strong> &middot; ${txt(e.earlier.dates)}</p>
@@ -196,9 +210,11 @@
       ${(e.honours || []).length ? `
       <div class="school-line"><span class="label">Dean's Lister</span>
         <ul class="honours">${e.honours.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
-      </div>` : ''}`)).join('');
+      </div>` : ''}
+      ${certList(e.certificates)}`)).join('');
     const lic = S.licence ? msg('licence', `
-      <p class="school-line"><span class="label">${esc(S.licence.label)}</span> ${esc(S.licence.text)}</p>`) : '';
+      <p class="school-line"><span class="label">${esc(S.licence.label)}</span> ${esc(S.licence.text)}</p>
+      ${certList(S.licence.certificates)}`) : '';
     const now = S.learning ? msg('next', `
       <p class="school-line"><span class="label">Studying now</span> ${esc(S.learning)}</p>`) : '';
     return divider(c) + schools + lic + now;

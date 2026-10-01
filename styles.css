@@ -678,6 +678,14 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .role-earlier .earlier-head strong { color: var(--ink); font-weight: 600; letter-spacing: normal; }
 .role-earlier .points { color: var(--muted); }
 
+/* A certificate list: title on the left, date out on the right in italic as his CV sets it,
+   and the detail beneath in the quieter tone. Title and date stack on narrow screens. */
+.certs { list-style: none; display: grid; gap: 14px; }
+.cert-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 18px; align-items: baseline; }
+.cert-title { font-weight: 600; }
+.cert-date { font-style: italic; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; }
+.cert-note { color: var(--muted); margin-top: 2px; max-width: 64ch; }
+
 /* skills */
 /* Skills reads as hairline rows, the same structure as the Experience timeline and the Work row:
    the group name holds a left column, what he does fills the rest, the products sit quietly beneath. */
@@ -819,6 +827,7 @@ body.sheet-open { overflow: hidden; }
   /* Two columns are too tight on a phone: the group name becomes a heading over its own row. */
   .skill-rows li { grid-template-columns: 1fr; gap: 6px; }
   .school-line { grid-template-columns: 1fr; gap: 2px; }
+  .cert-head { grid-template-columns: 1fr; }
   .tl-dates { text-align: left; }
   .section-row { grid-template-columns: 1fr; gap: 6px; }
   .specs { gap: 18px 24px; }
