@@ -24,6 +24,12 @@
   --accent: #6fb2c9;         /* the photograph's own slate, lifted — 7.0:1 on the sidebar */
   --accent-ink: #06131a;
   --accent-soft: rgba(111, 178, 201, 0.13);
+  /* The phone hides every piece of chrome except the sticky header, so these are the theme values it
+     reaches for. They are deliberately NOT redefined on .pane, which turns everything inside it light. */
+  --chrome: #182024;
+  --chrome-ink: #e9eff1;
+  --chrome-muted: #9fb1b7;
+  --chrome-accent: #6fb2c9;
   --good: #5fd3a3;
   --card: #1a2327;
   --shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(200, 225, 235, 0.05);
@@ -49,6 +55,10 @@
   --accent: #d29a8d;         /* the rose in the sunrise — 7.1:1 on the sidebar */
   --accent-ink: #1a0f0d;
   --accent-soft: rgba(210, 154, 141, 0.13);
+  --chrome: #241a19;
+  --chrome-ink: #f3eae8;
+  --chrome-muted: #bba8a3;
+  --chrome-accent: #d29a8d;
   --good: #7fd4a6;
   --card: #241b19;
   --shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 225, 218, 0.05);
@@ -819,12 +829,23 @@ body.sheet-open { overflow: hidden; }
 
   .pane { overflow: visible; }
   .avatar-live:has(.head-avatar) { display: none; }
+  /* On a phone the window, the rail and the desk are all hidden, so this header is the only thing left
+     that can carry the theme. White here meant slate and ember looked identical on a phone. */
   .pane-head {
     position: sticky; top: 0; z-index: 20;
-    padding: 8px 12px;
-    background: color-mix(in srgb, var(--app) 92%, transparent);
-    backdrop-filter: blur(10px);
+    padding: 10px 12px;
+    background: var(--chrome);
+    color: var(--chrome-ink);
+    border-bottom-color: rgba(255, 255, 255, 0.09);
   }
+  .pane-head .pane-h { color: var(--chrome-ink); }
+  .pane-head #pane-sub { color: var(--chrome-muted); }
+  .pane-head .menu-btn,
+  .pane-head .mob-mail,
+  .pane-head .mob-theme { color: var(--chrome-accent); }
+  .pane-head .menu-btn:active,
+  .pane-head .mob-mail:active,
+  .pane-head .mob-theme:active { background: rgba(255, 255, 255, 0.10); }
   .menu-btn { display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--r-md); }
   .feed { overflow: visible; padding: 16px 16px 96px; }
 
