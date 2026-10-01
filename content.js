@@ -107,29 +107,31 @@ window.SITE = {
       place: 'Mandaluyong City, Philippines',
       dates: 'April 2025 – January 2026',
       points: [
-        'Managed and validated health facility data for the Field Health Services Information System (FHSIS).',
-        'Coordinated with local health units and partner facilities for timely, complete, standardised data.',
-        'Reviewed, consolidated and analysed routine health reports to support monitoring and planning.',
+        'Managed and validated health facility data for the Field Health Services Information System (FHSIS), to support accurate regional and national health reporting.',
+        'Coordinated with local health units and partner facilities to ensure timely, complete and standardised submission of public health data.',
+        'Reviewed, consolidated and analysed routine health reports to support monitoring, planning and decision-making for public health programmes.',
       ],
     },
     {
       role: 'Project Technical Specialist I',
       org: 'DOST – Food and Nutrition Research Institute',
-      logo: 'images/logos/dost-fnri.png', // FNRI emblem, from fnri.dost.gov.ph
+      logo: 'images/logos/dost-fnri.png',
       place: 'Taguig City, Philippines',
-      dates: 'November 2023 – August 2024',
+      dates: 'September 2023 – August 2024',
+      ownDates: 'November 2023 – August 2024', // this title alone; the row header carries the whole FNRI span
       points: [
-        'Conducted data collection and validation for the National Nutrition Survey.',
-        'Collected and processed biological samples through phlebotomy; performed laboratory analysis of biochemical markers.',
+        'Conducted data collection and validation for the National Nutrition Survey, ensuring the accuracy and completeness of nutritional data.',
+        'Collected, aliquoted and processed biological fluid samples through phlebotomy, to support the analysis of biochemical markers for the survey.',
+        'Performed laboratory processing and analysis of the biochemical markers used to assess and update the nutritional status of the Filipino population nationwide.',
       ],
-    },
-    {
-      role: 'Project Technical Assistant II',
-      org: 'DOST – Food and Nutrition Research Institute',
-      logo: 'images/logos/dost-fnri.png', // FNRI emblem, from fnri.dost.gov.ph
-      place: 'Taguig City, Philippines',
-      dates: 'September – November 2023',
-      points: ['Encoded and validated National Nutrition Survey data.'],
+      earlier: {
+        role: 'Project Technical Assistant II',
+        dates: 'September – November 2023',
+        points: [
+          'Encoded and validated the data collected throughout the National Nutrition Survey.',
+          'Received and designated the biochemical markers collected from the survey.',
+        ],
+      },
     },
   ],
 

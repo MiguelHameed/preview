@@ -670,6 +670,13 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .points li { position: relative; padding-left: 18px; }
 .points li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
+/* An earlier title held at the same employer. Indented under the current one and set a size down, so the
+   row still reads as one job with a step inside it rather than two separate jobs. */
+.role-earlier { margin-top: 14px; padding-left: 14px; border-left: 1px solid var(--line); }
+.role-earlier .earlier-head { margin-bottom: 8px; font-size: 0.86rem; color: var(--muted); }
+.role-earlier .earlier-head strong { color: var(--ink); font-weight: 600; }
+.role-earlier .points { font-size: 0.92rem; color: var(--muted); }
+
 /* skills */
 /* Skills reads as hairline rows, the same structure as the Experience timeline and the Work row:
    the group name holds a left column, what he does fills the rest, the products sit quietly beneath. */

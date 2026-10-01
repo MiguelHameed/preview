@@ -148,10 +148,14 @@
   function experience(c) {
     const shortOrg = (o) => o.replace('Department of Health – Metro Manila Center for Health Development', 'Department of Health')
       .replace('DOST – Food and Nutrition Research Institute', 'DOST-FNRI');
-    const list = S.experience.map((e) => `
-      <li><span class="tl-role"><strong>${esc(e.role)}</strong></span><span class="tl-org">${esc(shortOrg(e.org))}</span><span class="tl-dates">${txt(e.dates)}</span></li>`).join('');
+    const positions = S.experience.flatMap((e) => [
+      { role: e.role, org: e.org, dates: e.ownDates || e.dates },
+      ...(e.earlier ? [{ role: e.earlier.role, org: e.org, dates: e.earlier.dates }] : []),
+    ]);
+    const list = positions.map((p) => `
+      <li><span class="tl-role"><strong>${esc(p.role)}</strong></span><span class="tl-org">${esc(shortOrg(p.org))}</span><span class="tl-dates">${txt(p.dates)}</span></li>`).join('');
     const summary = msg('overview', `
-      <p class="section-lede">${S.experience.length} roles, from government health research to marketing and business development.</p>
+      <p class="section-lede">${positions.length} roles, from government health research to marketing and business development.</p>
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
       <div class="role-head role-head-multi">
@@ -162,7 +166,12 @@
           <p class="where">${esc(e.place)} · ${txt(e.dates)}</p>
         </div>
       </div>
-      <ul class="points">${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`)).join('');
+      <ul class="points">${e.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+      ${e.earlier ? `
+      <div class="role-earlier">
+        <p class="earlier-head"><span class="label">Before this</span> <strong>${esc(e.earlier.role)}</strong> &middot; ${txt(e.earlier.dates)}</p>
+        <ul class="points">${e.earlier.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+      </div>` : ''}`)).join('');
     const edu = msg('education', `<div class="role-head">${orgLogo(S.educationLogo, 'FEU', 'Far Eastern University')}<p class="org"><strong>${esc(S.education)}</strong></p></div>`);
     return divider(c) + summary + roles + edu;
   }
