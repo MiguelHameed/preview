@@ -695,7 +695,11 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .skill-tools .label { margin-right: 8px; }
 /* education — the school card reuses the Experience role head; these are the rows under it.
    Each row is a label in the left column and its value beside it, the same shape as the Skills rows. */
+/* His CV italicises the place and date beside each school and every Dean's Lister line. */
+.role-head-school .where { font-style: italic; }
+.honours li { font-style: italic; }
 .school-note { color: var(--muted); margin-bottom: 10px; }
+.school-note strong { color: var(--ink); }
 .school-line { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px 14px; margin-top: 10px; align-items: baseline; }
 .school-line .label { padding-top: 0.1em; }
 .honours { list-style: none; display: grid; gap: 4px; }

@@ -177,8 +177,12 @@
   }
 
   function education(c) {
+    const noteHtml = (t) => {
+      const i = t.indexOf(':');
+      return i === -1 ? esc(t) : `${esc(t.slice(0, i + 1))} <strong>${esc(t.slice(i + 1).trim())}</strong>`;
+    };
     const schools = S.schools.map((e, i) => msg(`school ${i + 1} of ${S.schools.length}`, `
-      <div class="role-head role-head-multi">
+      <div class="role-head role-head-multi role-head-school">
         ${orgLogo(e.logo, e.initials, e.school)}
         <div>
           <h3 class="work-title">${esc(e.school)}</h3>
@@ -186,9 +190,9 @@
           <p class="where">${esc(e.place)} &middot; ${txt(e.dates)}</p>
         </div>
       </div>
-      ${e.note ? `<p class="school-note">${esc(e.note)}</p>` : ''}
+      ${e.note ? `<p class="school-note">${noteHtml(e.note)}</p>` : ''}
       ${e.research ? `
-      <p class="school-line"><span class="label">Research</span> ${esc(e.research)}</p>` : ''}
+      <p class="school-line"><span class="label">Research</span> <strong>${esc(e.research)}</strong></p>` : ''}
       ${(e.honours || []).length ? `
       <div class="school-line"><span class="label">Dean's Lister</span>
         <ul class="honours">${e.honours.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
