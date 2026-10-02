@@ -11,7 +11,7 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I run, and how far it goes', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I finished, and what changed', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience' },

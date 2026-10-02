@@ -31,50 +31,50 @@ window.SITE = {
     { hook: 'First pass, last word', line: 'AI drafts the repetitive part; I review everything before it ships.', href: '#selected-work' },
   ],
 
-  workSetName: 'workstreams, one desk',
+  workSetName: 'things I finished', // Claude's wording, 2 Oct — Miguel to confirm
 
   selectedWork: [
     {
-      title: 'Partner pipeline: mine from first search to the moment of contact',
-      category: 'Partner pipeline', year: '30% of my week', tags: ['Research', 'Record hygiene'],
-      owns: 'Finding and enriching partner leads, writing an account brief for each one, sequencing who is approached and when, and keeping every record current under a 14-day rule.',
-      stops: 'I hand each lead over researched, briefed and sequenced, ready for the CEO to send. Stage changes are his call, by design.',
-      result: 'Twenty-three records across three lists, all carrying a dated note and a next step. Eighteen were past the 14-day rule; none were afterwards.',
-      specs: [{ value: 'ClickUp', label: 'system' }, { value: '14 days', label: 'staleness rule' }, { value: '23 records', label: 'across 3 lists' }],
-      metric: '30%', shot: null,
+      title: 'Partner pipeline cleanup',
+      result: 'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
+      specs: [
+        { value: 'ClickUp', label: 'system' },
+        { value: '23 records', label: 'across 3 lists' },
+        { value: '14 days', label: 'staleness rule' },
+      ],
     },
     {
-      title: 'Marketing site: I find it, fix it and ship it to staging',
-      category: 'Marketing site', year: '25% of my week', tags: ['QA', 'Staging PRs'],
-      owns: 'Testing the site, reproducing and documenting defects, fixing copy, and opening pull requests against staging.',
-      stops: 'I open the pull request and flag anything that touches positioning, so the CEO reviews it as a decision rather than a code change. Merging is deliberately one person’s job, and that keeps production clean.',
-      specs: [{ value: 'GitHub', label: 'system' }, { value: 'Staging only', label: 'boundary' }, { value: 'Lighthouse', label: 'audits' }],
-      metric: '25%', shot: null,
+      title: 'Sales-enablement pack',
+      result: 'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
+      specs: [
+        { value: 'Two days', label: 'start to finish' },
+        { value: 'Quarterly', label: 'monitoring run' },
+      ],
     },
     {
-      title: 'Competitive intelligence: the material the sales side works from',
-      category: 'Competitive intelligence', year: '20% of my week', tags: ['Teardowns', 'Sales enablement'],
-      owns: 'Competitor teardowns, a battlecard, objection handling scripts, and a monitoring run that keeps them current.',
-      stops: 'I write it, he reads it before it reaches a customer. The research, the argument and the words are mine.',
-      result: 'Eleven deliverables and one monitoring run.',
-      specs: [{ value: '11', label: 'deliverables' }, { value: '1', label: 'monitoring run' }, { value: 'Quarterly', label: 'cadence' }],
-      metric: '20%', shot: null,
+      title: 'Blog pipeline',
+      result: 'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus.',
+      specs: [
+        { value: '24', label: 'articles written' },
+        { value: '72', label: 'posts reviewed' },
+      ],
     },
     {
-      title: 'Content operations: idea to edited, on a schedule',
-      category: 'Content operations', year: '15% of my week', tags: ['Editorial', 'Distribution'],
-      owns: 'Moving blog posts through the pipeline, reviewing and annotating them, and drafting and scheduling social content.',
-      stops: "I take a post from idea to edited and recommend what happens next; publishing is the CEO's to approve. Every draft on the blog and the social calendar is mine.",
-      specs: [{ value: 'ClickUp', label: 'pipeline' }, { value: 'Buffer', label: 'scheduling' }, { value: 'Editing', label: 'last stage I own' }],
-      metric: '15%', shot: null,
+      title: 'Marketing site quality',
+      result: 'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width.',
+      specs: [
+        { value: 'GitHub', label: 'system' },
+        { value: '12', label: 'Lighthouse audits' },
+        { value: '41 pages', label: 'crawled at 370px' },
+      ],
     },
     {
-      title: 'Outbound list quality: a pipeline worth working',
-      category: 'Outbound list quality', year: '10% of my week', tags: ['Triage', 'Reporting'],
-      owns: 'Triaging outbound records, disqualifying what does not fit, keeping list quality honest, and reporting on campaigns.',
-      stops: 'Routine replies are mine. Anything that needs a human decision I hand over with the context already written.',
-      specs: [{ value: 'Dripify', label: 'system' }, { value: 'Sales Navigator', label: 'sourcing' }, { value: 'Apollo', label: 'enrichment' }],
-      metric: '10%', shot: null,
+      title: 'ClickUp agents and AI Skills',
+      result: 'Built Cloud Sentry’s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use.',
+      specs: [
+        { value: 'ClickUp', label: 'system' },
+        { value: 'Two', label: 'AI Skills' },
+      ],
     },
   ],
 
