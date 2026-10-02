@@ -243,8 +243,6 @@ window.SITE = {
         'I took the certification in June 2025. Since then I have built the super agents the team uses, written two AI Skills, and taken on the audit into the workspace’s AI credit use.',
       ],
     },
-    { kind: 'Training · Department of Health', title: 'Health data quality and analysis', topic: 'Data management, data quality checks for Universal Health Care, and a recognition for cross-program data analysis (2025).' },
-    { kind: 'Certificate · NIDA Clinical Trials Network', title: 'Clinical research foundations', topic: 'Foundational principles of clinical research (2022).' },
   ],
 
   files: [],
