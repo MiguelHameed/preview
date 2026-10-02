@@ -120,21 +120,10 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background-color: var(--desk);
-  /* The desk: Miguel's photograph, with the theme's own glow laid over it so blue stays blue and wine
-     stays wine. The dot grid comes off — a texture over a photograph is two textures. */
-  /* The photograph, and nothing over it (Miguel, 1 Oct). A glow made the window look as though it were
-     emitting light; a tint on top made the picture nearly black. It just sits there now, like Bailey's. */
-  /* AVIF first: same 3840 picture at 163 KB against 548 KB as JPEG, and visibly cleaner in the sky,
-     where JPEG blocks up on a smooth gradient. The JPEG stays as the fallback for anything that
-     cannot decode AVIF. This is what baileyelith.com does — their desk is an AVIF too. */
-  background-image: image-set(url('images/desk/mountains-vector.avif') type('image/avif'),
-                              url('images/desk/mountains-vector.jpg') type('image/jpeg'));
-  background-image: -webkit-image-set(url('images/desk/mountains-vector.avif') type('image/avif'),
-                                      url('images/desk/mountains-vector.jpg') type('image/jpeg'));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* The desk is the theme's own colour (Miguel, 2 Oct): "match the background into the color of the
+     website for now". Flat colour is perfectly sharp at any screen size and costs nothing to load,
+     which is the whole reason baileyelith.com's page sits on flat black.
+     The illustration is still in images/desk/ — putting it back is this one rule. */
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s;
 }
