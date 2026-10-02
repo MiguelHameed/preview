@@ -576,7 +576,7 @@
   function setTheme(t) {
     root.dataset.theme = t;
     const meta = $('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'burgundy' ? '#1a0710' : '#020810';
+    if (meta) meta.content = t === 'burgundy' ? '#241a19' : '#182024';
   }
   setTheme(fromUrl === 'burgundy' || (fromUrl !== 'dark' && saved === 'burgundy') ? 'burgundy' : 'dark');
   $$('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {

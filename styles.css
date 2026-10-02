@@ -8,7 +8,7 @@
    and a clear sea-blue accent that reads well on dark water. */
 :root,
 [data-theme="dark"] {
-  --desk: #151a1d;
+  --desk: #0a0e10;
   --desk-dot: rgba(200, 220, 228, 0.06);
   --app: #0f1518;
   --app-bar: #11171a;
@@ -38,7 +38,7 @@
 
 /* Burgundy (trial, 22 Sep): deep wine instead of deep ocean, warm light from above, soft gold accent. */
 [data-theme="burgundy"] {
-  --desk: #1b1413;
+  --desk: #0d0a09;
   --mark: #8d4536;         /* the mh mark in the photograph's rose instead of blue */
   --desk-dot: rgba(255, 225, 218, 0.055);
   --app: #15100f;
@@ -181,8 +181,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
     "bar bar bar"
     "rail side pane";
   background: var(--app);
-  /* A real window edge: a faint light ring rather than a hard hairline, and a wider corner. */
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  /* No ring (Miguel, 2 Oct). The 7% white edge was drawn for a photographic desk; against a flat
+     desk it stopped reading as an edge and became a glow following the corner curve. The window is
+     separated by tone now — the desk sits below it, which is the right way round. */
+  border: 1px solid transparent;
   border-radius: var(--r-xl);
   box-shadow: var(--shadow);
   overflow: hidden;
