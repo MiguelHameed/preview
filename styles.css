@@ -181,10 +181,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
     "bar bar bar"
     "rail side pane";
   background: var(--app);
-  /* No ring (Miguel, 2 Oct). The 7% white edge was drawn for a photographic desk; against a flat
-     desk it stopped reading as an edge and became a glow following the corner curve. The window is
-     separated by tone now — the desk sits below it, which is the right way round. */
-  border: 1px solid transparent;
+  /* A real window edge: a faint light ring, catching light the way a window would. It read as a glow
+     only while the desk was LIGHTER than the window; with the desk darkened below it (2 Oct) the ring
+     does its job again and Miguel kept it. */
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--r-xl);
   box-shadow: var(--shadow);
   overflow: hidden;
