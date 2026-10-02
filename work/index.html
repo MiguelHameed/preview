@@ -160,6 +160,16 @@
       </main>
 
       <div class="scrim" data-scrim hidden></div>
+
+      <!-- macOS-style notification banner, INSIDE the window (Miguel, 2 Oct) — it used to be fixed to
+           the viewport, so it sat on the desk outside the frame. The dismiss button has to be a sibling
+           of the link, not inside it: a button cannot live in an anchor. -->
+      <div class="float-wrap" id="float-btn">
+        <a class="float-btn" id="float-link" href="#">Let's find a time!</a>
+        <button class="float-x" id="float-x" type="button" aria-label="Dismiss">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -170,14 +180,6 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
     <div class="sheet-body" id="sheet-body"></div>
-  </div>
-
-  <!-- macOS-style notification banner. The dismiss button has to be a sibling of the link, not inside it. -->
-  <div class="float-wrap" id="float-btn">
-    <a class="float-btn" id="float-link" href="#">Let's find a time!</a>
-    <button class="float-x" id="float-x" type="button" aria-label="Dismiss">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
   </div>
 
   <script src="../content.js"></script>
