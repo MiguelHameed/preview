@@ -233,7 +233,7 @@
 
   function proof(c) {
     return divider(c) + msg('credentials', `
-      <div class="proof-grid">${S.proof.map((p, i) => {
+      <ul class="cred-rows">${S.proof.map((p, i) => {
         const opens = hasSheet(p);
         const tag = opens ? 'button' : (p.link ? 'a' : 'div');
         const attrs = opens ? ` type="button" data-sheet="${i}"`
@@ -241,15 +241,18 @@
         const cue = opens ? 'Open <span aria-hidden="true">&rarr;</span>'
           : (p.link ? 'Verify <span aria-hidden="true">↗</span>' : '');
         return `
-        <${tag} class="proof-card${opens || p.link ? ' is-link' : ''}${p.logo ? ' has-mark' : ''}"${attrs}>
-          <span class="proof-kind">${esc(p.kind)}</span>
-          ${p.logo ? `<img class="proof-logo${p.logoTile ? ' has-tile' : ''}" src="${esc(asset(p.logo))}" alt="" width="480" height="494" loading="lazy" />` : ''}
-          <strong class="proof-title">${txt(p.title)}</strong>
-          ${!opens && txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
-          ${cue ? `<span class="proof-link">${cue}</span>` : ''}
-        </${tag}>`;
-      }).join('')}
-      </div>`);
+        <li>
+          <${tag} class="cred-row${opens || p.link ? ' is-link' : ''}"${attrs}>
+            <span class="cred-mark">${p.logo ? `<img src="${esc(asset(p.logo))}" alt="" width="480" height="494" loading="lazy" />` : ''}</span>
+            <span class="cred-body">
+              <span class="cred-kind label">${esc(p.kind)}</span>
+              <strong class="cred-title">${txt(p.title)}</strong>
+              ${txt(p.topic) ? `<span class="cred-topic">${txt(p.topic)}</span>` : ''}
+            </span>
+            ${cue ? `<span class="cred-cue">${cue}</span>` : ''}
+          </${tag}>
+        </li>`;
+      }).join('')}</ul>`);
   }
 
   function testimonials(c) {
