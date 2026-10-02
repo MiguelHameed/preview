@@ -279,11 +279,13 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 /* section headings with a fold arrow, after baileyelith.com: â–¾ open, â–¸ closed */
 /* a channel that opens on its own, like a separate page */
-.channel-view { flex: 1; overflow-y: auto; padding: 0 0 60px; }
+/* The same side padding as the message feed. It had none, so the content sat flush against the
+   channel list instead of breathing like every other channel does. */
+.channel-view { flex: 1; overflow-y: auto; padding: 24px 28px 60px; }
 /* A plain text link, not a pill: nothing else on the site is a pill-shaped control. */
 .view-back {
   display: inline-flex; align-items: center; gap: 6px;
-  margin: 18px 0 2px 28px; padding: 0;
+  margin: 0 0 6px; padding: 0;
   border: 0; background: none;
   color: var(--muted); font-size: var(--t-sm); letter-spacing: var(--track-caps);
 }
@@ -835,7 +837,7 @@ body.sheet-open { overflow: hidden; }
   .section-row { grid-template-columns: 1fr; gap: 6px; }
   .specs { gap: 18px 24px; }
   .set-name { font-family: var(--display); margin-left: 0; }
-  .view-back { margin-left: 16px; }
+  .view-back { margin-left: 0; }
   .pane-tabs { padding: 6px 16px 0; }
   .files-panel { padding: 16px 16px 48px; }
   .role-head { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: start; }
