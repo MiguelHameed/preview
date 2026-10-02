@@ -113,34 +113,26 @@
   const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
   function selectedWork(c) {
-    const hues = ['sea', 'ocean', 'reef', 'deep'];
     const n = S.selectedWork.length;
-    const setName = S.workSetName ? `<p class="set-name">${esc(COUNT_WORDS[n] || n)} ${esc(S.workSetName)}</p>` : '';
-    return divider(c) + setName + S.selectedWork.map((w, i) => msg(`result ${i + 1} of ${n}`, `
-      <p class="work-no">${String(i + 1).padStart(2, '0')}${w.category ? ` — ${esc(w.category)}` : ''}${w.year ? ` · ${esc(w.year)}` : ''}</p>
+    return divider(c) + S.selectedWork.map((w, i) => {
+      const meta = [w.year, ...(w.tags || [])].filter(Boolean).map(esc).join(' &middot; ');
+      const rows = [
+        ['Result', w.result], ['What I own', w.owns], ['Where it stops', w.stops],
+        ['Problem', w.problem], ['What I did', w.did],
+      ].filter(([, v]) => v).map(([k, v]) => `
+        <p class="school-line"><span class="label">${k}</span> ${esc(v)}</p>`).join('');
+      const specs = (w.specs || []).map((sp) => `${esc(sp.value)} <span class="spec-of">${esc(sp.label)}</span>`).join(' &middot; ');
+      return msg(`work ${i + 1} of ${n}`, `
       <h3 class="work-title">${esc(w.title)}</h3>
-      <ul class="tags">${w.tags.map((t) => `<li class="label">${esc(t)}</li>`).join('')}</ul>
-      ${w.result ? `<p class="outcome"><span class="outcome-label mono">result</span>${esc(w.result)}</p>` : ''}
+      ${meta ? `<p class="where">${meta}</p>` : ''}
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
-      <dl class="work-detail">
-        ${w.owns ? `<div><dt class="label">What I own</dt><dd>${esc(w.owns)}</dd></div>` : ''}
-        ${w.stops ? `<div><dt class="label">Where it stops</dt><dd>${esc(w.stops)}</dd></div>` : ''}
-        ${w.problem ? `<div><dt class="label">Problem</dt><dd>${esc(w.problem)}</dd></div>` : ''}
-        ${w.did ? `<div><dt class="label">What I did</dt><dd>${esc(w.did)}</dd></div>` : ''}
-      </dl>
-      ${w.specs && w.specs.length ? `<ul class="specs">${w.specs.map((sp) => `
-        <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
-      <figure class="attachment attachment-${hues[i % hues.length]}">
-        ${w.shot
-          ? `<img src="${esc(asset(w.shot))}" alt="${esc(w.title)} — screenshot" loading="lazy" />`
-          : `<div class="attach-metric">${esc(w.metric)}</div>
-             <figcaption class="attach-note">screenshot coming — cleaned of client details before it goes live</figcaption>`}
-      </figure>`)).join('') + (S.boundary ? msg('how I work', `
+      ${rows}
+      ${specs ? `<p class="school-line"><span class="label">Specifics</span> <span class="spec-line">${specs}</span></p>` : ''}
+      ${w.shot ? `<figure class="attachment"><img src="${esc(asset(w.shot))}" alt="${esc(w.title)} — screenshot" loading="lazy" /></figure>` : ''}`);
+    }).join('') + (S.boundary ? msg('how I work', `
       <p class="section-lede">${esc(S.boundary.lede)}</p>
-      <dl class="work-detail">
-        <div><dt class="label">I ship</dt><dd>${esc(S.boundary.ships)}</dd></div>
-        <div><dt class="label">He decides</dt><dd>${esc(S.boundary.gated)}</dd></div>
-      </dl>`) : '');
+      <p class="school-line"><span class="label">I ship</span> ${esc(S.boundary.ships)}</p>
+      <p class="school-line"><span class="label">He decides</span> ${esc(S.boundary.gated)}</p>`) : '');
   }
 
   function orgLogo(src, initials, org) {
