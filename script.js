@@ -42,8 +42,11 @@
   $('#app-list').innerHTML = APPS.map((a) =>
     `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext" aria-hidden="true">↗</span>' : ''}</a></li>`
   ).join('');
+  const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/work\/?$/, '').replace(/\/?$/, '/');
+  const asset = (u) => (!u || /^([a-z]+:)?\/\//i.test(u) || u.startsWith('/') || u.startsWith('data:') ? u : SITE_ROOT + u);
+
   const avatarEl = (cls, alt) => P.avatar
-    ? `<img class="${cls}" src="${esc(P.avatar)}" alt="${esc(alt)}" width="44" height="44" loading="lazy" />`
+    ? `<img class="${cls}" src="${esc(asset(P.avatar))}" alt="${esc(alt)}" width="44" height="44" loading="lazy" />`
     : `<span class="${cls} avatar-mark"${alt ? ` role="img" aria-label="${esc(alt)}"` : ' aria-hidden="true"'}>mh</span>`;
   const avatarLive = (cls, alt) => `<span class="avatar-live">${avatarEl(cls, alt)}<i class="live-dot" title="Open to work anywhere"></i></span>`;
   $$('[data-headshot]').forEach((el) => { el.outerHTML = avatarLive('side-avatar', ''); });
@@ -74,7 +77,7 @@
 
   function introPhoto() {
     if (P.headshot && !/placeholder/.test(P.headshot)) {
-      return `<img class="intro-photo" src="${esc(P.headshot)}" srcset="images/headshot-240.jpg 240w, ${esc(P.headshot)} 480w"
+      return `<img class="intro-photo" src="${esc(asset(P.headshot))}" srcset="${esc(asset('images/headshot-240.jpg'))} 240w, ${esc(asset(P.headshot))} 480w"
                    sizes="(max-width: 767px) 110px, 220px" alt="${esc(P.name)}" width="480" height="480" fetchpriority="high" />`;
     }
     return `<div class="intro-photo is-empty" role="img" aria-label="Photo coming soon">
@@ -129,7 +132,7 @@
         <li><span class="spec-value">${esc(sp.value)}</span><span class="spec-label">${esc(sp.label)}</span></li>`).join('')}</ul>` : ''}
       <figure class="attachment attachment-${hues[i % hues.length]}">
         ${w.shot
-          ? `<img src="${esc(w.shot)}" alt="${esc(w.title)} — screenshot" loading="lazy" />`
+          ? `<img src="${esc(asset(w.shot))}" alt="${esc(w.title)} — screenshot" loading="lazy" />`
           : `<div class="attach-metric">${esc(w.metric)}</div>
              <figcaption class="attach-note">screenshot coming — cleaned of client details before it goes live</figcaption>`}
       </figure>`)).join('') + (S.boundary ? msg('how I work', `
@@ -142,7 +145,7 @@
 
   function orgLogo(src, initials, org) {
     return src
-      ? `<img class="org-logo" src="${esc(src)}" alt="${esc(org)} logo" width="96" height="96" loading="lazy" />`
+      ? `<img class="org-logo" src="${esc(asset(src))}" alt="${esc(org)} logo" width="96" height="96" loading="lazy" />`
       : `<span class="org-logo org-initials" aria-hidden="true">${esc(initials || '')}</span>`;
   }
 
@@ -248,7 +251,7 @@
         return `
         <${tag} class="proof-card${opens || p.link ? ' is-link' : ''}${p.logo ? ' has-mark' : ''}"${attrs}>
           <span class="proof-kind">${esc(p.kind)}</span>
-          ${p.logo ? `<img class="proof-logo${p.logoTile ? ' has-tile' : ''}" src="${esc(p.logo)}" alt="" width="480" height="494" loading="lazy" />` : ''}
+          ${p.logo ? `<img class="proof-logo${p.logoTile ? ' has-tile' : ''}" src="${esc(asset(p.logo))}" alt="" width="480" height="494" loading="lazy" />` : ''}
           <strong class="proof-title">${txt(p.title)}</strong>
           ${!opens && txt(p.topic) ? `<span class="proof-topic">${txt(p.topic)}</span>` : ''}
           ${cue ? `<span class="proof-link">${cue}</span>` : ''}
@@ -292,7 +295,7 @@
   function filesPanel() {
     return `<div class="files-grid">${S.files.map((f) => `
       <figure class="file-card">
-        <img src="${esc(f.src)}" alt="${esc(f.caption || f.name)}" loading="lazy" />
+        <img src="${esc(asset(f.src))}" alt="${esc(f.caption || f.name)}" loading="lazy" />
         <figcaption class="file-name mono">${esc(f.name)}</figcaption>
       </figure>`).join('')}</div>`;
   }
@@ -333,7 +336,7 @@
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
   const VIEW_PATH = { 'selected-work': 'work/' };
-  const ROOT = location.pathname.replace(/index\.html$/, '').replace(/work\/?$/, '').replace(/\/?$/, '/');
+  const ROOT = SITE_ROOT;
   const urlFor = (id) => ROOT + (id && VIEW_PATH[id] ? VIEW_PATH[id] : '');
   const viewFromPath = () => {
     const rest = location.pathname.slice(ROOT.length).replace(/index\.html$/, '');
@@ -491,7 +494,7 @@
     sheetBody.innerHTML = `
       <span class="proof-kind">${esc(p.kind)}</span>
       <h2 class="sheet-title" id="sheet-title">${esc(p.title)}</h2>
-      ${p.image ? `<img class="sheet-image" src="${esc(p.image)}" alt="${esc(p.imageAlt || '')}" />` : ''}
+      ${p.image ? `<img class="sheet-image" src="${esc(asset(p.image))}" alt="${esc(p.imageAlt || '')}" />` : ''}
       ${p.meta && p.meta.length ? `<dl class="sheet-meta">${p.meta.map((m) => `
         <div><dt class="label">${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}</dl>` : ''}
       ${p.story && p.story.length ? p.story.map((s) => `<p class="sheet-para">${esc(s)}</p>`).join('') : ''}
