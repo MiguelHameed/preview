@@ -11,7 +11,7 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'My own projects', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'Mine, not a client’s', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience' },
@@ -42,7 +42,7 @@
   $('#app-list').innerHTML = APPS.map((a) =>
     `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext" aria-hidden="true">↗</span>' : ''}</a></li>`
   ).join('');
-  const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/work\/?$/, '').replace(/\/?$/, '/');
+  const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/(?:projects|work)\/?$/, '').replace(/\/?$/, '/');
   const asset = (u) => (!u || /^([a-z]+:)?\/\//i.test(u) || u.startsWith('/') || u.startsWith('data:') ? u : SITE_ROOT + u);
 
   const avatarEl = (cls, alt) => P.avatar
@@ -328,7 +328,7 @@
   }
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
-  const VIEW_PATH = { 'selected-work': 'work/' };
+  const VIEW_PATH = { 'selected-work': 'projects/' };
   const ROOT = SITE_ROOT;
   const urlFor = (id) => ROOT + (id && VIEW_PATH[id] ? VIEW_PATH[id] : '');
   const viewFromPath = () => {
