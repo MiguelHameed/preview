@@ -3,6 +3,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" /> <!-- staging copy -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projects — Miguel Irfan Hameed</title>
   <meta name="description" content="Miguel Irfan Hameed's own projects: MAPA, a road-passability app for Metro Manila, and this site." />
@@ -29,9 +30,6 @@
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <!-- No preload on content.js and script.js: it was tried on 1 Oct and measured, and it changed nothing.
        JavaScript execution time is 0.0s — the scripts were never what the opening line was waiting for. -->
-  <!-- The counter posts to this origin, so opening the connection early saves the handshake. It is the
-       endpoint, not gc.zgo.at where the script file lives; that distinction cost a measurement to find. -->
-  <link rel="preconnect" href="https://miguelhameed.goatcounter.com" crossorigin />
   <link rel="stylesheet" href="../fonts/fonts.css" />
   <link rel="manifest" href="../site.webmanifest" />
   <script type="application/ld+json">
@@ -184,8 +182,6 @@
     <div class="sheet-body" id="sheet-body"></div>
   </div>
 
-  <!-- GoatCounter: visitor counts, no cookies, nothing personal. Dashboard: https://miguelhameed.goatcounter.com -->
-  <script data-goatcounter="https://miguelhameed.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script src="../content.js"></script>
   <script src="../script.js"></script>
 </body>
