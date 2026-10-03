@@ -11,12 +11,12 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'Mine, not a client’s', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'One of these is the page you’re on.', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Trained in science, ended up in systems' },
     { id: 'skills', title: 'Skills', sub: 'This is the list, minus the ones that I’d have to google.' },
     { id: 'experience', title: 'Experience' },
     { id: 'education', title: 'Education' },
-    { id: 'proof', title: 'Credentials', sub: 'What can be checked' },
+    { id: 'proof', title: 'Credentials', sub: 'Click it, I’ll wait.' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
     { id: 'contact', title: 'Contact', sub: 'Yes, that’s my actual email.' },
   ];
