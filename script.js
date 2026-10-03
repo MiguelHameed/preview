@@ -161,7 +161,7 @@
     const list = positions.map((p) => `
       <li><span class="tl-role"><strong>${esc(p.role)}</strong></span><span class="tl-org">${esc(shortOrg(p.org))}</span><span class="tl-dates">${txt(p.dates)}</span></li>`).join('');
     const summary = msg('overview', `
-      <p class="section-lede">${positions.length} roles, from government health research to technical operations.</p>
+      <p class="section-lede">${positions.length} roles, from government health programmes to technical operations.</p>
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
       <div class="role-head role-head-multi">

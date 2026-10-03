@@ -309,7 +309,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 /* Bailey-style touches: hashtag chips, an "available" dot, a header icon, a + button, a richer float button */
 .hash-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 14px; }
-.hash-tag { padding: 3px 9px; border-radius: var(--r-pill); border: 1px solid var(--line); color: var(--muted); font-weight: 400; }
+/* The outline was var(--line) at 1.25:1 against the pane — technically drawn, effectively invisible,
+   so the chips read as floating grey words. A soft fill carries the shape instead, and the text goes to
+   the accent so it reads as a label rather than as body copy that has faded. */
+.hash-tag { padding: 3px 10px; border-radius: var(--r-pill); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); background: var(--accent-soft); color: var(--accent); font-weight: 400; }
 .avatar-live { position: relative; display: inline-flex; flex: none; align-self: start; height: -moz-fit-content; height: fit-content; }
 .live-dot {
   position: absolute; right: -2px; bottom: -2px;
