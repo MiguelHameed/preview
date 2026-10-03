@@ -13,12 +13,12 @@
   const CHANNELS = [
     ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'Mine, not a client’s', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Trained in science, ended up in systems' },
-    { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
+    { id: 'skills', title: 'Skills', sub: 'This is the list, minus the ones that I’d have to google.' },
     { id: 'experience', title: 'Experience' },
     { id: 'education', title: 'Education' },
     { id: 'proof', title: 'Credentials', sub: 'What can be checked' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
-    { id: 'contact', title: 'Contact', sub: 'Find a time to talk' },
+    { id: 'contact', title: 'Contact', sub: 'Yes, that’s my actual email.' },
   ];
 
   const ICONS = {
