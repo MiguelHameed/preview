@@ -840,10 +840,16 @@ body.sheet-open { overflow: hidden; }
 @media (max-width: 1023px) {
   .intro-grid:has(.intro-photo) { grid-template-columns: minmax(0, 1fr) 170px; }
   .intro-grid { gap: 24px; }
-  .app { grid-template-columns: 232px 1fr; grid-template-areas: "bar bar" "side pane"; }
-  .rail { display: none; }
   .desk { padding: 20px; }
   .app { height: calc(100vh - 40px); }
+  /* The rail stays down to 900px (Miguel, 2 Oct — he works at this width). It was hidden below 1024
+     when it held less; it now carries the theme switch and the sidebar toggle, and losing both on an
+     ordinary laptop window costs more than the 72px it takes. The channel column narrows instead. */
+  .app { grid-template-columns: 72px 216px 1fr; }
+}
+@media (max-width: 899px) {
+  .app { grid-template-columns: 232px 1fr; grid-template-areas: "bar bar" "side pane"; }
+  .rail { display: none; }
   .mob-theme { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border-radius: var(--r-md); color: var(--muted); }
 }
 

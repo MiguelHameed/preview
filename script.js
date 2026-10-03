@@ -129,10 +129,7 @@
       ${rows}
       ${specs ? `<p class="school-line"><span class="label">Specifics</span> <span class="spec-line">${specs}</span></p>` : ''}
       ${w.shot ? `<figure class="attachment"><img src="${esc(asset(w.shot))}" alt="${esc(w.title)} — screenshot" loading="lazy" /></figure>` : ''}`);
-    }).join('') + (S.boundary ? msg('how I work', `
-      <p class="section-lede">${esc(S.boundary.lede)}</p>
-      <p class="school-line"><span class="label">I ship</span> ${esc(S.boundary.ships)}</p>
-      <p class="school-line"><span class="label">He decides</span> ${esc(S.boundary.gated)}</p>`) : '');
+    }).join('');
   }
 
   function orgLogo(src, initials, org) {
@@ -163,7 +160,7 @@
     const list = positions.map((p) => `
       <li><span class="tl-role"><strong>${esc(p.role)}</strong></span><span class="tl-org">${esc(shortOrg(p.org))}</span><span class="tl-dates">${txt(p.dates)}</span></li>`).join('');
     const summary = msg('overview', `
-      <p class="section-lede">${positions.length} roles, from government health research to marketing and business development.</p>
+      <p class="section-lede">${positions.length} roles, from government health research to technical operations.</p>
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
       <div class="role-head role-head-multi">
