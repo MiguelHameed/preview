@@ -11,7 +11,7 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'What I finished, and what changed', view: true }] : []),
+    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Work', sub: 'My own projects', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience' },
@@ -117,10 +117,11 @@
     return divider(c) + S.selectedWork.map((w, i) => {
       const meta = [w.year, ...(w.tags || [])].filter(Boolean).map(esc).join(' &middot; ');
       const rows = [
-        ['Result', w.result], ['What I own', w.owns], ['Where it stops', w.stops],
+        ['What it is', w.what], ['What I built', w.built], ['Result', w.result],
+        ['What I own', w.owns], ['Where it stops', w.stops],
         ['Problem', w.problem], ['What I did', w.did],
-      ].filter(([, v]) => v).map(([k, v]) => `
-        <p class="school-line"><span class="label">${k}</span> ${esc(v)}</p>`).join('');
+      ].filter(([, v]) => v && txt(v)).map(([k, v]) => `
+        <p class="school-line"><span class="label">${k}</span> ${txt(v)}</p>`).join('');
       const specs = (w.specs || []).map((sp) => `${esc(sp.value)} <span class="spec-of">${esc(sp.label)}</span>`).join(' &middot; ');
       return msg(`work ${i + 1} of ${n}`, `
       <h3 class="work-title">${esc(w.title)}</h3>

@@ -31,49 +31,25 @@ window.SITE = {
     { hook: 'First pass, last word', line: 'AI drafts the repetitive part; I review everything before it ships.', href: '#selected-work' },
   ],
 
-  workSetName: 'things I finished', // Claude's wording, 2 Oct — Miguel to confirm
+  workSetName: 'projects',
 
   selectedWork: [
     {
-      title: 'Partner pipeline cleanup',
-      result: 'Audited 23 partner records across three lists in a day, wrote 21 dated notes, and brought eighteen stale records back inside the 14-day rule.',
-      specs: [
-        { value: 'ClickUp', label: 'system' },
-        { value: '23 records', label: 'across 3 lists' },
-        { value: '14 days', label: 'staleness rule' },
-      ],
+      title: 'MAPA',
+      year: 'In progress · my own project',
+      what: "A real-time navigation and road-passability app for Metro Manila's drivers and on-demand riders, including flood-prone roads.",
+      built: 'TODO: where MAPA is at and what exists so far',
+      specs: [],
     },
     {
-      title: 'Sales-enablement pack',
-      result: 'Built the sales-enablement pack in two days: four competitor teardowns, a battlecard, six objection scripts, a one-pager, a win/loss spec and a decision memo.',
+      title: 'miguelhameed.com',
+      year: 'Live · this site',
+      what: 'The site you are reading. Plain HTML, CSS and JavaScript, no framework, hosted on GitHub Pages.',
+      built: 'I set the direction, wrote the words, and reviewed every change on a staging copy before it reached the live domain.',
       specs: [
-        { value: 'Two days', label: 'start to finish' },
-        { value: 'Quarterly', label: 'monitoring run' },
-      ],
-    },
-    {
-      title: 'Blog pipeline',
-      result: 'Wrote 24 articles for the company blog, then reviewed and annotated the full 72-post corpus.',
-      specs: [
-        { value: '24', label: 'articles written' },
-        { value: '72', label: 'posts reviewed' },
-      ],
-    },
-    {
-      title: 'Marketing site quality',
-      result: 'Shipped ten pull requests to the marketing site in one week, backed by twelve Lighthouse audits and a 41-page crawl at phone width.',
-      specs: [
-        { value: 'GitHub', label: 'system' },
-        { value: '12', label: 'Lighthouse audits' },
-        { value: '41 pages', label: 'crawled at 370px' },
-      ],
-    },
-    {
-      title: 'ClickUp agents and AI Skills',
-      result: 'Built Cloud Sentry’s ClickUp super agents and two AI Skills, demoed both to the team, and hold the open audit into workspace AI credit use.',
-      specs: [
-        { value: 'ClickUp', label: 'system' },
-        { value: 'Two', label: 'AI Skills' },
+        { value: 'Staging first', label: 'nothing ships unreviewed' },
+        { value: '16', label: 'automated checks per release' },
+        { value: '100', label: 'accessibility and SEO' },
       ],
     },
   ],
