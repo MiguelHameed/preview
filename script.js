@@ -12,10 +12,10 @@
 
   const CHANNELS = [
     ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'Mine, not a client’s', view: true }] : []),
-    { id: 'about', title: 'About', sub: 'Medical technologist to operations' },
+    { id: 'about', title: 'About', sub: 'Trained in science, ended up in systems' },
     { id: 'skills', title: 'Skills', sub: 'What I do, and what I use' },
     { id: 'experience', title: 'Experience' },
-    { id: 'education', title: 'Education', sub: 'Where I trained' },
+    { id: 'education', title: 'Education' },
     { id: 'proof', title: 'Credentials', sub: 'What can be checked' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
     { id: 'contact', title: 'Contact', sub: 'Find a time to talk' },
@@ -66,7 +66,7 @@
     </article>`;
   const divider = (c) => `
     <h2 class="channel-divider" id="${c.id}" data-section="${c.id}">
-      <span class="hash">#</span>${c.title}${c.sub ? `<span class="divider-sub">${esc(c.sub)}</span>` : ''}
+      <span class="hash">#</span>${c.title}${c.sub ? `<span class="divider-sub"><span class="divider-dash" aria-hidden="true">—</span> ${esc(c.sub)}</span>` : ''}
     </h2>`;
   const buttons = (attr = '', withLinkedIn = true) => `
     <div class="actions" ${attr}>
@@ -280,7 +280,10 @@
         <!-- "local time" said what "based in" already said. The offset lets anyone work out the gap
              without arithmetic; the clock saves them doing it at all. -->
         <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
-        <li><span class="label">Status</span><span><i class="dot-good"></i> ${esc(P.availability)}</span></li>
+        <!-- No dot here (Miguel, 2 Oct). The label already says "Status" and the words already say he is
+             open, so the marker was the third thing saying one fact — and green is the only green in
+             the pane. The sidebar keeps its dot: there the chat metaphor earns it. -->
+        <li><span class="label">Status</span><span>${esc(P.availability)}</span></li>
       </ul>
       ${buttons('data-contact-actions', false)}`) + `<p class="end">— end of conversation —</p>`;
   }

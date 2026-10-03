@@ -154,7 +154,8 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
 /* small labels: Inter, quiet, slightly open â€” replaces the monospace that had spread across the page */
 .label, .divider-sub, .work-no, .spec-label, .proof-kind, .tl-dates, .where,
-.attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label,
+.attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label, .divider-dash,
+.divider-dash { opacity: 0.55; margin-right: 2px; }
 .earlier-head {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
 }
@@ -686,7 +687,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 /* An earlier title held at the same employer. Indented under the current one and set a size down, so the
    row still reads as one job with a step inside it rather than two separate jobs. */
 .role-earlier { margin-top: 14px; padding-left: 14px; border-left: 1px solid var(--line); }
-.role-earlier .earlier-head { margin-bottom: 10px; }
+.role-earlier .divider-dash { opacity: 0.55; margin-right: 2px; }
+.earlier-head { margin-bottom: 10px; }
 .role-earlier .earlier-head strong { color: var(--ink); font-weight: 600; letter-spacing: normal; }
 .role-earlier .points { color: var(--muted); }
 
