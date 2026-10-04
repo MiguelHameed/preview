@@ -495,6 +495,11 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(1.08); }
+/* A brand mark inside a button: the same tile the Apps list uses, so LinkedIn looks like LinkedIn
+   rather than a bare arrow. The trailing arrow stays, quieter, to say the link leaves the site. */
+.btn-mark { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 5px; flex: none; }
+.btn-mark svg { width: 13px; height: 13px; fill: #fff; }
+.btn-brand .ext { margin-left: 2px; }
 
 /* placeholder for channels not built yet */
 .building {

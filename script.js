@@ -72,7 +72,7 @@
     <div class="actions" ${attr}>
       ${S.showCv === false ? '' : `<a class="btn btn-primary" href="${esc(P.cv)}" target="_blank" rel="noopener">Download CV</a>`}
       <a class="btn ${S.showCv === false ? 'btn-primary' : ''}" href="mailto:${esc(P.email)}">Let's find a time!</a>
-      ${withLinkedIn ? `<a class="btn" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>` : ''}
+      ${withLinkedIn ? `<a class="btn btn-brand" href="${esc(P.linkedin)}" target="_blank" rel="noopener"><span class="btn-mark app-linkedin">${ICONS.linkedin}</span>LinkedIn<span class="ext" aria-hidden="true">↗</span></a>` : ''}
     </div>`;
 
   function introPhoto() {
