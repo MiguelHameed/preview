@@ -495,11 +495,13 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(1.08); }
-/* A brand mark inside a button: the same tile the Apps list uses, so LinkedIn looks like LinkedIn
-   rather than a bare arrow. The trailing arrow stays, quieter, to say the link leaves the site. */
-.btn-mark { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 5px; flex: none; }
-.btn-mark svg { width: 13px; height: 13px; fill: #fff; }
-.btn-brand .ext { margin-left: 2px; }
+/* The LinkedIn mark takes the button's own colour (Miguel, 3 Oct) — no white tile, no LinkedIn blue.
+   Both were tried: a blue tile looked stuck on, and a fully blue button competed with the primary action
+   beside it. The glyph is enough to say whose it is; the theme says whose site it is. */
+.btn-mark { display: grid; place-items: center; width: 20px; height: 20px; flex: none; }
+.btn-mark svg { width: 17px; height: 17px; fill: currentColor; }
+/* .ext defaults to var(--muted), which went grey beside accent-coloured text. */
+.btn-brand .ext { margin-left: 2px; color: inherit; opacity: 0.7; }
 
 /* placeholder for channels not built yet */
 .building {
