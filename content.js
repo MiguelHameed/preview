@@ -21,7 +21,7 @@ window.SITE = {
     avatar: 'images/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
   },
 
-  tags: ['marketing-operations', 'business-development', 'ai-workflows'],
+  tags: ['marketing-operations', 'business-development', 'ai-operations'],
 
   highlights: [],
 
