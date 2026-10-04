@@ -303,7 +303,9 @@
   const workRow = workChannel ? `
     <a class="section-row" href="#${workChannel.id}">
       <span class="section-row-label">${esc(workChannel.title)}</span>
-      <span class="section-row-title">${esc(COUNT_WORDS[S.projects.length] || S.projects.length)} ${esc(S.workSetName || '')}</span>
+      <!-- Named, not counted (Miguel, 3 Oct): "Two projects" told a reader nothing. Update
+           workSetName when a project is added or removed. -->
+      <span class="section-row-title">${esc(S.workSetName || '')}</span>
       <span class="section-row-go">Open &rarr;</span>
     </a>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
