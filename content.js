@@ -207,8 +207,8 @@ window.SITE = {
         { label: 'Certificate', value: '8a2eyxevcezx' },
       ],
       story: [
-        'ClickUp is where my work actually happens. Everything I run lives in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
-        'I took the certification in June 2025. Since then I have built agents, written two AI Skills, and run an audit into how AI credits get used.',
+        'ClickUp is where my work actually happens, and I took the certification in June 2025. Everything I run lives in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
+        'I have built in it ever since: workspaces architected from the ground up, automations that run unattended, integrations out to the tools around them, AI agents, two AI Skills of my own, and an audit of where the credits actually go. I do not use ClickUp. I build the thing other people then work inside.',
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
