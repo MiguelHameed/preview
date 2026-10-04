@@ -23,13 +23,7 @@ window.SITE = {
 
   tags: ['marketing-operations', 'business-development', 'ai-workflows'],
 
-  highlights: [
-    { hook: 'Five workstreams, one desk', line: 'partnerships, the website, competitive intelligence, content, outbound.', href: '#projects' },
-    { hook: 'Owned end to end', line: 'research, enrichment, briefs and sequencing, handed over ready to send.', href: '#projects' },
-    { hook: 'House rules', line: 'I wrote the operating agreement the work runs on.', href: '#projects' },
-    { hook: 'Order restored', line: 'a partner pipeline untouched since April, current again in a day.', href: '#projects' },
-    { hook: 'First pass, last word', line: 'AI drafts the repetitive part; I review everything before it ships.', href: '#projects' },
-  ],
+  highlights: [],
 
   workSetName: '',
 
@@ -213,8 +207,8 @@ window.SITE = {
         { label: 'Certificate', value: '8a2eyxevcezx' },
       ],
       story: [
-        'ClickUp is where my work actually happens. Five workstreams, their charters, the partner records, the blog pipeline and the weekly figures all live in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
-        'I took the certification in June 2025. Since then I have built the super agents the team uses, written two AI Skills, and taken on the audit into the workspace’s AI credit use.',
+        'ClickUp is where my work actually happens. Everything I run lives in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
+        'I took the certification in June 2025. Since then I have built agents, written two AI Skills, and run an audit into how AI credits get used.',
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
