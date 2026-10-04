@@ -195,7 +195,7 @@ window.SITE = {
   credentials: [
     {
       kind: 'Certification', title: 'Certified ClickUp Expert',
-      topic: "ClickUp's own certification, June 2025. It's the system five of my workstreams run on.",
+      topic: "ClickUp's own certification. It is the system my work runs on.",
       logo: 'images/logos/clickup.png',
       link: 'https://verify.skilljar.com/c/8a2eyxevcezx',
       linkLabel: 'Verify on Skilljar',
@@ -208,7 +208,7 @@ window.SITE = {
       ],
       story: [
         'ClickUp is where my work actually happens, and I took the certification in June 2025. Everything I run lives in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
-        'I have built in it ever since: workspaces architected from the ground up, automations that run unattended, integrations out to the tools around them, AI agents, two AI Skills of my own, and an audit of where the credits actually go. I do not use ClickUp. I build the thing other people then work inside.',
+        'I have built in it ever since: workspaces architected from the ground up, automations that run unattended, integrations out to the tools around them, AI agents, AI Skills of my own, and an audit of where the credits actually go. I do not use ClickUp. I build the thing other people then work inside.',
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
