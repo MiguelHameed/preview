@@ -41,9 +41,9 @@ window.SITE = {
       what: 'The site you are reading. Plain HTML, CSS and JavaScript, no framework, hosted on GitHub Pages.',
       built: 'I set the direction, wrote the words, and reviewed every change on a staging copy before it reached the live domain.',
       specs: [
-        { value: 'Staging first', label: 'nothing ships unreviewed' },
-        { value: '16', label: 'automated checks per release' },
-        { value: '100', label: 'accessibility and SEO' },
+        { value: 'Staged releases', label: 'every change reviewed on a copy first' },
+        { value: 'Regression suite', label: '16 checks, run against the real site' },
+        { value: 'Lighthouse 100', label: 'accessibility and SEO' },
       ],
     },
   ],
