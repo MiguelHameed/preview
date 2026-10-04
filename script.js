@@ -11,12 +11,12 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.selectedWork.length ? [{ id: 'selected-work', title: 'Projects', sub: 'One of these is the page you’re on.', view: true }] : []),
+    ...(S.projects.length ? [{ id: 'projects', title: 'Projects', sub: 'One of these is the page you’re on.', view: true }] : []),
     { id: 'about', title: 'About', sub: 'Trained in science, ended up in systems' },
     { id: 'skills', title: 'Skills', sub: 'This is the list, minus the ones that I’d have to google.' },
     { id: 'experience', title: 'Experience' },
     { id: 'education', title: 'Education' },
-    { id: 'proof', title: 'Credentials', sub: 'Click it, I’ll wait.' },
+    { id: 'credentials', title: 'Credentials', sub: 'Click it, I’ll wait.' },
     ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
     { id: 'contact', title: 'Contact', sub: 'Yes, that’s my actual email.' },
   ];
@@ -51,7 +51,7 @@
   const avatarLive = (cls, alt) => `<span class="avatar-live">${avatarEl(cls, alt)}<i class="live-dot" title="Open to work anywhere"></i></span>`;
   $$('[data-headshot]').forEach((el) => { el.outerHTML = avatarLive('side-avatar', ''); });
 
-  if (!S.selectedWork.length) { const w = $('.rail [data-rail="work"]'); if (w) w.remove(); }
+  if (!S.projects.length) { const w = $('.rail [data-rail="projects"]'); if (w) w.remove(); }
 
   const manilaTime = () => new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit' }).format(new Date());
 
@@ -112,9 +112,9 @@
 
   const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
-  function selectedWork(c) {
-    const n = S.selectedWork.length;
-    return divider(c) + S.selectedWork.map((w, i) => {
+  function projects(c) {
+    const n = S.projects.length;
+    return divider(c) + S.projects.map((w, i) => {
       const meta = [w.year, ...(w.tags || [])].filter(Boolean).map(esc).join(' &middot; ');
       const rows = [
         ['What it is', w.what], ['What I built', w.built], ['Result', w.result],
@@ -229,9 +229,9 @@
 
   const hasSheet = (p) => Boolean(p.image || (p.meta && p.meta.length) || (p.story && p.story.length));
 
-  function proof(c) {
+  function credentials(c) {
     return divider(c) + msg('credentials', `
-      <ul class="cred-rows">${S.proof.map((p, i) => {
+      <ul class="cred-rows">${S.credentials.map((p, i) => {
         const opens = hasSheet(p);
         const tag = opens ? 'button' : (p.link ? 'a' : 'div');
         const attrs = opens ? ` type="button" data-sheet="${i}"`
@@ -296,14 +296,14 @@
       </figure>`).join('')}</div>`;
   }
 
-  const builders = { 'selected-work': selectedWork, experience, skills, education, proof, testimonials, about, contact };
+  const builders = { projects, experience, skills, education, credentials, testimonials, about, contact };
   const feed = $('#feed');
   const scrollChannels = CHANNELS.filter((c) => !c.view);
   const workChannel = CHANNELS.find((c) => c.view);
   const workRow = workChannel ? `
     <a class="section-row" href="#${workChannel.id}">
       <span class="section-row-label">${esc(workChannel.title)}</span>
-      <span class="section-row-title">${esc(COUNT_WORDS[S.selectedWork.length] || S.selectedWork.length)} ${esc(S.workSetName || '')}</span>
+      <span class="section-row-title">${esc(COUNT_WORDS[S.projects.length] || S.projects.length)} ${esc(S.workSetName || '')}</span>
       <span class="section-row-go">Open &rarr;</span>
     </a>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
@@ -331,7 +331,7 @@
   }
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
-  const VIEW_PATH = { 'selected-work': 'projects/' };
+  const VIEW_PATH = { projects: 'projects/' };
   const ROOT = SITE_ROOT;
   const urlFor = (id) => ROOT + (id && VIEW_PATH[id] ? VIEW_PATH[id] : '');
   const viewFromPath = () => {
@@ -341,7 +341,16 @@
   };
 
   function openFromHash(replace) {
-    const hashId = location.hash.slice(1);
+    const RENAMED = { 'selected-work': 'projects', proof: 'credentials' };
+    const raw = location.hash.slice(1);
+    const hashId = RENAMED[raw] || raw;
+    if (RENAMED[raw] && !CHANNELS.some((c) => c.view && c.id === hashId)) {
+      const el = document.getElementById(hashId);
+      if (el) {
+        history.replaceState(null, '', '#' + hashId);
+        el.scrollIntoView();
+      }
+    }
     const hashIsView = CHANNELS.some((c) => c.view && c.id === hashId);
     const id = hashIsView ? hashId : viewFromPath();
     showView(id);
@@ -407,7 +416,7 @@
     subEl.textContent = c ? (c.sub || '') : `${P.role} · ${P.location}`;
     $$('[data-channel]').forEach((a) => a.classList.toggle('is-active', a.dataset.channel === (c ? c.id : 'intro')));
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
-      c ? (c.id === 'selected-work' ? b.dataset.rail === 'work' : false) : b.dataset.rail === 'home'));
+      c ? (c.id === 'projects' ? b.dataset.rail === 'projects' : false) : b.dataset.rail === 'home'));
   }
   $$('a[href^="#"]').forEach((link) => {
     const id = link.getAttribute('href').slice(1);
@@ -435,7 +444,7 @@
   }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
   sections.forEach((s) => spy.observe(s));
   setActive('intro');
-  openFromHash(true); // honour a link like miguelhameed.com/#selected-work
+  openFromHash(true); // honour a link like miguelhameed.com/#projects, old fragments included
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) {
@@ -523,7 +532,7 @@
   document.addEventListener('click', (e) => {
     const card = e.target.closest ? e.target.closest('[data-sheet]') : null;
     if (!card) return;
-    const p = S.proof[Number(card.dataset.sheet)];
+    const p = S.credentials[Number(card.dataset.sheet)];
     if (p) openSheet(p, card);
   });
 
