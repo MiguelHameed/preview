@@ -495,13 +495,14 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(1.08); }
-/* The LinkedIn mark takes the button's own colour (Miguel, 3 Oct) — no white tile, no LinkedIn blue.
-   Both were tried: a blue tile looked stuck on, and a fully blue button competed with the primary action
-   beside it. The glyph is enough to say whose it is; the theme says whose site it is. */
+/* The LinkedIn button is the mark alone (Miguel, 4 Oct), in the button's own colour — no white tile,
+   no LinkedIn blue, no word. Earlier attempts: a blue tile looked stuck on, a fully blue button competed
+   with the primary action, and the word made it as wide as the thing it sits beside. The glyph says whose
+   it is; the theme says whose site it is. It keeps the 44px height so it stays a real tap target, and
+   carries an aria-label because there is no longer any text to read. */
 .btn-mark { display: grid; place-items: center; width: 20px; height: 20px; flex: none; }
 .btn-mark svg { width: 17px; height: 17px; fill: currentColor; }
-/* .ext defaults to var(--muted), which went grey beside accent-coloured text. */
-.btn-brand .ext { margin-left: 2px; color: inherit; opacity: 0.7; }
+.btn-brand { padding-left: 14px; padding-right: 14px; }
 
 /* placeholder for channels not built yet */
 .building {
