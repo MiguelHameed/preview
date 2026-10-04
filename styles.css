@@ -495,14 +495,20 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(1.08); }
-/* The LinkedIn button is the mark alone (Miguel, 4 Oct), in the button's own colour — no white tile,
-   no LinkedIn blue, no word. Earlier attempts: a blue tile looked stuck on, a fully blue button competed
-   with the primary action, and the word made it as wide as the thing it sits beside. The glyph says whose
-   it is; the theme says whose site it is. It keeps the 44px height so it stays a real tap target, and
-   carries an aria-label because there is no longer any text to read. */
+/* The word and an arrow (Miguel, 4 Oct), which is the shape he wanted all along. The arrow used to be
+   the text character ↗: it sat high above the baseline, drew at the font's own weight rather than the
+   button's, and sheared differently in every face. This is drawn instead — same stroke weight as the
+   text, aligned to it, and it nudges on hover so the button has somewhere to go.
+   Tried and rejected on the way here: a blue tile, a solid LinkedIn-blue button, a blue outline, and the
+   mark on its own without the word. */
+.btn-arrow {
+  width: 13px; height: 13px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0.8; transition: transform 0.18s var(--ease), opacity 0.18s;
+}
+.btn:hover .btn-arrow { opacity: 1; transform: translate(1.5px, -1.5px); }
 .btn-mark { display: grid; place-items: center; width: 20px; height: 20px; flex: none; }
 .btn-mark svg { width: 17px; height: 17px; fill: currentColor; }
-.btn-brand { padding-left: 14px; padding-right: 14px; }
 
 /* placeholder for channels not built yet */
 .building {
