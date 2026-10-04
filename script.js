@@ -302,10 +302,10 @@
   const workChannel = CHANNELS.find((c) => c.view);
   const workRow = workChannel ? `
     <a class="section-row" href="#${workChannel.id}">
-      <span class="section-row-label">${esc(workChannel.title)}</span>
-      <!-- Named, not counted (Miguel, 3 Oct): "Two projects" told a reader nothing. Update
-           workSetName when a project is added or removed. -->
-      <span class="section-row-title">${esc(S.workSetName || '')}</span>
+      <!-- Just the channel name (Miguel, 3 Oct). It used to be a small grey label with a separate title
+           beside it; the title said "Two projects", which told a reader nothing, and once that came off
+           the row looked unfinished. The name sits in the title position now and the row is a door. -->
+      <span class="section-row-title">${esc(workChannel.title)}</span>
       <span class="section-row-go">Open &rarr;</span>
     </a>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');

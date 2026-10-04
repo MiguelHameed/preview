@@ -31,7 +31,7 @@ window.SITE = {
     { hook: 'First pass, last word', line: 'AI drafts the repetitive part; I review everything before it ships.', href: '#projects' },
   ],
 
-  workSetName: 'MAPA, and the site you’re reading', // names them instead of counting them
+  workSetName: '',
 
   projects: [
     {

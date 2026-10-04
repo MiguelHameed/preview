@@ -645,7 +645,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 /* experience */
 /* a row that opens the Work view, after snohetta.com's list rows */
 .section-row {
-  display: grid; grid-template-columns: 90px minmax(0, 1fr) auto; gap: 18px; align-items: baseline;
+  /* Two columns since the row lost its separate label: the name, then the link pushed to the edge. */
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: baseline;
   margin: 30px 0 10px; padding: 18px 0; text-decoration: none; color: var(--ink);
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
