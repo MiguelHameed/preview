@@ -3,7 +3,7 @@
   const P = S.person;
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const esc = (t) => (t === null || t === undefined ? '' : String(t)).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   const isTodo = (t) => typeof t === 'string' && /^TODO/i.test(t);
   const txt = (t) => isTodo(t)
@@ -245,7 +245,7 @@
             <span class="cred-body">
               <span class="cred-kind label">${esc(p.kind)}</span>
               <strong class="cred-title">${txt(p.title)}</strong>
-              ${txt(p.topic) ? `<span class="cred-topic">${txt(p.topic)}</span>` : ''}
+              ${p.topic && txt(p.topic) ? `<span class="cred-topic">${txt(p.topic)}</span>` : ''}
             </span>
             ${cue ? `<span class="cred-cue">${cue}</span>` : ''}
           </${tag}>

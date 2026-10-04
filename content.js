@@ -183,8 +183,6 @@ window.SITE = {
     ],
   },
 
-  learning: 'Microsoft SC-300 and SC-200', // shown at the foot of Education as "studying now"
-
   skills: [
     { group: 'Marketing operations',
       does: ['Content pipeline management', 'Editorial workflows', 'Content writing and editing'],
@@ -219,6 +217,10 @@ window.SITE = {
         'I took the certification in June 2025. Since then I have built the super agents the team uses, written two AI Skills, and taken on the audit into the workspace’s AI credit use.',
       ],
     },
+    { kind: 'Studying for it · Microsoft', title: 'SC-300: Identity and Access Administrator',
+      logo: 'images/logos/sc-300.png', topic: 'Exam not yet taken.' },
+    { kind: 'Studying for it · Microsoft', title: 'SC-200: Security Operations Analyst',
+      logo: 'images/logos/sc-200.png', topic: 'Exam not yet taken.' },
   ],
 
   files: [],
