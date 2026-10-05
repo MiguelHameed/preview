@@ -659,15 +659,17 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 /* experience */
 /* a row that opens the Work view, after snohetta.com's list rows */
 .section-row {
-  /* Two columns since the row lost its separate label: the name, then the link pushed to the edge. */
-  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: baseline;
+  /* Three columns with the first left empty (Miguel, 4 Oct): the name sits centred in the row while
+     Open stays pinned right where it is on every other link. Two columns put the name hard left and
+     left a hole in the middle. */
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: baseline;
   margin: 30px 0 10px; padding: 18px 0; text-decoration: none; color: var(--ink);
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
 .section-row:hover { border-color: var(--accent); }
 .section-row-label { font-size: var(--t-sm); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--muted); }
-.section-row-title { font-size: var(--t-lg); font-weight: 600; letter-spacing: var(--track-head); }
-.section-row-go { font-size: var(--t-sm); color: var(--muted); }
+.section-row-title { grid-column: 2; font-size: var(--t-lg); font-weight: 600; letter-spacing: var(--track-head); }
+.section-row-go { grid-column: 3; justify-self: end; font-size: var(--t-sm); color: var(--muted); }
 .section-row:hover .section-row-go { color: var(--accent); }
 
 .timeline { list-style: none; display: grid; gap: 0; max-width: 760px; }
@@ -890,7 +892,11 @@ body.sheet-open { overflow: hidden; }
   .school-line { grid-template-columns: 1fr; gap: 2px; }
   .cert-head { grid-template-columns: 1fr; }
   .tl-dates { text-align: left; }
+  /* One column on a phone, so the explicit column numbers come off too — left on, they pushed the
+     name into an implicit track and knocked it 79px off centre. Stacked and left-aligned here:
+     centring a two-line row on a narrow screen reads as an accident. */
   .section-row { grid-template-columns: 1fr; gap: 6px; }
+  .section-row-title, .section-row-go { grid-column: auto; justify-self: start; }
   .specs { gap: 18px 24px; }
   .set-name { font-family: var(--display); margin-left: 0; }
   .view-back { margin-left: 0; }
