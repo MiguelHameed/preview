@@ -273,8 +273,7 @@
 
   function contact(c) {
     return divider(c) + msg('contact', `
-      <!-- closing line: Miguel's favourite, keep as is (22 Sep) -->
-      <p class="section-lede">If you're building a team that needs work to run on rails, I'd like to hear about it.</p>
+      <p class="section-lede">${esc(S.contactLine)}</p>
       <ul class="contact-list">
         <li><span class="label">Email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
         <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>

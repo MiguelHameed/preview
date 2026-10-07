@@ -181,7 +181,19 @@
     <div class="sheet-body" id="sheet-body"></div>
   </div>
 
-  <script src="content.js"></script>
+  <!-- The site's words, one file per channel (7 Oct). They load in this order and each adds its piece
+       to window.SITE, so the browser assembles them — there is no build step. Order only matters in
+       that settings.js comes first; the rest are independent. -->
+  <script src="content/settings.js"></script>
+  <script src="content/person.js"></script>
+  <script src="content/projects.js"></script>
+  <script src="content/about.js"></script>
+  <script src="content/skills.js"></script>
+  <script src="content/experience.js"></script>
+  <script src="content/education.js"></script>
+  <script src="content/credentials.js"></script>
+  <script src="content/testimonials.js"></script>
+  <script src="content/contact.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
