@@ -77,7 +77,7 @@
 
   function introPhoto() {
     if (P.headshot && !/placeholder/.test(P.headshot)) {
-      return `<img class="intro-photo" src="${esc(asset(P.headshot))}" srcset="${esc(asset('images/headshot-240.jpg'))} 240w, ${esc(asset(P.headshot))} 480w"
+      return `<img class="intro-photo" src="${esc(asset(P.headshot))}" srcset="${esc(asset('images/site/headshot-240.jpg'))} 240w, ${esc(asset(P.headshot))} 480w"
                    sizes="(max-width: 767px) 110px, 220px" alt="${esc(P.name)}" width="480" height="480" fetchpriority="high" />`;
     }
     return `<div class="intro-photo is-empty" role="img" aria-label="Photo coming soon">

@@ -17,8 +17,8 @@ window.SITE = {
     instagram: 'https://www.instagram.com/miggybop/', // set to null to take it off the site
     cv: 'cv.pdf',
     motto: "I find what's broken, fix it, and keep it moving.",
-    headshot: 'images/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
-    avatar: 'images/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
+    headshot: 'images/site/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
+    avatar: 'images/site/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
   },
 
   tags: ['marketing-operations', 'business-development', 'ai-operations'],
@@ -59,7 +59,7 @@ window.SITE = {
       role: 'Technical Operations Specialist', // Miguel's choice, 22 Sep: Work Summary title, shortened
       type: 'Freelance',
       org: 'Cloud Sentry Solutions',
-      logo: 'images/logos/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
+      logo: 'images/experience/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
       dates: 'April, 2025 – Present', // alongside DOH until Jan 2026
       points: [
@@ -72,7 +72,7 @@ window.SITE = {
     {
       role: 'Health Program Officer II',
       org: 'Department of Health – Metro Manila Center for Health Development',
-      logo: 'images/logos/doh.png', // official DOH seal (Wikimedia Commons)
+      logo: 'images/experience/doh.png', // official DOH seal (Wikimedia Commons)
       place: 'Mandaluyong City, Philippines',
       dates: 'April, 2025 – January, 2026',
       certificates: [
@@ -101,7 +101,7 @@ window.SITE = {
     {
       role: 'Project Technical Specialist I',
       org: 'DOST – Food and Nutrition Research Institute',
-      logo: 'images/logos/dost-fnri.png',
+      logo: 'images/experience/dost-fnri.png',
       place: 'Taguig City, Philippines',
       dates: 'September, 2023 – August, 2024',
       ownDates: 'November, 2023 – August, 2024', // this title alone; the row header carries the whole FNRI span
@@ -124,7 +124,7 @@ window.SITE = {
   schools: [
     {
       school: 'Far Eastern University – Manila',
-      logo: 'images/logos/feu.png', // Miguel supplied a cleaner seal, 2 Oct 2026, replacing the Wikipedia one
+      logo: 'images/education/feu.png', // Miguel supplied a cleaner seal, 2 Oct 2026, replacing the Wikipedia one
       initials: 'FEU',
       award: 'Bachelor of Science, Major in Medical Technology',
       place: 'Sampaloc, Manila',
@@ -146,7 +146,7 @@ window.SITE = {
     },
     {
       school: 'Centro Escolar University – Manila',
-      logo: 'images/logos/ceu.png', // Miguel supplied the mark, 2 Oct 2026
+      logo: 'images/education/ceu.png', // Miguel supplied the mark, 2 Oct 2026
       initials: 'CEU',
       award: 'Science, Technology, Engineering and Mathematics',
       place: 'San Miguel, Manila',
@@ -196,10 +196,10 @@ window.SITE = {
     {
       kind: 'Certification', title: 'Certified ClickUp Expert',
       topic: "ClickUp's own certification. It is the system my work runs on.",
-      logo: 'images/logos/clickup.png',
+      logo: 'images/credentials/clickup.png',
       link: 'https://verify.skilljar.com/c/8a2eyxevcezx',
       linkLabel: 'Verify on Skilljar',
-      image: 'images/proof/clickup-certificate.jpg',
+      image: 'images/credentials/clickup-certificate.jpg',
       imageAlt: 'ClickUp Certificate of Completion, Expert level, issued 16 June 2025',
       meta: [
         { label: 'Issuer', value: 'ClickUp' },
@@ -212,9 +212,9 @@ window.SITE = {
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
-      logo: 'images/logos/sc-300.png', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-300.png', topic: 'Exam not yet taken.' },
     { kind: 'In progress · Microsoft', title: 'SC-200: Security Operations Analyst',
-      logo: 'images/logos/sc-200.png', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-200.png', topic: 'Exam not yet taken.' },
   ],
 
   files: [],
