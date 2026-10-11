@@ -118,7 +118,6 @@
                     ? `<a class="hook" href="${esc(h.href)}">${esc(h.hook)}</a>`
                     : `<span class="hook">${esc(h.hook)}</span>`}: ${esc(h.line)}</li>`)).join('')}</ul>` : ''}
             </div>
-            <!-- Photo removed 1 Oct at Miguel's request. introPhoto() is still defined; put it back here. -->
           </div>
         </div>
       </article>`;
@@ -307,12 +306,7 @@
       <ul class="contact-list">
         <li><span class="label">Email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
         <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} <span aria-hidden="true">↗</span>${NEW_TAB}</a></li>
-        <!-- "local time" said what "based in" already said. The offset lets anyone work out the gap
-             without arithmetic; the clock saves them doing it at all. -->
         <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
-        <!-- No dot here (Miguel, 2 Oct). The label already says "Status" and the words already say he is
-             open, so the marker was the third thing saying one fact — and green is the only green in
-             the pane. The sidebar keeps its dot: there the chat metaphor earns it. -->
         <li><span class="label">Status</span><span>${esc(P.availability)}</span></li>
       </ul>
       ${buttons('data-contact-actions', false)}`) + `<p class="end">— end of conversation —</p>`;
@@ -332,9 +326,6 @@
   const workChannel = CHANNELS.find((c) => c.view);
   const workRow = workChannel ? `
     <a class="section-row" href="#${workChannel.id}">
-      <!-- Just the channel name (Miguel, 3 Oct). It used to be a small grey label with a separate title
-           beside it; the title said "Two projects", which told a reader nothing, and once that came off
-           the row looked unfinished. The name sits in the title position now and the row is a door. -->
       <span class="section-row-title">${esc(workChannel.title)}</span>
       <span class="section-row-go">Open &rarr;</span>
     </a>` : '';

@@ -5,7 +5,7 @@ Object.assign(window.SITE, {
   schools: [
     {
       school: 'Far Eastern University – Manila',
-      logo: 'images/education/feu.png', // Miguel supplied a cleaner seal, 2 Oct 2026, replacing the Wikipedia one
+      logo: 'images/education/feu.png',
       initials: 'FEU',
       award: 'Bachelor of Science, Major in Medical Technology',
       place: 'Sampaloc, Manila',
@@ -27,7 +27,7 @@ Object.assign(window.SITE, {
     },
     {
       school: 'Centro Escolar University – Manila',
-      logo: 'images/education/ceu.png', // Miguel supplied the mark, 2 Oct 2026
+      logo: 'images/education/ceu.png',
       initials: 'CEU',
       award: 'Science, Technology, Engineering and Mathematics',
       place: 'San Miguel, Manila',

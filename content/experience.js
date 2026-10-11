@@ -3,12 +3,12 @@ window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
   experience: [
     {
-      role: 'Technical Operations Specialist', // Miguel's choice, 22 Sep: Work Summary title, shortened
+      role: 'Technical Operations Specialist',
       type: 'Freelance',
       org: 'Cloud Sentry Solutions',
-      logo: 'images/experience/cloud-sentry.webp', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
+      logo: 'images/experience/cloud-sentry.webp',
       place: 'New Hampshire, New England',
-      dates: 'April, 2025 – Present', // alongside DOH until Jan 2026
+      dates: 'April, 2025 – Present',
       points: [
         'ClickUp workspace architecture for Service Pyramid delivery.',
         'Automation of recurring L1 controls monitoring (onboarding, access reviews, evidence collection).',
@@ -19,7 +19,7 @@ Object.assign(window.SITE, {
     {
       role: 'Health Program Officer II',
       org: 'Department of Health – Metro Manila Center for Health Development',
-      logo: 'images/experience/doh.webp', // official DOH seal (Wikimedia Commons)
+      logo: 'images/experience/doh.webp',
       place: 'Mandaluyong City, Philippines',
       dates: 'April, 2025 – January, 2026',
       certificates: [
@@ -51,7 +51,7 @@ Object.assign(window.SITE, {
       logo: 'images/experience/dost-fnri.webp',
       place: 'Taguig City, Philippines',
       dates: 'September, 2023 – August, 2024',
-      ownDates: 'November, 2023 – August, 2024', // this title alone; the row header carries the whole FNRI span
+      ownDates: 'November, 2023 – August, 2024',
       points: [
         'Conducted data collection and validation for the National Nutrition Survey, ensuring the accuracy and completeness of nutritional data.',
         'Collected, aliquoted and processed biological fluid samples through phlebotomy, to support the analysis of biochemical markers for the survey.',

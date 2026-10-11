@@ -3,8 +3,8 @@ window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
   person: {
     name: 'Miguel Irfan Hameed',
-    shortName: 'Miguel Irfan Hameed', // what the header and every message shows
-    role: 'Marketing Operations Specialist', // Miguel's main target (22 Sep); Technical Operations is the second track
+    shortName: 'Miguel Irfan Hameed',
+    role: 'Marketing Operations Specialist',
     storyStart: 'Grounded in science, fluent in data,',
     story: 'I now build the systems that turn strangers into partners.',
     location: 'Quezon City, Philippines',
@@ -12,15 +12,15 @@ Object.assign(window.SITE, {
     email: 'miguelhameed@gmail.com',
     linkedin: 'https://www.linkedin.com/in/miguelhameed',
     linkedinLabel: 'linkedin.com/in/miguelhameed',
-    instagram: 'https://www.instagram.com/miggybop/', // set to null to take it off the site
+    instagram: 'https://www.instagram.com/miggybop/',
     cv: 'cv.pdf',
     cta: "What's the project?",
-    booking: null,      // e.g. 'https://cal.com/…'
-    bookingCta: null,   // the words on the button
-    bookingNote: null,  // optional, e.g. how long the call is
+    booking: null,
+    bookingCta: null,
+    bookingNote: null,
     motto: "I find what's broken, fix it, and keep it moving.",
-    headshot: 'images/site/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
-    avatar: 'images/site/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
+    headshot: 'images/site/headshot.jpg',
+    avatar: 'images/site/headshot-avatar.jpg?v=2',
   },
 
   tags: ['marketing-operations', 'business-development', 'ai-operations'],
