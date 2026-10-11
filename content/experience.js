@@ -67,5 +67,4 @@ Object.assign(window.SITE, {
       },
     },
   ],
-
 });

@@ -26,5 +26,4 @@ Object.assign(window.SITE, {
     { kind: 'In progress · Microsoft', title: 'SC-200: Security Operations Analyst',
       logo: 'images/credentials/sc-200.webp', topic: 'Exam not yet taken.' },
   ],
-
 });

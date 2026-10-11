@@ -21,7 +21,22 @@
     { id: 'contact', title: 'Contact', sub: 'Yes, that’s my actual email.' },
   ];
 
+  const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/(?:projects|work)\/?$/, '').replace(/\/?$/, '/');
+  const asset = (u) => (!u || /^([a-z]+:)?\/\//i.test(u) || u.startsWith('/') || u.startsWith('data:') ? u : SITE_ROOT + u);
+
+  const NEW_TAB = '<span class="sr-only"> (opens in a new tab)</span>';
+
+  const hasBooking = Boolean(P.booking && P.bookingCta && !isTodo(P.bookingCta));
+  const CTA = hasBooking
+    ? { href: P.booking, label: P.bookingCta, ext: true, icon: 'calendar',
+        sub: P.bookingNote || P.booking.replace(/^https?:\/\//, '').replace(/\/.*$/, '') }
+    : { href: 'mailto:' + P.email, label: P.cta || P.email, ext: false, icon: 'email', sub: P.email };
+
+  const SHEETS = [];
+  const sheetAttr = (data) => ` type="button" data-sheet="${SHEETS.push(data) - 1}"`;
+
   const ICONS = {
+    calendar: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3" fill="#ffffff" stroke="#c8ccd1"/><path fill="#EA4335" d="M3 7.5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3V9H3z"/><rect x="7" y="12" width="3" height="3" rx=".6" fill="#3c4043"/><rect x="11.5" y="12" width="3" height="3" rx=".6" fill="#3c4043"/><rect x="7" y="16.2" width="3" height="2.4" rx=".6" fill="#3c4043"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92zM20.44 13.2c0-3.1-1.65-4.94-4.3-4.94-1.94 0-2.8 1.07-3.29 1.82V8.5H9.48V20h3.37v-5.7c0-1.5.28-2.96 2.14-2.96 1.83 0 1.86 1.72 1.86 3.06V20h3.38l.01-6.8z"/></svg>',
     email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M3 6h18v12H3z"/><path fill="#4285F4" d="M20.4 19h-2.1V9.9L12 14.3 5.7 9.9V19H3.6A1.6 1.6 0 0 1 2 17.4V6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v10.8c0 .9-.7 1.6-1.6 1.6z"/><path fill="#34A853" d="M2 17.4V8.1l3.7 2.6V19H3.6A1.6 1.6 0 0 1 2 17.4z"/><path fill="#FBBC04" d="M22 17.4c0 .9-.7 1.6-1.6 1.6h-2.1v-8.3L22 8.1z"/><path fill="#EA4335" d="M2 6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v1.5L12 14.9 2 8.1z"/></svg>',
     cv: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8.5L19 7v13a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5zm1 2V19.5h10V8h-4V4.5H7zm2 7h6v1.6H9v-1.6zm0 3.4h6v1.6H9v-1.6z"/></svg>',
@@ -32,18 +47,16 @@
     { label: 'LinkedIn', href: P.linkedin, ext: true, icon: 'linkedin' },
     { label: 'Email', href: 'mailto:' + P.email, icon: 'email' },
     ...(P.instagram ? [{ label: 'Instagram', href: P.instagram, ext: true, icon: 'instagram' }] : []),
-    ...(S.showCv === false ? [] : [{ label: 'CV (PDF)', href: P.cv, ext: true, icon: 'cv' }]),
+    ...(S.showCv === false ? [] : [{ label: 'CV (PDF)', href: asset(P.cv), ext: true, icon: 'cv' }]),
     ...(S.notes ? [{ label: 'Notes', href: S.notes, ext: true, icon: 'notes' }] : []),
   ];
 
   $('#channel-list').innerHTML = CHANNELS.map((c) =>
-    `<li><a class="side-link" href="#${c.id}" data-channel="${c.id}"><span class="hash">#</span>${c.title}</a></li>`
+    `<li><a class="side-link" href="#${c.id}" data-channel="${c.id}"><span class="hash" aria-hidden="true">#</span>${c.title}</a></li>`
   ).join('');
   $('#app-list').innerHTML = APPS.map((a) =>
-    `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? '<span class="ext" aria-hidden="true">↗</span>' : ''}</a></li>`
+    `<li><a class="side-link" href="${esc(a.href)}"${a.ext ? ' target="_blank" rel="noopener"' : ''}><span class="app-icon app-${a.icon}">${ICONS[a.icon]}</span>${a.label}${a.ext ? `<span class="ext" aria-hidden="true">↗</span>${NEW_TAB}` : ''}</a></li>`
   ).join('');
-  const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/(?:projects|work)\/?$/, '').replace(/\/?$/, '/');
-  const asset = (u) => (!u || /^([a-z]+:)?\/\//i.test(u) || u.startsWith('/') || u.startsWith('data:') ? u : SITE_ROOT + u);
 
   const avatarEl = (cls, alt) => P.avatar
     ? `<img class="${cls}" src="${esc(asset(P.avatar))}" alt="${esc(alt)}" width="44" height="44" loading="lazy" />`
@@ -66,13 +79,13 @@
     </article>`;
   const divider = (c) => `
     <h2 class="channel-divider" id="${c.id}" data-section="${c.id}">
-      <span class="hash">#</span>${c.title}${c.sub ? `<span class="divider-sub"><span class="divider-dash" aria-hidden="true">—</span> ${esc(c.sub)}</span>` : ''}
+      <span class="hash" aria-hidden="true">#</span>${c.title}${c.sub ? `<span class="divider-sub"><span class="divider-dash" aria-hidden="true">—</span> ${esc(c.sub)}</span>` : ''}
     </h2>`;
   const buttons = (attr = '', withLinkedIn = true) => `
     <div class="actions" ${attr}>
-      ${S.showCv === false ? '' : `<a class="btn btn-primary" href="${esc(P.cv)}" target="_blank" rel="noopener">Download CV</a>`}
-      <a class="btn ${S.showCv === false ? 'btn-primary' : ''}" href="mailto:${esc(P.email)}">What's the project?</a>
-      ${withLinkedIn ? `<a class="btn btn-brand" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn<svg class="btn-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg></a>` : ''}
+      ${S.showCv === false ? '' : `<a class="btn btn-primary" href="${esc(asset(P.cv))}" target="_blank" rel="noopener">Download CV${NEW_TAB}</a>`}
+      <a class="btn ${S.showCv === false ? 'btn-primary' : ''}" href="${esc(CTA.href)}"${CTA.ext ? ' target="_blank" rel="noopener"' : ''}>${esc(CTA.label)}${CTA.ext ? NEW_TAB : ''}</a>
+      ${withLinkedIn ? `<a class="btn btn-brand" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn<svg class="btn-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>${NEW_TAB}</a>` : ''}
     </div>`;
 
   function introPhoto() {
@@ -113,6 +126,20 @@
 
   const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
+  function shotRow(w) {
+    const list = [].concat(w.shots || [], w.shot || [])
+      .map((s) => (typeof s === 'string' ? { src: s } : s)).filter((s) => s && s.src);
+    if (!list.length) return '';
+    return `
+      <div class="shots">${list.map((s, i) => `
+        <button class="shot"${sheetAttr({ kind: w.year || 'Project', title: w.title, image: s.src,
+          imageAlt: s.caption || `${w.title}, picture ${i + 1}`, story: s.caption ? [s.caption] : [] })}
+          aria-label="${esc(s.caption || `${w.title}: open picture ${i + 1} of ${list.length}`)}">
+          <img src="${esc(asset(s.src))}" alt="" loading="lazy" />
+        </button>`).join('')}
+      </div>`;
+  }
+
   function projects(c) {
     const n = S.projects.length;
     return divider(c) + S.projects.map((w, i) => {
@@ -130,7 +157,7 @@
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
       ${rows}
       ${specs ? `<p class="school-line"><span class="label">Specifics</span> <span class="spec-line">${specs}</span></p>` : ''}
-      ${w.shot ? `<figure class="attachment"><img src="${esc(asset(w.shot))}" alt="${esc(w.title)} — screenshot" loading="lazy" /></figure>` : ''}`);
+      ${shotRow(w)}`);
     }).join('');
   }
 
@@ -147,7 +174,10 @@
         <p class="earlier-head"><span class="label">Certificates</span></p>
         <ul class="certs">${items.map((x) => `
           <li>
-            <p class="cert-head"><span class="cert-title">${esc(x.title)}</span><span class="cert-date">${txt(x.date)}</span></p>
+            <p class="cert-head">${x.image
+              ? `<button class="cert-title cert-open"${sheetAttr({ kind: 'Certificate', title: x.title, image: x.image, imageAlt: x.imageAlt || x.title,
+                  meta: x.date && !isTodo(x.date) ? [{ label: 'Date', value: x.date }] : [], link: x.link, linkLabel: x.linkLabel })}>${esc(x.title)}</button>`
+              : `<span class="cert-title">${esc(x.title)}</span>`}<span class="cert-date">${txt(x.date)}</span></p>
           </li>`).join('')}</ul>
       </div>`;
   }
@@ -232,13 +262,13 @@
 
   function credentials(c) {
     return divider(c) + msg('credentials', `
-      <ul class="cred-rows">${S.credentials.map((p, i) => {
+      <ul class="cred-rows">${S.credentials.map((p) => {
         const opens = hasSheet(p);
         const tag = opens ? 'button' : (p.link ? 'a' : 'div');
-        const attrs = opens ? ` type="button" data-sheet="${i}"`
+        const attrs = opens ? sheetAttr(p)
           : (p.link ? ` href="${esc(p.link)}" target="_blank" rel="noopener"` : '');
         const cue = opens ? 'Open <span aria-hidden="true">&rarr;</span>'
-          : (p.link ? 'Verify <span aria-hidden="true">↗</span>' : '');
+          : (p.link ? `Verify <span aria-hidden="true">↗</span>${NEW_TAB}` : '');
         return `
         <li>
           <${tag} class="cred-row${opens || p.link ? ' is-link' : ''}"${attrs}>
@@ -276,7 +306,7 @@
       <p class="section-lede">${esc(S.contactLine)}</p>
       <ul class="contact-list">
         <li><span class="label">Email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
-        <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} ↗</a></li>
+        <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} <span aria-hidden="true">↗</span>${NEW_TAB}</a></li>
         <!-- "local time" said what "based in" already said. The offset lets anyone work out the gap
              without arithmetic; the clock saves them doing it at all. -->
         <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
@@ -397,7 +427,7 @@
     list.className = 'side-list';
     list.id = 'live-list';
     list.innerHTML = S.liveSites.map((l) =>
-      `<li><a class="side-link" href="${esc(l.url)}" target="_blank" rel="noopener"><span class="hash">↗</span>${esc(l.label)}</a></li>`).join('');
+      `<li><a class="side-link" href="${esc(l.url)}" target="_blank" rel="noopener"><span class="hash" aria-hidden="true">↗</span>${esc(l.label)}${NEW_TAB}</a></li>`).join('');
     const firstLabel = $('.side-label');
     firstLabel.parentNode.insertBefore(head, firstLabel);
     firstLabel.parentNode.insertBefore(list, firstLabel);
@@ -461,10 +491,11 @@
   const floatBtn = $('#float-btn');
   const floatLink = $('#float-link');
   const floatX = $('#float-x');
-  floatLink.href = 'mailto:' + P.email;
-  floatLink.innerHTML = `<span class="float-app">${ICONS.email}</span>`
-    + `<span class="float-text"><strong>What's the project?</strong><span class="float-sub">${esc(P.email)}</span></span>`
-    + `<span class="float-when">now</span>`;
+  floatLink.href = CTA.href;
+  if (CTA.ext) { floatLink.target = '_blank'; floatLink.rel = 'noopener'; }
+  floatLink.innerHTML = `<span class="float-app">${ICONS[CTA.icon]}</span>`
+    + `<span class="float-text"><strong>${esc(CTA.label)}</strong><span class="float-sub">${esc(CTA.sub)}</span></span>`
+    + `<span class="float-when">now</span>${CTA.ext ? NEW_TAB : ''}`;
   $$('[data-mail]').forEach((a) => { a.href = 'mailto:' + P.email; });
   let floatDismissed = false;
   floatX.addEventListener('click', () => {
@@ -505,7 +536,7 @@
       ${p.meta && p.meta.length ? `<dl class="sheet-meta">${p.meta.map((m) => `
         <div><dt class="label">${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}</dl>` : ''}
       ${p.story && p.story.length ? p.story.map((s) => `<p class="sheet-para">${esc(s)}</p>`).join('') : ''}
-      ${p.link ? `<a class="btn btn-primary sheet-cta" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || 'Verify')} <span aria-hidden="true">↗</span></a>` : ''}`;
+      ${p.link ? `<a class="btn btn-primary sheet-cta" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || 'Verify')} <span aria-hidden="true">↗</span>${NEW_TAB}</a>` : ''}`;
     sheet.hidden = false; sheetScrim.hidden = false;
     document.body.classList.add('sheet-open');
     sheetX.focus();
@@ -534,8 +565,24 @@
   document.addEventListener('click', (e) => {
     const card = e.target.closest ? e.target.closest('[data-sheet]') : null;
     if (!card) return;
-    const p = S.credentials[Number(card.dataset.sheet)];
+    const p = SHEETS[Number(card.dataset.sheet)];
     if (p) openSheet(p, card);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+    const at = document.activeElement;
+    if (at && at !== document.body && at.id !== 'messages') return; // something else has the keyboard
+    const el = [feed, ...Object.values(views), $('.files-panel')].find((x) => x && !x.hidden);
+    if (!el || el.scrollHeight <= el.clientHeight || getComputedStyle(el).overflowY === 'visible') return;
+    const page = el.clientHeight * 0.9;
+    const by = { PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page,
+                 ArrowDown: 48, ArrowUp: -48, Home: -el.scrollHeight, End: el.scrollHeight }[e.key];
+    if (by === undefined) return;
+    e.preventDefault();
+    el.tabIndex = -1;
+    el.focus({ preventScroll: true });
+    el.scrollBy({ top: by });
   });
 
   const app = $('#app');

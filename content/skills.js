@@ -16,5 +16,4 @@ Object.assign(window.SITE, {
       does: ['Workflow design', 'Process documentation', 'Website quality checks'],
       tools: ['ClickUp', 'GitHub', 'Lighthouse', 'HTML/CSS'] },
   ],
-
 });

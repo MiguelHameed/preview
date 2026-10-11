@@ -14,6 +14,10 @@ Object.assign(window.SITE, {
     linkedinLabel: 'linkedin.com/in/miguelhameed',
     instagram: 'https://www.instagram.com/miggybop/', // set to null to take it off the site
     cv: 'cv.pdf',
+    cta: "What's the project?",
+    booking: null,      // e.g. 'https://cal.com/…'
+    bookingCta: null,   // the words on the button
+    bookingNote: null,  // optional, e.g. how long the call is
     motto: "I find what's broken, fix it, and keep it moving.",
     headshot: 'images/site/headshot.jpg', // Miguel's graduation portrait (22 Sep), for now; studio headshot coming
     avatar: 'images/site/headshot-avatar.jpg?v=2', // small chat icons: same crop as the big photo (28 Sep). Bump ?v= when the file changes so browsers refetch it.
@@ -22,5 +26,4 @@ Object.assign(window.SITE, {
   tags: ['marketing-operations', 'business-development', 'ai-operations'],
 
   highlights: [],
-
 });

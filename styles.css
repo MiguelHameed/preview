@@ -254,7 +254,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
 .view-back {
   display: inline-flex; align-items: center; gap: 6px;
-  margin: 0 0 6px; padding: 0;
+  margin: -13px 0 -7px; padding: 13px 0;
   border: 0; background: none;
   color: var(--muted); font-size: var(--t-sm); letter-spacing: var(--track-caps);
 }
@@ -456,7 +456,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   padding: 16px 17px;
   border-radius: 18px;
 
-  background: color-mix(in srgb, var(--app) 52%, transparent);
+  background: color-mix(in srgb, var(--app) 82%, transparent);
   -webkit-backdrop-filter: blur(26px) saturate(180%);
   backdrop-filter: blur(26px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.10);
@@ -522,14 +522,14 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .work-title { font-family: var(--display); font-weight: 600; font-size: var(--t-lg); letter-spacing: var(--track-head); line-height: 1.3; margin: 2px 0 8px; }
 .work-pending { margin: -4px 0 14px; font-size: var(--t-md); }
 
-.attachment {
-  position: relative; overflow: hidden;
-  aspect-ratio: 16 / 9; max-width: 640px;
-  border-radius: var(--r-xl); border: 1px solid var(--line);
-  display: grid; place-items: center;
-  container-type: inline-size;
+.shots { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.shot {
+  display: block; padding: 0; overflow: hidden; cursor: zoom-in;
+  border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card);
+  transition: border-color 0.15s var(--ease);
 }
-.attachment img { width: 100%; height: 100%; object-fit: cover; }
+.shot:hover { border-color: var(--accent); }
+.shot img { height: 168px; width: auto; max-width: 100%; object-fit: contain; }
 
 .section-row {
 
@@ -578,6 +578,9 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 
 .cert-head { display: grid; grid-template-columns: minmax(0, 1fr) 8.5rem; gap: 2px 18px; align-items: baseline; }
 .cert-title { font-size: var(--t-sm); font-weight: 500; font-style: italic; }
+
+.cert-open { text-align: left; color: var(--accent); padding: 8px 0; margin: -8px 0; }
+.cert-open:hover { text-decoration: underline; text-underline-offset: 3px; }
 .cert-date { font-style: italic; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; text-align: right; }
 
 .skill-rows { list-style: none; display: grid; gap: 0; max-width: 760px; }
@@ -642,7 +645,7 @@ body.sheet-open { overflow: hidden; }
 .sheet-x svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
 .sheet-title { font-size: var(--t-xl); letter-spacing: var(--track-head); margin: 4px 0 16px; }
 
-.sheet-image { display: block; width: 100%; height: auto; border-radius: var(--r-lg); border: 1px solid var(--line); background: #fff; }
+.sheet-image { display: block; width: auto; max-width: 100%; height: auto; max-height: 72vh; margin: 0 auto; border-radius: var(--r-lg); border: 1px solid var(--line); background: #fff; }
 .sheet-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 18px 0 4px; }
 .sheet-meta dt { margin-bottom: 2px; }
 .sheet-meta dd { margin: 0; font-weight: 600; }
@@ -752,7 +755,7 @@ body.sheet-open { overflow: hidden; }
   .msg { grid-template-columns: 38px minmax(0, 1fr); gap: 12px; }
   .channel-divider, .day { scroll-margin-top: 72px; }
   .contact-list li { grid-template-columns: 1fr; gap: 2px; }
-  .attachment { border-radius: var(--r-lg); }
+  .shot img { height: 132px; }
   .msg-avatar { width: 38px; height: 38px; }
   .lede { font-family: var(--display); font-size: var(--t-xl); margin-bottom: 12px; }
   .actions .btn { flex: 1 1 auto; }
@@ -778,6 +781,15 @@ body.sheet-open { overflow: hidden; }
   .mob-mail { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border-radius: var(--r-md); color: var(--accent); }
   .mob-mail + .mob-theme { margin-left: 0; }
 }
+
+@media (max-width: 370px) {
+  .pane-head { gap: 6px; padding-left: 8px; padding-right: 8px; }
+}
+@media (max-width: 340px) {
+  .pane-title .pane-h { font-size: 0.95rem; }
+}
+
+.feed, .channel-view, .files-panel { outline: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
