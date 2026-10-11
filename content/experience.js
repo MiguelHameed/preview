@@ -6,7 +6,7 @@ Object.assign(window.SITE, {
       role: 'Technical Operations Specialist', // Miguel's choice, 22 Sep: Work Summary title, shortened
       type: 'Freelance',
       org: 'Cloud Sentry Solutions',
-      logo: 'images/experience/cloud-sentry.png', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
+      logo: 'images/experience/cloud-sentry.webp', // their own mark, from cloudsentry.com (Miguel, 29 Sep)
       place: 'New Hampshire, New England',
       dates: 'April, 2025 – Present', // alongside DOH until Jan 2026
       points: [
@@ -19,7 +19,7 @@ Object.assign(window.SITE, {
     {
       role: 'Health Program Officer II',
       org: 'Department of Health – Metro Manila Center for Health Development',
-      logo: 'images/experience/doh.png', // official DOH seal (Wikimedia Commons)
+      logo: 'images/experience/doh.webp', // official DOH seal (Wikimedia Commons)
       place: 'Mandaluyong City, Philippines',
       dates: 'April, 2025 – January, 2026',
       certificates: [
@@ -48,7 +48,7 @@ Object.assign(window.SITE, {
     {
       role: 'Project Technical Specialist I',
       org: 'DOST – Food and Nutrition Research Institute',
-      logo: 'images/experience/dost-fnri.png',
+      logo: 'images/experience/dost-fnri.webp',
       place: 'Taguig City, Philippines',
       dates: 'September, 2023 – August, 2024',
       ownDates: 'November, 2023 – August, 2024', // this title alone; the row header carries the whole FNRI span

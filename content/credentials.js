@@ -6,7 +6,7 @@ Object.assign(window.SITE, {
     {
       kind: 'Certification', title: 'Certified ClickUp Expert',
       topic: "ClickUp's own certification. It is the system my work runs on.",
-      logo: 'images/credentials/clickup.png',
+      logo: 'images/credentials/clickup.webp',
       link: 'https://verify.skilljar.com/c/8a2eyxevcezx',
       linkLabel: 'Verify on Skilljar',
       image: 'images/credentials/clickup-certificate.jpg',
@@ -22,9 +22,9 @@ Object.assign(window.SITE, {
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
-      logo: 'images/credentials/sc-300.png', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-300.webp', topic: 'Exam not yet taken.' },
     { kind: 'In progress · Microsoft', title: 'SC-200: Security Operations Analyst',
-      logo: 'images/credentials/sc-200.png', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-200.webp', topic: 'Exam not yet taken.' },
   ],
 
 });

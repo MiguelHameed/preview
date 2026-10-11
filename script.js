@@ -242,7 +242,7 @@
         return `
         <li>
           <${tag} class="cred-row${opens || p.link ? ' is-link' : ''}"${attrs}>
-            <span class="cred-mark">${p.logo ? `<img src="${esc(asset(p.logo))}" alt="" width="480" height="494" loading="lazy" />` : ''}</span>
+            <span class="cred-mark">${p.logo ? `<img src="${esc(asset(p.logo))}" alt="" width="162" height="162" loading="lazy" />` : ''}</span>
             <span class="cred-body">
               <span class="cred-kind label">${esc(p.kind)}</span>
               <strong class="cred-title">${txt(p.title)}</strong>

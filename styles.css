@@ -1,11 +1,3 @@
-﻿/* =========================================================
-   Miguel's workspace â€” styles
-   Structure after baileyelith.com, work cards after matthewdea.com,
-   outcome-first writing after alicezhao.work. Two themes: aquarium blue (default) and burgundy.
-   ========================================================= */
-
-/* Aquarium: deep ocean navy (#020810, from Miguel's first dark design), light falling from above,
-   and a clear sea-blue accent that reads well on dark water. */
 :root,
 [data-theme="dark"] {
   --desk: #0a0e10;
@@ -14,18 +6,17 @@
   --app-bar: #11171a;
   --line: #26333a;
   --ink: #e9eff1;
-  --muted: #9fb1b7;          /* 7.4:1 on the sidebar */
+  --muted: #9fb1b7;
   --todo: #ff8f87;
   --todo-soft: rgba(255, 143, 135, 0.14);
   --rail: #0e1316;
   --rail-ink: rgba(233, 239, 241, 0.72);
   --side: #182024;
   --side-hover: #222d32;
-  --accent: #6fb2c9;         /* the photograph's own slate, lifted — 7.0:1 on the sidebar */
+  --accent: #6fb2c9;
   --accent-ink: #06131a;
   --accent-soft: rgba(111, 178, 201, 0.13);
-  /* The phone hides every piece of chrome except the sticky header, so these are the theme values it
-     reaches for. They are deliberately NOT redefined on .pane, which turns everything inside it light. */
+
   --chrome: #182024;
   --chrome-ink: #e9eff1;
   --chrome-muted: #9fb1b7;
@@ -36,23 +27,22 @@
   color-scheme: dark;
 }
 
-/* Burgundy (trial, 22 Sep): deep wine instead of deep ocean, warm light from above, soft gold accent. */
 [data-theme="burgundy"] {
   --desk: #0d0a09;
-  --mark: #8d4536;         /* the mh mark in the photograph's rose instead of blue */
+  --mark: #8d4536;
   --desk-dot: rgba(255, 225, 218, 0.055);
   --app: #15100f;
   --app-bar: #170f0f;
   --line: #3a2a28;
   --ink: #f3eae8;
-  --muted: #bba8a3;          /* 7.5:1 on the sidebar */
+  --muted: #bba8a3;
   --todo: #ff9a8e;
   --todo-soft: rgba(255, 154, 142, 0.14);
   --rail: #140e0e;
   --rail-ink: rgba(243, 234, 232, 0.72);
   --side: #241a19;
   --side-hover: #302321;
-  --accent: #d29a8d;         /* the rose in the sunrise — 7.1:1 on the sidebar */
+  --accent: #d29a8d;
   --accent-ink: #1a0f0d;
   --accent-soft: rgba(210, 154, 141, 0.13);
   --chrome: #241a19;
@@ -64,42 +54,34 @@
   --shadow: 0 40px 100px -40px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 225, 218, 0.05);
   color-scheme: dark;
 }
-[data-theme="burgundy"] .attachment-sea   { background: linear-gradient(145deg, #a79189 0%, #6d5751 55%, #352723 100%); }
-[data-theme="burgundy"] .attachment-ocean { background: linear-gradient(145deg, #8d4536 0%, #5c2d24 55%, #2d1613 100%); }
-/* The pane is light in burgundy too, but warm rather than blue, and the accent stays gold-adjacent. */
+
 [data-theme="burgundy"] .pane {
   --card: #faf7f6;
   --line: #ece4e2;
   --ink: #1b1413;
   --muted: #6b6160;
-  --accent: #8d4536;          /* 6.9:1 on white, and the mark colour */
+  --accent: #8d4536;
   --accent-soft: rgba(141, 69, 54, 0.09);
 }
 
-[data-theme="burgundy"] .attachment-reef  { background: linear-gradient(145deg, #6b2a4f 0%, #451733 55%, #240a1b 100%); }
-[data-theme="burgundy"] .attachment-deep  { background: linear-gradient(145deg, #5c1a3a 0%, #3b0f25 55%, #1e0713 100%); }
-
 :root {
   --sans: -apple-system, BlinkMacSystemFont, 'Inter', 'Inter Fallback', system-ui, 'Segoe UI', sans-serif;
-  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  /* Tracking scale. San Francisco tightens as type grows; Inter does not, so we do it by hand. */
-  /* Measured off apple.com: body is tracked tightest, large display type is nearly neutral,
-     mid-size subheads are slightly open. */
-  --track-display: -0.01em;   /* the biggest numbers */
-  --track-lede: -0.015em;     /* the opening line */
-  --track-head: -0.01em;      /* titles and section heads */
-  --track-body: -0.02em;      /* running text */
-  --track-caps: 0.05em;       /* small uppercase labels */
-  --display: var(--sans); /* headings in the same face as the body: standard, and it matches Apple's own look */
+
+  --track-display: -0.01em;
+  --track-lede: -0.015em;
+  --track-head: -0.01em;
+  --track-body: -0.02em;
+  --track-caps: 0.05em;
+  --display: var(--sans);
   --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
-  /* one scale for corners: tiny marks, controls, cards, panels, pills */
+
   --r-xs: 3px;
   --r-sm: 7px;
   --r-md: 10px;
   --r-lg: 14px;
   --r-xl: 18px;
   --r-pill: 999px;
-  /* one scale for text sizes */
+
   --t-xs: 0.68rem;
   --t-sm: 0.78rem;
   --t-md: 0.9rem;
@@ -120,10 +102,7 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background-color: var(--desk);
-  /* The desk is the theme's own colour (Miguel, 2 Oct): "match the background into the color of the
-     website for now". Flat colour is perfectly sharp at any screen size and costs nothing to load,
-     which is the whole reason baileyelith.com's page sits on flat black.
-     The illustration is still in images/desk/ — putting it back is this one rule. */
+
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s;
 }
@@ -152,17 +131,16 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .noscript a { color: var(--accent); }
 
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
-/* small labels: Inter, quiet, slightly open â€” replaces the monospace that had spread across the page */
-.label, .divider-sub, .work-no, .spec-label, .proof-kind, .tl-dates, .where,
-.attach-note, .empty-note, .todo-tag, .ext, .end, .word, .tab-count, #pane-sub, .contact-list .label,
+
+.label, .divider-sub, .proof-kind, .tl-dates, .where,
+.empty-note, .todo-tag, .ext, .end, .tab-count, #pane-sub, .contact-list .label,
 .earlier-head {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
 }
-/* Only the dash is dimmed — it is a separator, not something to read. */
-.divider-dash { color: var(--muted); opacity: 0.7; margin-right: 2px; }
-.work-no, .proof-kind { text-transform: uppercase; }
 
-/* ---------------- desk + app window ---------------- */
+.divider-dash { color: var(--muted); opacity: 0.7; margin-right: 2px; }
+.proof-kind { text-transform: uppercase; }
+
 .desk {
   min-height: 100vh;
   display: grid;
@@ -183,9 +161,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
     "bar bar bar"
     "rail side pane";
   background: var(--app);
-  /* A real window edge: a faint light ring, catching light the way a window would. It read as a glow
-     only while the desk was LIGHTER than the window; with the desk darkened below it (2 Oct) the ring
-     does its job again and Miguel kept it. */
+
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--r-xl);
   box-shadow: var(--shadow);
@@ -204,14 +180,11 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .dots { display: inline-flex; gap: 7px; }
 .dots i { width: 11px; height: 11px; border-radius: 50%; }
-/* window buttons in colour, like baileyelith.com: close, minimise, full screen */
+
 .dots i:nth-child(1) { background: #ff5f57; }
 .dots i:nth-child(2) { background: #febc2e; }
 .dots i:nth-child(3) { background: #28c840; }
-.app-bar-title { font-family: var(--mono); font-size: var(--t-sm); }
 
-/* The address pill. Centred in the bar the way Safari centres it, and narrow — a wide one reads as a
-   toolbar waiting to be typed into. */
 .url-pill {
   position: absolute; left: 50%; transform: translateX(-50%);
   display: inline-flex; align-items: center; gap: 7px;
@@ -224,7 +197,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .url-lock { width: 11px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; opacity: 0.75; }
 
-/* ---------------- icon rail ---------------- */
 .rail {
   grid-area: rail;
   background: var(--rail);
@@ -240,7 +212,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   display: grid; place-items: center;
   width: 38px; height: 38px; margin-bottom: 10px;
   border-radius: var(--r-md);
-  background: #0a1f44;              /* navy, Miguel's pick for the logo tile */
+  background: #0a1f44;
   color: #fff;
   text-decoration: none;
   overflow: hidden;
@@ -257,7 +229,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .rail-btn:hover, .rail-btn.is-active { background: rgba(255, 255, 255, 0.1); color: #fff; }
 .theme-btn { margin-top: auto; }
-/* hide-sidebar button (desktop only): folds the channel column away */
+
 .app { transition: grid-template-columns 0.25s var(--ease); }
 @media (min-width: 1024px) {
   .app.side-hidden { grid-template-columns: 72px 0 1fr; }
@@ -265,7 +237,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .side-toggle[aria-expanded="false"] { background: rgba(255, 255, 255, 0.1); color: #fff; }
 
-/* ---------------- sidebar ---------------- */
 .sidebar {
   grid-area: side;
   background: var(--side);
@@ -277,14 +248,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-head { padding: 0 8px 16px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
 .side-head strong { font-family: var(--display); font-weight: 600; display: block; font-size: var(--t-base); letter-spacing: var(--track-head); }
 .side-status { display: inline-flex; align-items: center; gap: 6px; font-size: var(--t-sm); color: var(--muted); }
-.side-status i, .dot-good { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
+.side-status i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; }
 
-/* section headings with a fold arrow, after baileyelith.com: â–¾ open, â–¸ closed */
-/* a channel that opens on its own, like a separate page */
-/* The same side padding as the message feed. It had none, so the content sat flush against the
-   channel list instead of breathing like every other channel does. */
 .channel-view { flex: 1; overflow-y: auto; padding: 24px 28px 60px; }
-/* A plain text link, not a pill: nothing else on the site is a pill-shaped control. */
+
 .view-back {
   display: inline-flex; align-items: center; gap: 6px;
   margin: 0 0 6px; padding: 0;
@@ -293,7 +260,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .view-back:hover { color: var(--accent); }
 
-/* Messages / Files tabs and the file gallery */
 .pane-tabs { display: flex; gap: 4px; padding: 8px 28px 0; border-bottom: 1px solid var(--line); background: var(--app); }
 .pane-tab {
   display: inline-flex; align-items: center; gap: 6px;
@@ -309,11 +275,8 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .file-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--card); }
 .file-name { color: var(--muted); }
 
-/* Bailey-style touches: hashtag chips, an "available" dot, a header icon, a + button, a richer float button */
 .hash-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 14px; }
-/* The outline was var(--line) at 1.25:1 against the pane — technically drawn, effectively invisible,
-   so the chips read as floating grey words. A soft fill carries the shape instead, and the text goes to
-   the accent so it reads as a label rather than as body copy that has faded. */
+
 .hash-tag { padding: 3px 10px; border-radius: var(--r-pill); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); background: var(--accent-soft); color: var(--accent); font-weight: 400; }
 .avatar-live { position: relative; display: inline-flex; flex: none; align-self: start; height: -moz-fit-content; height: fit-content; }
 .live-dot {
@@ -346,7 +309,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-list[hidden] { display: none; }
 
 .side-list { list-style: none; }
-/* hold the space the lists will take, so nothing jumps while the page draws */
+
 #channel-list { min-height: 216px; }
 #app-list { min-height: 108px; }
 .feed { min-height: 100vh; }
@@ -363,30 +326,24 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .side-link.is-active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 .side-link .hash { color: var(--muted); font-family: var(--mono); width: 14px; text-align: center; }
 .side-link.is-active .hash { color: var(--accent); }
-.side-link .soon { margin-left: auto; font-family: var(--mono); font-size: var(--t-xs); color: var(--muted); }
 .app-icon { display: grid; place-items: center; width: 20px; height: 20px; border-radius: var(--r-sm); flex: none; }
 .app-icon svg { width: 14px; height: 14px; fill: #fff; }
-.app-linkedin { background: #0a66c2; }   /* LinkedIn's own blue */
-.app-email { background: #fff; }            /* Gmail's own colours need a white tile */
+.app-linkedin { background: #0a66c2; }
+.app-email { background: #fff; }
 .app-instagram { background: linear-gradient(45deg, #f9ce34 5%, #ee2a7b 50%, #6228d7 95%); }
-.app-cv { background: #e5484d; }        /* PDF red */
+.app-cv { background: #e5484d; }
 .app-notes { background: var(--accent); }
 .side-link .ext { margin-left: auto; color: var(--muted); font-size: var(--t-sm); }
 .side-avatar { width: 20px; height: 20px; border-radius: var(--r-sm); object-fit: cover; }
 
-/* ---------------- message pane ---------------- */
-/* The message pane is light inside both themes (Miguel, 1 Oct, after baileyelith.com): the frame keeps its
-   colour — deep ocean or wine on the desk, the rail and the channel list with it — and the conversation
-   itself sits on white, the way a chat app actually looks. These are the same token names redefined on this
-   one element, so everything inside the pane picks them up and nothing outside it changes. */
 .pane {
   --app: #ffffff;
   --app-bar: #f4f4f4;
   --card: #f7f8fa;
   --line: #e4e6ea;
   --ink: #16181d;
-  --muted: #65696f;          /* 5.9:1 on white */
-  --accent: #1f5f78;         /* the photograph's slate, darkened — 7.1:1 on white */
+  --muted: #65696f;
+  --accent: #1f5f78;
   --accent-ink: #ffffff;
   --accent-soft: rgba(31, 95, 120, 0.09);
   --good: #137a3a;
@@ -396,8 +353,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 
   grid-area: pane;
   background: var(--app);
-  /* colour is inherited, so it was already resolved to the dark theme ink at body: it has to be set
-     again here or every element that does not name a colour stays near-white on white. */
+
   color: var(--ink);
   display: flex;
   flex-direction: column;
@@ -414,7 +370,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .pane-title .pane-h { font-family: var(--display); color: var(--ink); font-weight: 600; font-size: var(--t-lg); letter-spacing: var(--track-head); }
 .pane-title p { color: var(--muted); }
-.menu-btn, .mob-theme, .mob-mail { display: none; flex: none; } /* flex: none keeps phone header buttons a full 44px tap size */
+.menu-btn, .mob-theme, .mob-mail { display: none; flex: none; }
 
 .feed {
   scroll-padding-top: 20px;
@@ -427,7 +383,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .day { display: flex; align-items: center; gap: 12px; margin: 4px 0 18px; color: var(--muted); }
 .day::before, .day::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 
-/* one message */
 .msg {
   display: grid;
   grid-template-columns: 44px minmax(0, 1fr);
@@ -441,15 +396,10 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .msg-meta { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
 .msg-name { font-weight: 700; }
 .msg-time { color: var(--muted); }
-.pin { display: inline-flex; align-items: center; gap: 5px; color: var(--muted); }
 
-/* the intro message */
 .lede { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.22; letter-spacing: var(--track-lede); font-weight: 600; max-width: 30ch; margin: 6px 0 14px; }
 .lede .before { color: var(--muted); font-weight: 400; }
 
-/* intro photo: beside the text on wide screens, above it on phones */
-/* One column while there is no photo beside the text (1 Oct). The two-column rule is kept below for
-   when it comes back. */
 .intro-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: start; }
 .intro-grid:has(.intro-photo) { grid-template-columns: minmax(0, 1fr) 220px; }
 .intro-photo { width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: var(--r-xl); object-fit: cover; margin-top: 8px; box-shadow: var(--shadow); }
@@ -468,24 +418,13 @@ a.hook { border-bottom: 1px solid var(--line); }
 a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: var(--accent); }
 .highlights li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
-.chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 10px; border-radius: var(--r-pill);
-  border: 1px solid var(--line); background: var(--side);
-  font-size: var(--t-md);
-}
-
 .actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px; padding: 10px 18px;
   border-radius: var(--r-md);
   font-weight: 600; text-decoration: none;
-  /* The secondary button used var(--line), which measures 1.25:1 against the pane — drawn but not
-     visible — with plain body ink for text, so it read as dark words rather than as a button beside a
-     filled one. Accent outline at 3.4:1 and accent text now, which is the pair reading as primary and
-     secondary rather than as a button and a sentence. */
+
   border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
   background: var(--app);
   color: var(--accent);
@@ -495,36 +434,14 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .btn-primary:hover { filter: brightness(1.08); }
-/* The word and an arrow (Miguel, 4 Oct), which is the shape he wanted all along. The arrow used to be
-   the text character ↗: it sat high above the baseline, drew at the font's own weight rather than the
-   button's, and sheared differently in every face. This is drawn instead — same stroke weight as the
-   text, aligned to it, and it nudges on hover so the button has somewhere to go.
-   Tried and rejected on the way here: a blue tile, a solid LinkedIn-blue button, a blue outline, and the
-   mark on its own without the word. */
+
 .btn-arrow {
   width: 13px; height: 13px; flex: none;
   fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
   opacity: 0.8; transition: transform 0.18s var(--ease), opacity 0.18s;
 }
 .btn:hover .btn-arrow { opacity: 1; transform: translate(1.5px, -1.5px); }
-.btn-mark { display: grid; place-items: center; width: 20px; height: 20px; flex: none; }
-.btn-mark svg { width: 17px; height: 17px; fill: currentColor; }
 
-/* placeholder for channels not built yet */
-.building {
-  border: 1px dashed var(--line);
-  border-radius: var(--r-md);
-  padding: 18px 20px;
-  color: var(--muted);
-  max-width: 60ch;
-}
-.building strong { color: var(--ink); }
-
-/* Floating contact banner, shaped like a macOS notification (Miguel, 30 Sep).
-   Frosted translucent material, the sending app's squircle icon, a timestamp, and a dismiss
-   that only appears on hover. The wrapper is positioned; the link inside carries the material. */
-/* Absolute, not fixed (Miguel, 2 Oct): it belongs to the browser window, not to the desk behind it.
-   `.app` is position: relative and clips its overflow, so the banner stays inside the frame. */
 .float-wrap {
   position: absolute;
   right: 22px;
@@ -538,7 +455,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   width: 428px; max-width: calc(100% - 44px);
   padding: 16px 17px;
   border-radius: 18px;
-  /* Translucent enough to read the page through, with the blur keeping the text legible. */
+
   background: color-mix(in srgb, var(--app) 52%, transparent);
   -webkit-backdrop-filter: blur(26px) saturate(180%);
   backdrop-filter: blur(26px) saturate(180%);
@@ -548,7 +465,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   transition: transform 0.2s var(--ease);
 }
 .float-wrap:hover .float-btn { transform: translateY(-2px); }
-/* The app tile: Gmail's own colours need a white square, exactly as in the Apps list. */
+
 .float-app {
   width: 50px; height: 50px; border-radius: 13px; flex: none;
   display: grid; place-items: center; background: #fff;
@@ -569,7 +486,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 }
 .float-wrap:hover .float-x, .float-x:focus-visible { opacity: 1; transform: scale(1); }
 .float-x svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
-/* Touch devices have no hover, so the dismiss is always there rather than never. */
+
 @media (hover: none) {
   .float-x { opacity: 1; transform: scale(1); }
 }
@@ -580,7 +497,6 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 
 .scrim { display: none; }
 
-/* ---------------- sections of the conversation ---------------- */
 .channel-divider { margin-top: 26px; font-family: var(--display);
   display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px;
   margin: 44px 0 6px; padding-bottom: 10px;
@@ -594,7 +510,6 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 
 .section-lede { font-size: var(--t-base); margin-bottom: 12px; max-width: 60ch; }
 
-/* anything still marked TODO in content.js */
 .todo { border-bottom: 1px dashed var(--todo); color: var(--todo); }
 .todo-tag {
   display: inline-block; margin-left: 6px; padding: 0 6px;
@@ -602,80 +517,33 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
   background: var(--todo-soft); color: var(--todo);
 }
 
-/* work messages: result first, then the attachment panel */
-.set-name { font-family: var(--display); font-size: var(--t-lg); font-weight: 600; letter-spacing: var(--track-head); margin: 4px 0 18px 58px; }
-/* three hard facts under each piece of work, after the reference sites' specs (film stock, CCT, LCP) */
 .spec-line { color: var(--ink); }
 .spec-of { color: var(--muted); }
-.specs { list-style: none; display: flex; flex-wrap: wrap; gap: 28px; margin: 4px 0 16px; padding-top: 14px; border-top: 1px solid var(--line); max-width: 640px; }
-.specs li { display: flex; flex-direction: column; gap: 2px; }
-.spec-value { font-family: var(--display); font-size: var(--t-lg); font-weight: 600; letter-spacing: var(--track-head); }
-.spec-label { color: var(--muted); }
-.work-no { color: var(--muted); letter-spacing: var(--track-caps); text-transform: uppercase; margin-bottom: 4px; }
 .work-title { font-family: var(--display); font-weight: 600; font-size: var(--t-lg); letter-spacing: var(--track-head); line-height: 1.3; margin: 2px 0 8px; }
-.tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.tags li {
-  padding: 2px 8px; border-radius: var(--r-sm);
-  border: 1px solid var(--line); color: var(--muted);
-  font-size: var(--t-sm);
-}
-.tags-lg li { font-family: var(--sans); font-size: var(--t-md); padding: 5px 11px; border-radius: var(--r-pill); color: var(--ink); background: var(--card); }
-
-.outcome {
-  font-size: clamp(1.08rem, 1.6vw, 1.3rem); font-weight: 600; letter-spacing: var(--track-head); line-height: 1.35;
-  padding: 12px 14px; margin-bottom: 14px; max-width: 58ch;
-  border-left: 3px solid var(--accent); border-radius: 0 var(--r-md) var(--r-md) 0;
-  background: var(--accent-soft);
-}
-.outcome-label { display: block; font-size: var(--t-xs); font-weight: 400; color: var(--accent); margin-bottom: 2px; }
-
-.work-detail { display: grid; gap: 10px; margin-bottom: 16px; max-width: 64ch; }
 .work-pending { margin: -4px 0 14px; font-size: var(--t-md); }
-.work-detail div { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 12px; }
-.work-detail dt { color: var(--muted); padding-top: 3px; }
-.work-detail dd { margin: 0; }
 
 .attachment {
   position: relative; overflow: hidden;
   aspect-ratio: 16 / 9; max-width: 640px;
   border-radius: var(--r-xl); border: 1px solid var(--line);
   display: grid; place-items: center;
-  container-type: inline-size; /* lets the big number size itself to the panel */
+  container-type: inline-size;
 }
 .attachment img { width: 100%; height: 100%; object-fit: cover; }
-.attachment-sea   { background: linear-gradient(145deg, #435c63 0%, #2a3b42 55%, #161f24 100%); }
-.attachment-ocean { background: linear-gradient(145deg, #30464c 0%, #22333a 55%, #141c20 100%); }
-.attachment-reef  { background: linear-gradient(145deg, #115e59 0%, #0b3f47 55%, #062331 100%); }
-.attachment-deep  { background: linear-gradient(145deg, #312e81 0%, #1f1d5c 55%, #110f36 100%); }
-.attach-metric {
-  font-size: clamp(1.8rem, 11cqi, 5.5rem); font-weight: 700; text-align: center; padding: 0 16px 18px; white-space: nowrap; letter-spacing: var(--track-display); line-height: 1;
-  color: #eaf3ff; text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-}
-.attach-note {
-  position: absolute; left: 14px; right: 14px; bottom: 12px;
-  font-size: var(--t-xs); color: rgba(234, 243, 255, 0.75);
-}
 
-/* experience */
-/* a row that opens the Work view, after snohetta.com's list rows */
 .section-row {
-  /* Three columns with the first left empty (Miguel, 4 Oct): the name sits centred in the row while
-     Open stays pinned right where it is on every other link. Two columns put the name hard left and
-     left a hole in the middle. */
+
   display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: baseline;
   margin: 30px 0 10px; padding: 18px 0; text-decoration: none; color: var(--ink);
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
 .section-row:hover { border-color: var(--accent); }
-.section-row-label { font-size: var(--t-sm); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--muted); }
 .section-row-title { grid-column: 2; font-size: var(--t-lg); font-weight: 600; letter-spacing: var(--track-head); }
 .section-row-go { grid-column: 3; justify-self: end; font-size: var(--t-sm); color: var(--muted); }
 .section-row:hover .section-row-go { color: var(--accent); }
 
 .timeline { list-style: none; display: grid; gap: 0; max-width: 760px; }
-/* Each row is its own grid, so a content-sized date column made every row a different width: a row
-   reading "November 2023 â€“ August 2024" squeezed the first two columns left of one reading
-   "April 2025 â€“ Present". A fixed last column gives all four rows the same three columns. */
+
 .timeline li {
   display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 12rem; gap: 4px 20px;
   padding: 16px 0; border-bottom: 1px solid var(--line); align-items: baseline;
@@ -689,8 +557,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .tl-dates { color: var(--muted); }
 .org { font-weight: 400; }
 .role-head { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: center; margin-bottom: 4px; }
-/* A role header is three lines, so centring put the mark level with the middle one â€” it looked as though
-   the title had slipped above it. It sits with the title now, and is sized to the block it stands beside. */
+
 .role-head-multi { align-items: start; grid-template-columns: 56px minmax(0, 1fr); }
 .role-head-multi .org-logo { width: 56px; height: 56px; margin-top: 1px; }
 .role-head .where { margin-bottom: 0; }
@@ -702,35 +569,25 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .points li { position: relative; padding-left: 18px; }
 .points li::before { content: ''; position: absolute; left: 2px; top: 0.62em; width: 5px; height: 5px; border-radius: var(--r-xs); background: var(--muted); }
 
-/* An earlier title held at the same employer. Indented under the current one and set a size down, so the
-   row still reads as one job with a step inside it rather than two separate jobs. */
 .role-earlier { margin-top: 14px; padding-left: 14px; border-left: 1px solid var(--line); }
 .earlier-head { margin-bottom: 10px; }
 .role-earlier .earlier-head strong { color: var(--ink); font-weight: 600; letter-spacing: normal; }
 .role-earlier .points { color: var(--muted); }
 
-/* A certificate list: title on the left, date out on the right in italic as his CV sets it,
-   and the detail beneath in the quieter tone. Title and date stack on narrow screens. */
 .certs { list-style: none; display: grid; gap: 8px; max-width: 60ch; }
-/* The date column is a FIXED width, not auto: with auto, "August, 2025" and "September, 2025" gave each
-   row a different title width, so every certificate broke its lines in a different place. */
+
 .cert-head { display: grid; grid-template-columns: minmax(0, 1fr) 8.5rem; gap: 2px 18px; align-items: baseline; }
 .cert-title { font-size: var(--t-sm); font-weight: 500; font-style: italic; }
 .cert-date { font-style: italic; color: var(--muted); font-size: var(--t-sm); white-space: nowrap; text-align: right; }
 
-/* skills */
-/* Skills reads as hairline rows, the same structure as the Experience timeline and the Work row:
-   the group name holds a left column, what he does fills the rest, the products sit quietly beneath. */
 .skill-rows { list-style: none; display: grid; gap: 0; max-width: 760px; }
 .skill-rows li {
-  /* The same 7.5rem left column as every other labelled row, so values line up down the whole page. */
+
   display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 4px 14px;
   padding: 16px 0; border-bottom: 1px solid var(--line);
 }
 .skill-rows li:first-child { border-top: 1px solid var(--line); }
 
-/* credentials — rows on hairlines, the same shape as Skills and the Experience timeline. The mark sits
-   in the 7.5rem left column where a label would. No border, no fill: boxes belong to the old vocabulary. */
 .cred-rows { list-style: none; max-width: 760px; }
 .cred-rows li { border-bottom: 1px solid var(--line); }
 .cred-rows li:first-child { border-top: 1px solid var(--line); }
@@ -755,9 +612,7 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .skill-does .sep { color: var(--muted); opacity: 0.5; padding: 0 2px; }
 .skill-tools { margin-top: 6px; color: var(--muted); font-size: var(--t-sm); }
 .skill-tools .label { margin-right: 8px; }
-/* education — the school card reuses the Experience role head; these are the rows under it.
-   Each row is a label in the left column and its value beside it, the same shape as the Skills rows. */
-/* His CV italicises the place and date beside each school and every Dean's Lister line. */
+
 .role-head-school .where { font-style: italic; }
 .honours li { font-style: italic; }
 .school-note { color: var(--muted); margin-bottom: 10px; }
@@ -766,37 +621,8 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .school-line .label { padding-top: 0.1em; }
 .honours { list-style: none; display: grid; gap: 4px; }
 
-/* proof */
-.proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 12px; max-width: 760px; }
-.proof-card {
-  display: flex; flex-direction: column; gap: 6px;
-  padding: 16px; border-radius: var(--r-lg);
-  border: 1px solid var(--line); background: var(--card);
-}
 .proof-kind { color: var(--accent); font-size: var(--t-xs); }
-/* A credential card is not a timeline row, so the mark gets room to actually be looked at. It sits on
-   the card with no tile: badge artwork is cut out, so a white square behind it is just a bright block.
-   A mark that is drawn FOR white paper sets `logoTile: true` in content.js and gets the tile back. */
-/* With a badge across the card, left-aligned wording under a centred mark reads as a mistake,
-   so a card carrying a mark centres everything on it. Text-only cards stay left-aligned. */
-.proof-card.has-mark { align-items: center; text-align: center; }
-.proof-logo { display: block; width: 100%; height: auto; margin: 6px 0 10px; }
-.proof-logo.has-tile { border-radius: var(--r-lg); background: #fff; border: 1px solid var(--line); }
-.proof-title { font-size: var(--t-base); line-height: 1.35; }
-.proof-topic { color: var(--muted); font-size: var(--t-md); }
-.proof-link { margin-top: auto; padding-top: 6px; color: var(--accent); font-weight: 600; text-decoration: none; }
-.proof-link.is-off { color: var(--muted); font-weight: 400; }
-/* A card that opens something is clickable across its whole face, not just on the words. */
-.proof-card.is-link { text-decoration: none; color: inherit; cursor: pointer; text-align: left; font: inherit; width: 100%; }
-.proof-card.is-link { transition: border-color 0.15s var(--ease), background 0.15s var(--ease), transform 0.15s var(--ease); }
-.proof-card.is-link:hover, .proof-card.is-link:focus-visible { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
-.proof-card.is-link:hover .proof-link, .proof-card.is-link:focus-visible .proof-link { text-decoration: underline; text-underline-offset: 3px; }
-/* No hover on a touch screen, so the card carries the accent border from the start. */
-@media (hover: none) {
-  .proof-card.is-link { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
-}
 
-/* ---- the panel a Proof card opens ---- */
 body.sheet-open { overflow: hidden; }
 .sheet-scrim { position: fixed; inset: 0; z-index: 60; background: rgba(1, 5, 12, 0.72); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
 .sheet {
@@ -815,7 +641,7 @@ body.sheet-open { overflow: hidden; }
 .sheet-x:hover { color: var(--ink); border-color: var(--accent); }
 .sheet-x svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
 .sheet-title { font-size: var(--t-xl); letter-spacing: var(--track-head); margin: 4px 0 16px; }
-/* The certificate is artwork drawn for white paper; it keeps its own ground rather than sitting on the dark. */
+
 .sheet-image { display: block; width: 100%; height: auto; border-radius: var(--r-lg); border: 1px solid var(--line); background: #fff; }
 .sheet-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 18px 0 4px; }
 .sheet-meta dt { margin-bottom: 2px; }
@@ -825,20 +651,13 @@ body.sheet-open { overflow: hidden; }
 @media (max-width: 767px) {
   .sheet { padding: 20px; width: calc(100vw - 20px); max-height: 92vh; }
   .sheet-meta { gap: 8px 20px; }
-  /* A proof card goes full width on a phone, so an unchecked badge fills most of the first screen of the
-     channel and the cards under it never get seen. Capped, and centred in the space it gives back. */
-  .proof-logo { max-width: 170px; margin-left: auto; margin-right: auto; }
 }
 
-/* testimonials */
 .initials { display: grid; place-items: center; color: var(--accent-ink); font-weight: 700; font-size: var(--t-md); }
 .quote { font-size: var(--t-base); max-width: 60ch; }
 
-/* about */
 .about-text { font-size: var(--t-base); max-width: 62ch; margin-bottom: 14px; }
-/* The closing line of About, centred as a block. The accent rule stays on its left edge, so the text
-   inside stays left-aligned against it â€” centring the words as well would leave the rule attached to
-   nothing. Miguel chose this treatment; it is the one place on the page that carries it. */
+
 .motto {
   font-size: clamp(1.25rem, 2.2vw, 1.6rem); font-weight: 600; font-style: italic;
   letter-spacing: var(--track-head); line-height: 1.3; max-width: 32ch;
@@ -846,15 +665,13 @@ body.sheet-open { overflow: hidden; }
   margin: 16px 0 0;
 }
 
-/* contact */
 .contact-list { list-style: none; display: grid; gap: 0; max-width: 600px; margin-bottom: 18px; border-top: 1px solid var(--line); }
 .contact-list li { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .contact-list .mono { color: var(--muted); }
-.contact-list a { display: inline-block; padding: 10px 0; margin: -10px 0; color: var(--accent); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; } /* bigger tap area, same look */
+.contact-list a { display: inline-block; padding: 10px 0; margin: -10px 0; color: var(--accent); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
 .contact-list a:hover { text-decoration: underline; }
 .end { text-align: center; color: var(--muted); margin: 40px 0 0; }
 
-/* gentle entrance as messages scroll into view */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); animation: none; }
 .reveal.in { opacity: 1; transform: none; }
 
@@ -863,15 +680,12 @@ body.sheet-open { overflow: hidden; }
   to { opacity: 1; transform: none; }
 }
 
-/* ---------------- tablet ---------------- */
 @media (max-width: 1023px) {
   .intro-grid:has(.intro-photo) { grid-template-columns: minmax(0, 1fr) 170px; }
   .intro-grid { gap: 24px; }
   .desk { padding: 20px; }
   .app { height: calc(100vh - 40px); }
-  /* The rail stays down to 900px (Miguel, 2 Oct — he works at this width). It was hidden below 1024
-     when it held less; it now carries the theme switch and the sidebar toggle, and losing both on an
-     ordinary laptop window costs more than the 72px it takes. The channel column narrows instead. */
+
   .app { grid-template-columns: 72px 216px 1fr; }
 }
 @media (max-width: 899px) {
@@ -880,11 +694,9 @@ body.sheet-open { overflow: hidden; }
   .mob-theme { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border-radius: var(--r-md); color: var(--muted); }
 }
 
-/* ---------------- phone ---------------- */
-/* The intro message IS the first screen. The channel list slides in from a button. */
 @media (max-width: 767px) {
   .timeline li { grid-template-columns: 1fr; gap: 2px; }
-  /* Two columns are too tight on a phone: the group name becomes a heading over its own row. */
+
   .skill-rows li { grid-template-columns: 1fr; gap: 6px; }
   .cred-row { grid-template-columns: 1fr; gap: 8px; }
   .cred-mark { justify-items: start; }
@@ -892,13 +704,9 @@ body.sheet-open { overflow: hidden; }
   .school-line { grid-template-columns: 1fr; gap: 2px; }
   .cert-head { grid-template-columns: 1fr; }
   .tl-dates { text-align: left; }
-  /* One column on a phone, so the explicit column numbers come off too — left on, they pushed the
-     name into an implicit track and knocked it 79px off centre. Stacked and left-aligned here:
-     centring a two-line row on a narrow screen reads as an accident. */
+
   .section-row { grid-template-columns: 1fr; gap: 6px; }
   .section-row-title, .section-row-go { grid-column: auto; justify-self: start; }
-  .specs { gap: 18px 24px; }
-  .set-name { font-family: var(--display); margin-left: 0; }
   .view-back { margin-left: 0; }
   .pane-tabs { padding: 6px 16px 0; }
   .files-panel { padding: 16px 16px 48px; }
@@ -922,8 +730,7 @@ body.sheet-open { overflow: hidden; }
 
   .pane { overflow: visible; }
   .avatar-live:has(.head-avatar) { display: none; }
-  /* On a phone the window, the rail and the desk are all hidden, so this header is the only thing left
-     that can carry the theme. White here meant slate and ember looked identical on a phone. */
+
   .pane-head {
     position: sticky; top: 0; z-index: 20;
     padding: 10px 12px;
@@ -944,14 +751,12 @@ body.sheet-open { overflow: hidden; }
 
   .msg { grid-template-columns: 38px minmax(0, 1fr); gap: 12px; }
   .channel-divider, .day { scroll-margin-top: 72px; }
-  .work-detail div { grid-template-columns: 1fr; gap: 2px; }
   .contact-list li { grid-template-columns: 1fr; gap: 2px; }
   .attachment { border-radius: var(--r-lg); }
   .msg-avatar { width: 38px; height: 38px; }
   .lede { font-family: var(--display); font-size: var(--t-xl); margin-bottom: 12px; }
   .actions .btn { flex: 1 1 auto; }
 
-  /* Closed: fully off-screen, no shadow leaking in, and its links can't be tabbed to. */
   .sidebar {
     position: fixed; inset: 0 auto 0 0; z-index: 40;
     width: min(84vw, 320px);
@@ -969,15 +774,9 @@ body.sheet-open { overflow: hidden; }
   .scrim { display: block; position: fixed; inset: 0; z-index: 35; background: rgba(6, 10, 23, 0.45); }
   .scrim[hidden] { display: none; }
 
-  /* On phones the floating button would cover text while reading; an envelope in the top bar replaces it. */
   .float-wrap { display: none; }
   .mob-mail { display: grid; place-items: center; width: 44px; height: 44px; margin-left: auto; border-radius: var(--r-md); color: var(--accent); }
   .mob-mail + .mob-theme { margin-left: 0; }
-}
-
-/* very narrow phones: keep the name line on one row */
-@media (max-width: 420px) {
-  .pin { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -985,11 +784,6 @@ body.sheet-open { overflow: hidden; }
   .reveal { opacity: 1; transform: none; }
 }
 
-/* ---- scrollbars ----
-   The default Windows scrollbar is a wide grey bar flush against the edge, which is the first thing that
-   gives away that this is a web page rather than an app. A slim rounded thumb, inset from the edge by a
-   transparent border, is what a real client shows. Firefox gets the two-property version; everything else
-   gets the full one. The pane is light and the sidebar is dark, so each takes its own thumb colour. */
 * { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.22) transparent; }
 .pane, .pane * { scrollbar-color: rgba(0, 0, 0, 0.22) transparent; }
 
