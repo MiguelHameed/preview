@@ -550,14 +550,22 @@
 
   function openSheet(p, opener) {
     sheetOpener = opener || null;
-    sheetBody.innerHTML = `
-      <span class="proof-kind">${esc(p.kind)}</span>
-      <h2 class="sheet-title" id="sheet-title">${esc(p.title)}</h2>
-      ${p.image ? `<img class="sheet-image" src="${esc(asset(p.image))}" alt="${esc(p.imageAlt || '')}" />` : ''}
+    const story = (p.story || []).filter(Boolean);
+    const layout = p.image ? (story.join(' ').length > 160 ? 'split' : 'picture') : 'text';
+    const rest = `
       ${p.meta && p.meta.length ? `<dl class="sheet-meta">${p.meta.map((m) => `
         <div><dt class="label">${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}</dl>` : ''}
-      ${p.story && p.story.length ? p.story.map((s) => `<p class="sheet-para">${esc(s)}</p>`).join('') : ''}
+      ${story.map((s) => `<p class="sheet-para">${esc(s)}</p>`).join('')}
       ${p.link ? `<a class="btn btn-primary sheet-cta" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || 'Verify')} <span aria-hidden="true">↗</span>${NEW_TAB}</a>` : ''}`;
+    sheet.dataset.layout = layout;
+    sheetBody.innerHTML = `
+      <div class="sheet-head">
+        <span class="proof-kind">${esc(p.kind)}</span>
+        <h2 class="sheet-title" id="sheet-title">${esc(p.title)}</h2>
+      </div>
+      ${p.image ? `<div class="sheet-media"><img class="sheet-image" src="${esc(asset(p.image))}" alt="${esc(p.imageAlt || '')}" /></div>` : ''}
+      ${rest.trim() ? `<div class="sheet-rest">${rest}</div>` : ''}`;
+    sheet.scrollTop = 0;
     sheet.hidden = false; sheetScrim.hidden = false;
     document.body.classList.add('sheet-open');
     sheetX.focus();
