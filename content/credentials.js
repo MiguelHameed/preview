@@ -18,8 +18,8 @@ Object.assign(window.SITE, {
         { label: 'Certificate', value: '8a2eyxevcezx' },
       ],
       story: [
-        'ClickUp is where my work actually happens, and I took the certification in June 2025. Everything I run lives in one workspace, so knowing the tool properly is not optional. It is the difference between a system that holds and one that quietly drifts.',
-        'Since then it has mostly been the structure: how a workspace is laid out, what runs automatically, what connects out to the other tools people are already in. Agents and AI Skills sit on top of that, and someone has to watch what they cost to run. Done properly none of it is noticeable, which is the whole idea.',
+        'Everything I run lives in ClickUp. In June 2025, I earned its expert certification because the tool I rely on most is the one I should know best.',
+        'Since then, I have gone deeper into structure. I design how a workspace is organised, build the automations that run it, and connect it to the tools people already use. On top of that, I build agents and AI Skills, and I track what they cost to run. When it is all done well, nobody notices, and that is the point.',
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
