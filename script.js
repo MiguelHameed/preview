@@ -328,6 +328,8 @@
     const s = w.thumb || [].concat(w.shots || [], w.shot || [])[0];
     return s ? (typeof s === 'string' ? s : s.src) : null;
   };
+  const pictureSizes = (w, pic) => (w.thumbLarge && pic === w.thumb
+    ? ` srcset="${esc(asset(w.thumb))} 520w, ${esc(asset(w.thumbLarge))} 780w" sizes="(max-width: 767px) 45vw, 360px"` : '');
   const workRow = workChannel ? `
     <section class="proj-strip" aria-labelledby="proj-heading">
       <div class="proj-head">
@@ -340,7 +342,7 @@
         <li>
           <a class="proj-card" href="#${workChannel.id}" data-project="${i}">
             ${pic
-              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}" alt="" width="520" height="273" loading="lazy" /></span>`
+              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}"${pictureSizes(w, pic)} alt="" width="520" height="273" loading="lazy" /></span>`
               : `<span class="proj-thumb is-name" aria-hidden="true">${esc(w.title)}</span>`}
             <span class="proj-name">${esc(w.title)}</span>
             ${w.year ? `<span class="proj-meta">${esc(w.year)}</span>` : ''}
