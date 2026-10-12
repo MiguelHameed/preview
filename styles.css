@@ -317,7 +317,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 }
 .side-plus:hover { background: var(--accent); color: var(--accent-ink); }
 .float-text { display: flex; flex-direction: column; line-height: 1.32; text-align: left; flex: 1; min-width: 0; padding-top: 1px; }
-.float-sub { font-size: 1rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.float-sub { font-size: var(--t-md); color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .side-label {
   display: flex; align-items: center; gap: 4px; width: 100%;
   margin-top: 10px; padding: 6px 8px; border-radius: var(--r-sm);
@@ -471,17 +471,18 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 
 .float-wrap {
   position: absolute;
-  right: 22px;
-  bottom: 22px;
+  right: 18px;
+  bottom: 18px;
+  width: 300px; max-width: calc(100% - 36px);
   z-index: 30;
   transition: transform 0.2s var(--ease), opacity 0.25s;
 }
 .float-wrap.is-hidden { opacity: 0; pointer-events: none; transform: translateY(10px); }
 .float-btn {
-  display: flex; align-items: flex-start; gap: 12px;
-  width: 428px; max-width: calc(100% - 44px);
-  padding: 16px 17px;
-  border-radius: 18px;
+  display: flex; align-items: flex-start; gap: 11px;
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 16px;
 
   background: color-mix(in srgb, var(--app) 82%, transparent);
   -webkit-backdrop-filter: blur(26px) saturate(180%);
@@ -494,12 +495,12 @@ a.hook:hover, a.hook:focus-visible { border-bottom-color: var(--accent); color: 
 .float-wrap:hover .float-btn { transform: translateY(-2px); }
 
 .float-app {
-  width: 50px; height: 50px; border-radius: 13px; flex: none;
+  width: 38px; height: 38px; border-radius: 10px; flex: none;
   display: grid; place-items: center; background: #fff;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.3);
 }
-.float-app svg { width: 30px; height: 30px; }
-.float-btn strong { font-weight: 600; font-size: var(--t-lg); letter-spacing: var(--track-head); }
+.float-app svg { width: 23px; height: 23px; }
+.float-btn strong { font-weight: 600; font-size: var(--t-base); letter-spacing: var(--track-head); }
 .float-when { flex: none; font-size: var(--t-sm); color: var(--muted); padding-top: 3px; }
 .float-x {
   position: absolute; top: -7px; left: -7px;
