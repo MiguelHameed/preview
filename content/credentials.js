@@ -23,8 +23,8 @@ Object.assign(window.SITE, {
       ],
     },
     { kind: 'In progress · Microsoft', title: 'SC-300: Identity and Access Administrator',
-      logo: 'images/credentials/sc-300.webp', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-300.webp', topic: 'On track for 2026. Only the exam stands between me and the badge.' },
     { kind: 'In progress · Microsoft', title: 'SC-200: Security Operations Analyst',
-      logo: 'images/credentials/sc-200.webp', topic: 'Exam not yet taken.' },
+      logo: 'images/credentials/sc-200.webp', topic: 'On track for 2026. Only the exam stands between me and the badge.' },
   ],
 });
