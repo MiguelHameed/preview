@@ -18,8 +18,8 @@ Object.assign(window.SITE, {
       year: 'Live · this site',
       thumb: 'images/work/miguelhameed-com.webp',
       thumbLarge: 'images/work/miguelhameed-com-780.webp',
-      what: 'A portfolio that ships like a product.',
-      built: 'Owned end to end: the roadmap, the copy, and every release.',
+      what: 'Zero to one.',
+      built: 'Roadmap, copy, release. Owned end to end.',
       specsLabel: 'Built with',
       specs: [
         { value: 'HTML' }, { value: 'CSS' }, { value: 'JavaScript' },
