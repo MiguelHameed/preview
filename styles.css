@@ -135,7 +135,7 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .mono { font-family: var(--mono); font-size: var(--t-sm); letter-spacing: 0.01em; }
 
 .label, .divider-sub, .proof-kind, .tl-dates, .where,
-.empty-note, .todo-tag, .ext, .end, .tab-count, #pane-sub, .contact-list .label,
+.empty-note, .todo-tag, .ext, .end, #pane-sub, .contact-list .label,
 .earlier-head {
   font-family: var(--sans); font-size: var(--t-sm); letter-spacing: var(--track-caps); color: var(--muted);
 }
@@ -261,21 +261,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   color: var(--muted); font-size: var(--t-sm); letter-spacing: var(--track-caps);
 }
 .view-back:hover { color: var(--accent); }
-
-.pane-tabs { display: flex; gap: 4px; padding: 8px 28px 0; border-bottom: 1px solid var(--line); background: var(--app); }
-.pane-tab {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 12px 10px; border-bottom: 2px solid transparent;
-  color: var(--muted); font-weight: 600; font-size: var(--t-md);
-}
-.pane-tab:hover { color: var(--ink); }
-.pane-tab.is-on { color: var(--ink); border-bottom-color: var(--accent); }
-.tab-count { color: var(--muted); font-weight: 400; }
-.files-panel { flex: 1; overflow-y: auto; padding: 24px 28px 60px; }
-.files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 18px; max-width: 1000px; }
-.file-card { display: flex; flex-direction: column; gap: 8px; }
-.file-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--card); }
-.file-name { color: var(--muted); }
 
 .hash-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: -6px 0 14px; }
 
@@ -777,8 +762,6 @@ body.sheet-open { overflow: hidden; }
   .proj-thumb.is-name { font-size: var(--t-lg); }
   .channel-view .msg { scroll-margin-top: 76px; }
   .view-back { margin-left: 0; }
-  .pane-tabs { padding: 6px 16px 0; }
-  .files-panel { padding: 16px 16px 48px; }
   .role-head { grid-template-columns: 36px minmax(0, 1fr); gap: 10px; align-items: start; }
   .role-head-multi { grid-template-columns: 44px minmax(0, 1fr); }
   .role-head-multi .org-logo { width: 44px; height: 44px; }
@@ -855,7 +838,7 @@ body.sheet-open { overflow: hidden; }
   .pane-title .pane-h { font-size: 0.95rem; }
 }
 
-.feed, .channel-view, .files-panel { outline: none; }
+.feed, .channel-view { outline: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

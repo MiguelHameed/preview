@@ -316,14 +316,6 @@
       ${buttons('data-contact-actions', false)}`) + (S.endLine ? `<p class="end">${esc(S.endLine)}</p>` : '');
   }
 
-  function filesPanel() {
-    return `<div class="files-grid">${S.files.map((f) => `
-      <figure class="file-card">
-        <img src="${esc(asset(f.src))}" alt="${esc(f.caption || f.name)}" loading="lazy" />
-        <figcaption class="file-name mono">${esc(f.name)}</figcaption>
-      </figure>`).join('')}</div>`;
-  }
-
   const builders = { projects, experience, skills, education, credentials, testimonials, about, contact };
   const feed = $('#feed');
   const scrollChannels = CHANNELS.filter((c) => !c.view);
@@ -416,26 +408,6 @@
     showView(CHANNELS.some((c) => c.view && c.id === id) ? id : null);
     if (!id) setActive('intro');
   });
-
-  if (S.files && S.files.length) {
-    const tabs = document.createElement('div');
-    tabs.className = 'pane-tabs';
-    tabs.innerHTML = `
-      <button class="pane-tab is-on" type="button" data-tab="messages">Messages</button>
-      <button class="pane-tab" type="button" data-tab="files">Files <span class="tab-count">${S.files.length}</span></button>`;
-    $('.pane-head').insertAdjacentElement('afterend', tabs);
-    const panel = document.createElement('div');
-    panel.className = 'files-panel';
-    panel.hidden = true;
-    panel.innerHTML = filesPanel();
-    feed.insertAdjacentElement('afterend', panel);
-    $$('.pane-tab').forEach((b) => b.addEventListener('click', () => {
-      const files = b.dataset.tab === 'files';
-      $$('.pane-tab').forEach((x) => x.classList.toggle('is-on', x === b));
-      feed.hidden = files;
-      panel.hidden = !files;
-    }));
-  }
 
   if (S.liveSites && S.liveSites.length) {
     const head = document.createElement('button');
@@ -604,7 +576,7 @@
     if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
     const at = document.activeElement;
     if (at && at !== document.body && at.id !== 'messages') return;
-    const el = [feed, ...Object.values(views), $('.files-panel')].find((x) => x && !x.hidden);
+    const el = [feed, ...Object.values(views)].find((x) => x && !x.hidden);
     if (!el || el.scrollHeight <= el.clientHeight || getComputedStyle(el).overflowY === 'visible') return;
     const page = el.clientHeight * 0.9;
     const by = { PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page,
