@@ -15,7 +15,6 @@ Object.assign(window.SITE, {
     linkedin: 'https://www.linkedin.com/in/miguelhameed',
     linkedinLabel: 'linkedin.com/in/miguelhameed',
     instagram: 'https://www.instagram.com/miggybop/',
-    cv: 'cv.pdf',
     cta: "What's the project?",
     booking: null,
     bookingCta: null,

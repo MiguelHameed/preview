@@ -41,7 +41,6 @@
     calendar: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3" fill="#ffffff" stroke="#c8ccd1"/><path fill="#EA4335" d="M3 7.5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3V9H3z"/><rect x="7" y="12" width="3" height="3" rx=".6" fill="#3c4043"/><rect x="11.5" y="12" width="3" height="3" rx=".6" fill="#3c4043"/><rect x="7" y="16.2" width="3" height="2.4" rx=".6" fill="#3c4043"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92zM20.44 13.2c0-3.1-1.65-4.94-4.3-4.94-1.94 0-2.8 1.07-3.29 1.82V8.5H9.48V20h3.37v-5.7c0-1.5.28-2.96 2.14-2.96 1.83 0 1.86 1.72 1.86 3.06V20h3.38l.01-6.8z"/></svg>',
     email: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ffffff" d="M3 6h18v12H3z"/><path fill="#4285F4" d="M20.4 19h-2.1V9.9L12 14.3 5.7 9.9V19H3.6A1.6 1.6 0 0 1 2 17.4V6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v10.8c0 .9-.7 1.6-1.6 1.6z"/><path fill="#34A853" d="M2 17.4V8.1l3.7 2.6V19H3.6A1.6 1.6 0 0 1 2 17.4z"/><path fill="#FBBC04" d="M22 17.4c0 .9-.7 1.6-1.6 1.6h-2.1v-8.3L22 8.1z"/><path fill="#EA4335" d="M2 6.6C2 5.7 2.7 5 3.6 5h.7L12 10.6 19.7 5h.7c.9 0 1.6.7 1.6 1.6v1.5L12 14.9 2 8.1z"/></svg>',
-    cv: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.5h8.5L19 7v13a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4a1.5 1.5 0 0 1 1-1.5zm1 2V19.5h10V8h-4V4.5H7zm2 7h6v1.6H9v-1.6zm0 3.4h6v1.6H9v-1.6z"/></svg>',
     instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.5 9.5 2.5 9.9 2.5 13s0 3.5.07 4.8c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4z"/><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2z"/><circle cx="17" cy="7" r="1.15"/></svg>',
     notes: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v2H5zm0 5h14v2H5zm0 5h9v2H5z"/></svg>',
   };
@@ -49,7 +48,6 @@
     { label: 'LinkedIn', href: P.linkedin, ext: true, icon: 'linkedin' },
     { label: 'Email', href: 'mailto:' + P.email, icon: 'email' },
     ...(P.instagram ? [{ label: 'Instagram', href: P.instagram, ext: true, icon: 'instagram' }] : []),
-    ...(S.showCv === false ? [] : [{ label: 'CV (PDF)', href: asset(P.cv), ext: true, icon: 'cv' }]),
     ...(S.notes ? [{ label: 'Notes', href: S.notes, ext: true, icon: 'notes' }] : []),
   ];
 
@@ -85,8 +83,7 @@
     </h2>`;
   const buttons = (attr = '', withLinkedIn = true) => `
     <div class="actions" ${attr}>
-      ${S.showCv === false ? '' : `<a class="btn btn-primary" href="${esc(asset(P.cv))}" target="_blank" rel="noopener">Download CV${NEW_TAB}</a>`}
-      <a class="btn ${S.showCv === false ? 'btn-primary' : ''}" href="${esc(CTA.href)}"${CTA.ext ? ' target="_blank" rel="noopener"' : ''}>${esc(CTA.label)}${CTA.ext ? NEW_TAB : ''}</a>
+      <a class="btn btn-primary" href="${esc(CTA.href)}"${CTA.ext ? ' target="_blank" rel="noopener"' : ''}>${esc(CTA.label)}${CTA.ext ? NEW_TAB : ''}</a>
       ${withLinkedIn ? `<a class="btn btn-brand" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn<svg class="btn-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>${NEW_TAB}</a>` : ''}
     </div>`;
 
@@ -302,12 +299,17 @@
       <blockquote class="motto">“${esc(P.motto)}”</blockquote>`);
   }
 
+  const resumeRow = () => (S.resumeLine
+    ? `<li><span class="label">${esc(S.resumeLabel || 'Resume')}</span><a href="mailto:${esc(P.email)}${S.resumeSubject ? `?subject=${encodeURIComponent(S.resumeSubject)}` : ''}">${esc(S.resumeLine)}</a></li>`
+    : '');
+
   function contact(c) {
     return divider(c) + msg('contact', `
       <p class="section-lede">${esc(S.contactLine)}</p>
       <ul class="contact-list">
         <li><span class="label">Email</span><a href="mailto:${esc(P.email)}">${esc(P.email)}</a></li>
         <li><span class="label">LinkedIn</span><a href="${esc(P.linkedin)}" target="_blank" rel="noopener">${esc(P.linkedinLabel)} <span aria-hidden="true">↗</span>${NEW_TAB}</a></li>
+        ${resumeRow()}
         <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
         <li><span class="label">Status</span><span>${esc(P.availability)}</span></li>
       </ul>
