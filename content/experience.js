@@ -1,7 +1,7 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
-  experienceLede: '{count} roles, from government health programmes to technical operations.',
+  experienceLede: 'Government health programmes to technical operations, method intact.',
   experience: [
     {
       role: 'Technical Operations Specialist',
