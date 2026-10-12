@@ -556,7 +556,7 @@
     if (openView || tab === 'notebook') return;
     entries.forEach((e) => { if (e.isIntersecting) current = e.target.dataset.section; });
     setActive(current);
-  }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
+  }, { root: getComputedStyle(feed).overflowY === 'visible' ? null : feed, rootMargin: '0px 0px -75% 0px', threshold: 0 });
   sections.forEach((s) => spy.observe(s));
   setActive('intro');
   openFromHash(true);
