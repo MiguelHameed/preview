@@ -340,7 +340,7 @@
         <li>
           <a class="proj-card" href="#${workChannel.id}" data-project="${i}">
             ${pic
-              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}" alt="" width="520" height="325" loading="lazy" /></span>`
+              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}" alt="" width="520" height="273" loading="lazy" /></span>`
               : `<span class="proj-thumb is-name" aria-hidden="true">${esc(w.title)}</span>`}
             <span class="proj-name">${esc(w.title)}</span>
             ${w.year ? `<span class="proj-meta">${esc(w.year)}</span>` : ''}
