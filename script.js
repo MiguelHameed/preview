@@ -329,7 +329,7 @@
     return s ? (typeof s === 'string' ? s : s.src) : null;
   };
   const pictureSizes = (w, pic) => (w.thumbLarge && pic === w.thumb
-    ? ` srcset="${esc(asset(w.thumb))} 520w, ${esc(asset(w.thumbLarge))} 780w" sizes="(max-width: 767px) 45vw, 360px"` : '');
+    ? ` srcset="${esc(asset(w.thumb))} 522w, ${esc(asset(w.thumbLarge))} 780w" sizes="(max-width: 767px) 45vw, 360px"` : '');
   const workRow = workChannel ? `
     <section class="proj-strip" aria-labelledby="proj-heading">
       <div class="proj-head">
@@ -342,7 +342,7 @@
         <li>
           <a class="proj-card" href="#${workChannel.id}" data-project="${i}">
             ${pic
-              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}"${pictureSizes(w, pic)} alt="" width="520" height="273" loading="lazy" /></span>`
+              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}"${pictureSizes(w, pic)} alt="" width="522" height="348" loading="lazy" /></span>`
               : `<span class="proj-thumb is-name" aria-hidden="true">${esc(w.title)}</span>`}
             <span class="proj-name">${esc(w.title)}</span>
             ${w.year ? `<span class="proj-meta">${esc(w.year)}</span>` : ''}
@@ -351,6 +351,11 @@
       }).join('')}</ul>
     </section>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
+
+  $$('.proj-thumb img').forEach((img) => {
+    const fit = () => { if (img.naturalHeight && Math.abs(img.naturalWidth / img.naturalHeight - 1.5) < 0.03) img.classList.add('is-fill'); };
+    if (img.complete) fit(); else img.addEventListener('load', fit, { once: true });
+  });
 
   const views = {};
   CHANNELS.filter((c) => c.view).forEach((c) => {
