@@ -409,28 +409,6 @@
     if (!id) setActive('intro');
   });
 
-  if (S.liveSites && S.liveSites.length) {
-    const head = document.createElement('button');
-    head.className = 'side-label';
-    head.type = 'button';
-    head.setAttribute('aria-expanded', 'true');
-    head.setAttribute('aria-controls', 'live-list');
-    head.innerHTML = '<svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8.5h12l-6 7.5z"/></svg>Live sites';
-    const list = document.createElement('ul');
-    list.className = 'side-list';
-    list.id = 'live-list';
-    list.innerHTML = S.liveSites.map((l) =>
-      `<li><a class="side-link" href="${esc(l.url)}" target="_blank" rel="noopener"><span class="hash" aria-hidden="true">↗</span>${esc(l.label)}${NEW_TAB}</a></li>`).join('');
-    const firstLabel = $('.side-label');
-    firstLabel.parentNode.insertBefore(head, firstLabel);
-    firstLabel.parentNode.insertBefore(list, firstLabel);
-    head.addEventListener('click', () => {
-      const open = head.getAttribute('aria-expanded') !== 'true';
-      head.setAttribute('aria-expanded', String(open));
-      list.hidden = !open;
-    });
-  }
-
   const headIcon = $('[data-head-avatar]');
   if (headIcon) headIcon.outerHTML = avatarLive('head-avatar', '');
   const titleEl = $('#pane-title');
