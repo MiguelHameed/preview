@@ -1,5 +1,7 @@
 (function () {
   const S = window.SITE;
+  const NEEDED = ['hideTodos', 'person', 'projects', 'about', 'skills', 'experience', 'schools', 'credentials', 'testimonials', 'contactLine'];
+  if (!S || NEEDED.some((key) => S[key] === undefined)) return;
   const P = S.person;
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -11,14 +13,14 @@
     : esc(t);
 
   const CHANNELS = [
-    ...(S.projects.length ? [{ id: 'projects', title: 'Projects', sub: 'One of these is the page you’re on.', view: true }] : []),
-    { id: 'about', title: 'About', sub: 'Trained in science, ended up in systems' },
-    { id: 'skills', title: 'Skills', sub: 'This is the list, minus the ones that I’d have to google.' },
+    ...(S.projects.length ? [{ id: 'projects', title: 'Projects', sub: S.projectsSub, view: true }] : []),
+    { id: 'about', title: 'About', sub: S.aboutSub },
+    { id: 'skills', title: 'Skills', sub: S.skillsSub },
     { id: 'experience', title: 'Experience' },
     { id: 'education', title: 'Education' },
-    { id: 'credentials', title: 'Credentials', sub: 'Click it, I’ll wait.' },
-    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: 'In their words' }] : []),
-    { id: 'contact', title: 'Contact', sub: 'Yes, that’s my actual email.' },
+    { id: 'credentials', title: 'Credentials', sub: S.credentialsSub },
+    ...(S.testimonials.length >= 2 ? [{ id: 'testimonials', title: 'Testimonials', sub: S.testimonialsSub }] : []),
+    { id: 'contact', title: 'Contact', sub: S.contactSub },
   ];
 
   const SITE_ROOT = location.pathname.replace(/index\.html$/, '').replace(/(?:projects|work)\/?$/, '').replace(/\/?$/, '/');
@@ -101,7 +103,7 @@
 
   function intro() {
     return `
-      <div class="day mono" id="intro" data-section="intro">pinned</div>
+      <div class="day mono" id="intro" data-section="intro">${esc(S.pinnedLabel)}</div>
       <article class="msg reveal">
         ${avatarLive('msg-avatar', P.name)}
         <div class="msg-body">
@@ -191,7 +193,7 @@
     const list = positions.map((p) => `
       <li><span class="tl-role"><strong>${esc(p.role)}</strong></span><span class="tl-org">${esc(shortOrg(p.org))}</span><span class="tl-dates">${txt(p.dates)}</span></li>`).join('');
     const summary = msg('overview', `
-      <p class="section-lede">${positions.length} roles, from government health programmes to technical operations.</p>
+      ${S.experienceLede ? `<p class="section-lede">${esc(S.experienceLede.replace('{count}', positions.length))}</p>` : ''}
       <ul class="timeline">${list}</ul>`);
     const roles = S.experience.map((e, i) => msg(`role ${i + 1} of ${S.experience.length}`, `
       <div class="role-head role-head-multi">
@@ -309,7 +311,7 @@
         <li><span class="label">Based in</span><span>${esc(P.location)} (UTC+8) · <span data-clock>${manilaTime()}</span></span></li>
         <li><span class="label">Status</span><span>${esc(P.availability)}</span></li>
       </ul>
-      ${buttons('data-contact-actions', false)}`) + `<p class="end">— end of conversation —</p>`;
+      ${buttons('data-contact-actions', false)}`) + (S.endLine ? `<p class="end">${esc(S.endLine)}</p>` : '');
   }
 
   function filesPanel() {
@@ -363,7 +365,7 @@
     panel.className = 'channel-view';
     panel.hidden = true;
     panel.innerHTML = `<button class="view-back" type="button" data-view-back>← Back to messages</button>` + builders[c.id](c);
-    const heading = panel.querySelector('.channel-divider'); // the header already names the channel
+    const heading = panel.querySelector('.channel-divider');
     if (heading) { heading.classList.add('sr-only'); }
     feed.insertAdjacentElement('afterend', panel);
     views[c.id] = panel;
@@ -473,7 +475,7 @@
     if (isView) link.setAttribute('href', urlFor(id));
     link.addEventListener('click', (e) => {
       if (isView) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // let the browser open a new tab
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
         e.preventDefault();
         history.pushState({ view: id }, '', urlFor(id));
         showView(id);
@@ -489,13 +491,13 @@
   const sections = $$('[data-section]');
   let current = 'intro';
   const spy = new IntersectionObserver((entries) => {
-    if (openView) return; // the open view sets the title itself
+    if (openView) return;
     entries.forEach((e) => { if (e.isIntersecting) current = e.target.dataset.section; });
     setActive(current);
   }, { rootMargin: '0px 0px -75% 0px', threshold: 0 });
   sections.forEach((s) => spy.observe(s));
   setActive('intro');
-  openFromHash(true); // honour a link like miguelhameed.com/#projects, old fragments included
+  openFromHash(true);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) {
@@ -591,7 +593,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
     const at = document.activeElement;
-    if (at && at !== document.body && at.id !== 'messages') return; // something else has the keyboard
+    if (at && at !== document.body && at.id !== 'messages') return;
     const el = [feed, ...Object.values(views), $('.files-panel')].find((x) => x && !x.hidden);
     if (!el || el.scrollHeight <= el.clientHeight || getComputedStyle(el).overflowY === 'visible') return;
     const page = el.clientHeight * 0.9;

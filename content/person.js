@@ -1,6 +1,8 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
+  pinnedLabel: 'pinned',
+  endLine: '— end of conversation —',
   person: {
     name: 'Miguel Irfan Hameed',
     shortName: 'Miguel Irfan Hameed',

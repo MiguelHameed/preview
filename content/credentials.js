@@ -1,6 +1,7 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
+  credentialsSub: 'Click it, I’ll wait.',
 
   credentials: [
     {

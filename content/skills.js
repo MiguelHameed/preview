@@ -1,6 +1,7 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
+  skillsSub: 'This is the list, minus the ones that I’d have to google.',
 
   skills: [
     { group: 'Marketing operations',

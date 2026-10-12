@@ -1,6 +1,7 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
+  aboutSub: 'Trained in science, ended up in systems',
 
   about: [
     'I fixed a system nobody else could get working. I think about that more than anything else I have done, because it was the first time I understood what I actually wanted — not a title, not a department. To be the one people come to when something has stopped.',

@@ -1,6 +1,7 @@
 
 window.SITE = window.SITE || {};
 Object.assign(window.SITE, {
+  projectsSub: 'One of these is the page you’re on.',
 
   workSetName: '',
 

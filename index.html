@@ -144,13 +144,16 @@
         <div class="feed" id="feed">
           <noscript><p class="noscript">This page needs JavaScript to show its content. You can still reach Miguel at
             <a href="mailto:miguelhameed@gmail.com">miguelhameed@gmail.com</a>.</p></noscript>
+          <p class="noscript" id="load-failed" hidden>This page didn’t finish loading.
+            <a href="#" onclick="location.reload(); return false">Reload it</a> to try again. You can still reach Miguel at
+            <a href="mailto:miguelhameed@gmail.com">miguelhameed@gmail.com</a>.</p>
         </div>
       </main>
 
       <div class="scrim" data-scrim hidden></div>
 
       <div class="float-wrap" id="float-btn">
-        <a class="float-btn" id="float-link" href="#">What's the project?</a>
+        <a class="float-btn" id="float-link" href="mailto:miguelhameed@gmail.com">What's the project?</a>
         <button class="float-x" id="float-x" type="button" aria-label="Dismiss">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
@@ -177,5 +180,6 @@
   <script src="content/testimonials.js"></script>
   <script src="content/contact.js"></script>
   <script src="script.js"></script>
+  <script>if (!document.querySelector('#feed .msg')) { var failed = document.getElementById('load-failed'); if (failed) failed.hidden = false; }</script>
 </body>
 </html>
