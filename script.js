@@ -324,11 +324,30 @@
   const feed = $('#feed');
   const scrollChannels = CHANNELS.filter((c) => !c.view);
   const workChannel = CHANNELS.find((c) => c.view);
+  const firstPicture = (w) => {
+    const s = w.thumb || [].concat(w.shots || [], w.shot || [])[0];
+    return s ? (typeof s === 'string' ? s : s.src) : null;
+  };
   const workRow = workChannel ? `
-    <a class="section-row" href="#${workChannel.id}">
-      <span class="section-row-title">${esc(workChannel.title)}</span>
-      <span class="section-row-go">Open &rarr;</span>
-    </a>` : '';
+    <section class="proj-strip" aria-labelledby="proj-heading">
+      <div class="proj-head">
+        <h2 class="proj-heading" id="proj-heading">${esc(workChannel.title)}</h2>
+        <a class="proj-all" href="#${workChannel.id}">Open all <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <ul class="proj-cards">${S.projects.map((w, i) => {
+        const pic = firstPicture(w);
+        return `
+        <li>
+          <a class="proj-card" href="#${workChannel.id}" data-project="${i}">
+            ${pic
+              ? `<span class="proj-thumb"><img src="${esc(asset(pic))}" alt="" width="520" height="325" loading="lazy" /></span>`
+              : `<span class="proj-thumb is-name" aria-hidden="true">${esc(w.title)}</span>`}
+            <span class="proj-name">${esc(w.title)}</span>
+            ${w.year ? `<span class="proj-meta">${esc(w.year)}</span>` : ''}
+          </a>
+        </li>`;
+      }).join('')}</ul>
+    </section>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
 
   const views = {};
@@ -451,6 +470,8 @@
         e.preventDefault();
         history.pushState({ view: id }, '', urlFor(id));
         showView(id);
+        const entry = link.dataset.project ? views[id].querySelectorAll('.msg')[Number(link.dataset.project)] : null;
+        if (entry) entry.scrollIntoView({ block: 'start' });
       } else if (openView) {
         history.pushState({ view: null }, '', urlFor(null) + link.getAttribute('href'));
         showView(null);
