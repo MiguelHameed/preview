@@ -146,13 +146,16 @@
         ['Problem', w.problem], ['What I did', w.did],
       ].filter(([, v]) => v && txt(v)).map(([k, v]) => `
         <p class="school-line"><span class="label">${k}</span> ${txt(v)}</p>`).join('');
-      const specs = (w.specs || []).map((sp) => `${esc(sp.value)} <span class="spec-of">${esc(sp.label)}</span>`).join(' &middot; ');
+      const chips = (w.specs || []).length > 0 && (w.specs || []).every((sp) => !sp.label);
+      const specs = chips
+        ? (w.specs || []).map((sp) => `<span class="spec-chip">${esc(sp.value)}</span>`).join('')
+        : (w.specs || []).map((sp) => `${esc(sp.value)} <span class="spec-of">${esc(sp.label)}</span>`).join(' &middot; ');
       return msg(`work ${i + 1} of ${n}`, `
       <h3 class="work-title">${esc(w.title)}</h3>
       ${meta ? `<p class="where">${meta}</p>` : ''}
       ${w.pending && !S.hideTodos ? `<p class="work-pending">${txt(w.pending)}</p>` : ''}
       ${rows}
-      ${specs ? `<p class="school-line"><span class="label">Specifics</span> <span class="spec-line">${specs}</span></p>` : ''}
+      ${specs ? `<p class="school-line"><span class="label">${esc(w.specsLabel || 'Specifics')}</span> <span class="spec-line${chips ? ' spec-chips' : ''}">${specs}</span></p>` : ''}
       ${shotRow(w)}`);
     }).join('');
   }
