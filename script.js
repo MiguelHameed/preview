@@ -443,7 +443,7 @@
     panel.hidden = true;
     panel.innerHTML = `<button class="view-back" type="button" data-view-back>← Back to messages</button>` + builders[c.id](c);
     const heading = panel.querySelector('.channel-divider');
-    if (heading) { heading.classList.add('sr-only'); }
+    if (heading) { heading.classList.add('view-heading'); }
     feed.insertAdjacentElement('afterend', panel);
     views[c.id] = panel;
   });
@@ -527,7 +527,9 @@
   function setActive(id) {
     const c = CHANNELS.find((x) => x.id === id);
     titleEl.textContent = c ? '#' + c.title : P.shortName;
-    subEl.textContent = c ? (c.sub || '') : `${P.role} · ${P.location}`;
+    subEl.dataset.kind = c ? 'channel' : 'person';
+    if (c) subEl.textContent = c.sub || '';
+    else subEl.innerHTML = `<span>${esc(P.role)}</span><span class="sub-place"> · ${esc(P.location)}</span>`;
     $$('[data-channel]').forEach((a) => a.classList.toggle('is-active', a.dataset.channel === (c ? c.id : 'intro')));
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
       c ? (c.id === 'projects' ? b.dataset.rail === 'projects' : false) : b.dataset.rail === 'home'));

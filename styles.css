@@ -123,6 +123,13 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
+@media (min-width: 768px) {
+  .view-heading {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+}
+
 .skip-link {
   position: fixed; left: 16px; top: -60px; z-index: 50;
   background: var(--accent); color: var(--accent-ink);
@@ -843,6 +850,12 @@ body.sheet-open { overflow: hidden; }
   }
   .pane-head .pane-h { color: var(--chrome-ink); }
   .pane-head #pane-sub { color: var(--chrome-muted); }
+
+  .pane-head #pane-sub[data-kind="channel"] { display: none; }
+  .pane-head #pane-sub .sub-place { display: none; }
+  .channel-view .view-heading { margin-top: 14px; }
+
+  .pane-head { min-height: 68px; }
   .pane-head .menu-btn,
   .pane-head .mob-mail,
   .pane-head .mob-theme { color: var(--chrome-accent); }
@@ -887,8 +900,14 @@ body.sheet-open { overflow: hidden; }
   .mob-mail + .mob-theme { margin-left: 0; }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 400px) {
   .pane-head { gap: 6px; padding-left: 8px; padding-right: 8px; }
+}
+@media (max-width: 370px) {
+  .pane-head #pane-sub { font-size: 0.725rem; }
+}
+@media (max-width: 355px) {
+  .pane-head #pane-sub { display: none; }
 }
 @media (max-width: 340px) {
   .pane-title .pane-h { font-size: 0.95rem; }
