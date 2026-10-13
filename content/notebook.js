@@ -15,7 +15,7 @@ Object.assign(window.SITE, {
       date: '2026-05-04',
       title: 'Who Moved My Cheese?',
       text: [
-        'During a recent meeting with my mentor, this book was shared with me. Who Moved My Cheese? by Dr. Spencer Johnson. It caught me off guard. It felt personal, something I didn’t know it would take me one hour to read but two days to digest and even until now, I am still in the process of digesting it.',
+        'During a recent meeting with my mentor, this book was shared with me. Who Moved My Cheese? by Dr. Spencer Johnson. It caught me off guard. It felt personal. It took me one hour to read and two days to digest, and I am still digesting it.',
         'For those who haven’t read it, it is a simple story about four characters searching for cheese in a maze. The cheese represents whatever matters most to you. Your career, your goals, your sense of security. And the story is really about what happens when that cheese disappears.',
         'I am Hem.',
         'For a long time I stayed still. Not because I was lazy, but because I was lost. I didn’t know how to piece things together. I kept telling myself I’d figure it out eventually, but eventually kept getting pushed further away.',
