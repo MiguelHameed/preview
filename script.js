@@ -538,8 +538,9 @@
     if (c) subEl.textContent = c.sub || '';
     else subEl.innerHTML = `<span>${esc(P.role)}</span><span class="sub-place"> · ${esc(P.location)}</span>`;
     $$('[data-channel]').forEach((a) => a.classList.toggle('is-active', a.dataset.channel === (c ? c.id : 'intro')));
+    const RAIL_FOR = { projects: 'projects', contact: 'dms' };
     $$('.rail-btn[data-rail]').forEach((b) => b.classList.toggle('is-active',
-      c ? (c.id === 'projects' ? b.dataset.rail === 'projects' : false) : b.dataset.rail === 'home'));
+      c ? b.dataset.rail === RAIL_FOR[c.id] : b.dataset.rail === 'home'));
   }
   $$('a[href^="#"]').forEach((link) => {
     const id = link.getAttribute('href').slice(1);
