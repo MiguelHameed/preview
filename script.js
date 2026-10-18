@@ -603,6 +603,9 @@
   }
   function showToast(text) {
     toast.textContent = text;
+    const pane = $('.pane');
+    const r = pane && innerWidth >= 768 ? pane.getBoundingClientRect() : null;
+    toast.style.left = r ? `${Math.round(r.left + r.width / 2)}px` : '';
     toast.hidden = false;
     requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('is-on')));
     clearTimeout(toastTimer);
