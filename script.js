@@ -589,6 +589,49 @@
     + `<span class="float-text"><strong>${esc(CTA.label)}</strong><span class="float-sub">${esc(CTA.sub)}</span></span>`
     + `<span class="float-when">now</span>${CTA.ext ? NEW_TAB : ''}`;
   $$('[data-mail]').forEach((a) => { a.href = 'mailto:' + P.email; });
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
+  toast.hidden = true;
+  document.body.appendChild(toast);
+  let toastTimer = 0;
+  function hideToast() {
+    toast.classList.remove('is-on');
+    setTimeout(() => { if (!toast.classList.contains('is-on')) toast.hidden = true; }, 250);
+  }
+  function showToast(text) {
+    toast.textContent = text;
+    toast.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('is-on')));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 7000);
+  }
+  toast.addEventListener('click', hideToast);
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise((resolve, reject) => {
+      const t = document.createElement('textarea');
+      t.value = text;
+      t.setAttribute('readonly', '');
+      t.style.position = 'fixed';
+      t.style.opacity = '0';
+      document.body.appendChild(t);
+      t.select();
+      const ok = document.execCommand('copy');
+      t.remove();
+      if (ok) resolve(); else reject(new Error('copy refused'));
+    });
+  }
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!link) return;
+    const say = (line) => line.replace('{email}', P.email);
+    copyText(P.email).then(
+      () => showToast(say(S.emailCopied || '{email} copied. If no email opened, paste it into yours.')),
+      () => showToast(say(S.emailNotCopied || 'Email me at {email}')));
+  });
   let floatDismissed = false;
   floatX.addEventListener('click', () => {
     floatDismissed = true;

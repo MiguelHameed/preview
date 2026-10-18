@@ -6,4 +6,6 @@ Object.assign(window.SITE, {
   resumeLabel: 'Resume',
   resumeLine: 'Sent on request, specifically made for you.',
   resumeSubject: 'Resume request',
+  emailCopied: '{email} copied. If no email opened, paste it into yours.',
+  emailNotCopied: 'Email me at {email}',
 });
