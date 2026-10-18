@@ -5,6 +5,8 @@
   const P = S.person;
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const arrivedDrawn = document.documentElement.hasAttribute('data-prerendered');
+  $$('[data-prerendered-extra]').forEach((el) => el.remove());
   const esc = (t) => (t === null || t === undefined ? '' : String(t)).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const keepPlace = (name) => {
     const m = String(name === null || name === undefined ? '' : name).match(/^(.*) (\S+ – \S+(?: \S+)?)$/);
@@ -352,6 +354,7 @@
       }).join('')}</ul>
     </section>` : '';
   feed.innerHTML = intro() + workRow + scrollChannels.map((c) => builders[c.id](c)).join('');
+  document.documentElement.setAttribute('data-drawn', '');
 
   $$('.proj-thumb img').forEach((img) => {
     const fit = () => { if (img.naturalHeight && Math.abs(img.naturalWidth / img.naturalHeight - 1.5) < 0.03) img.classList.add('is-fill'); };
@@ -577,7 +580,15 @@
     const rev = new IntersectionObserver((entries) => entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add('in'); rev.unobserve(e.target); }
     }), { rootMargin: '0px 0px -8% 0px' });
-    $$('.reveal').forEach((el) => rev.observe(el));
+    $$('.reveal').forEach((el) => {
+      if (arrivedDrawn && el.getBoundingClientRect().top < innerHeight) {
+        el.style.transition = 'none';
+        el.classList.add('in');
+        requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transition = ''; }));
+        return;
+      }
+      rev.observe(el);
+    });
   }
 
   const floatBtn = $('#float-btn');
