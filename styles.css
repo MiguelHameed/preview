@@ -110,14 +110,32 @@ body {
 }
 
 html[data-theme="dark"] body {
-  background-image: image-set(url('images/desk/slate-2560.avif') type('image/avif') 1x,
-                              url('images/desk/slate-3840.avif') type('image/avif') 2x,
-                              url('images/desk/slate-2560.jpg') type('image/jpeg') 1x);
+  background-image: image-set(url('images/desk/slate-2560.avif') type('image/avif'),
+                              url('images/desk/slate-2560.jpg') type('image/jpeg'));
 }
 html[data-theme="burgundy"] body {
-  background-image: image-set(url('images/desk/ember-2560.avif') type('image/avif') 1x,
-                              url('images/desk/ember-3840.avif') type('image/avif') 2x,
-                              url('images/desk/ember-2560.jpg') type('image/jpeg') 1x);
+  background-image: image-set(url('images/desk/ember-2560.avif') type('image/avif'),
+                              url('images/desk/ember-2560.jpg') type('image/jpeg'));
+}
+@media (min-width: 2561px), (min-resolution: 1.5dppx) {
+  html[data-theme="dark"] body {
+    background-image: image-set(url('images/desk/slate-3840.avif') type('image/avif'),
+                                url('images/desk/slate-2560.jpg') type('image/jpeg'));
+  }
+  html[data-theme="burgundy"] body {
+    background-image: image-set(url('images/desk/ember-3840.avif') type('image/avif'),
+                                url('images/desk/ember-2560.jpg') type('image/jpeg'));
+  }
+}
+@media (min-width: 3841px), (min-resolution: 1.5dppx) and (min-width: 2561px), (min-resolution: 2dppx) and (min-width: 1921px) {
+  html[data-theme="dark"] body {
+    background-image: image-set(url('images/desk/slate-5120.avif') type('image/avif'),
+                                url('images/desk/slate-2560.jpg') type('image/jpeg'));
+  }
+  html[data-theme="burgundy"] body {
+    background-image: image-set(url('images/desk/ember-5120.avif') type('image/avif'),
+                                url('images/desk/ember-2560.jpg') type('image/jpeg'));
+  }
 }
 html[data-theme] body {
   background-size: cover;
