@@ -91,17 +91,6 @@
       ${withLinkedIn ? `<a class="btn btn-brand" href="${esc(P.linkedin)}" target="_blank" rel="noopener">LinkedIn<svg class="btn-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5 11.5 4.5M5.5 4.5h6v6"/></svg>${NEW_TAB}</a>` : ''}
     </div>`;
 
-  function introPhoto() {
-    if (P.headshot && !/placeholder/.test(P.headshot)) {
-      return `<img class="intro-photo" src="${esc(asset(P.headshot))}" srcset="${esc(asset('images/site/headshot-240.jpg'))} 240w, ${esc(asset(P.headshot))} 480w"
-                   sizes="(max-width: 767px) 110px, 220px" alt="${esc(P.name)}" width="480" height="480" fetchpriority="high" />`;
-    }
-    return `<div class="intro-photo is-empty" role="img" aria-label="Photo coming soon">
-              <span class="empty-title">your photo<br />goes here</span>
-              <span class="empty-note">square · head and shoulders</span>
-            </div>`;
-  }
-
   function intro() {
     return `
       <div class="day mono" id="intro" data-section="intro">${esc(S.pinnedLabel)}</div>
@@ -125,8 +114,6 @@
         </div>
       </article>`;
   }
-
-  const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 
   function shotRow(w) {
     const list = [].concat(w.shots || [], w.shot || [])
