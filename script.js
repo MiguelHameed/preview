@@ -1,6 +1,6 @@
 (function () {
   const S = window.SITE;
-  const NEEDED = ['hideTodos', 'person', 'projects', 'about', 'skills', 'experience', 'schools', 'credentials', 'testimonials', 'contactLine', 'notebook'];
+  const NEEDED = ['hideTodos', 'person', 'projects', 'about', 'skills', 'experience', 'schools', 'credentials', 'testimonials', 'contactLine'];
   if (!S || NEEDED.some((key) => S[key] === undefined)) return;
   const P = S.person;
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -361,88 +361,6 @@
     if (img.complete) fit(); else img.addEventListener('load', fit, { once: true });
   });
 
-  const NOTES = (S.notebook || [])
-    .map((n) => ({ ...n, paras: [].concat(n.text || []).filter(Boolean) }))
-    .filter((n) => n.paras.length || n.title)
-    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
-  const noteDay = (iso) => {
-    const d = new Date(iso + 'T00:00:00');
-    if (!iso || isNaN(d)) return esc(iso || '');
-    const sameYear = d.getFullYear() === new Date().getFullYear();
-    return d.toLocaleDateString('en-US', sameYear ? { month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric', year: 'numeric' });
-  };
-  const seenDays = {};
-  NOTES.forEach((n) => {
-    const key = String(n.date || 'undated');
-    seenDays[key] = (seenDays[key] || 0) + 1;
-    n.id = 'note-' + key + (seenDays[key] > 1 ? '-' + seenDays[key] : '');
-  });
-  const canCopy = Boolean(navigator.clipboard && window.isSecureContext);
-  const NOTE_ICONS = {
-    out: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>',
-    link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
-    overview: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4 3.5V16H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/></svg>',
-    notebook: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7.5L19 8v11.5a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1zM14 3.5V8h5M9 12.5h6M9 16h4"/></svg>',
-  };
-  const noteHtml = (n) => `
-    <article class="note" id="${esc(n.id)}">
-      <img class="note-avatar" src="${esc(asset(P.avatar))}" alt="" width="44" height="44" loading="lazy" />
-      <div class="note-main">
-        <p class="note-head">
-          <span class="note-who"><span class="note-name">${esc(P.shortName)}</span>${n.date ? `<time class="note-date" datetime="${esc(n.date)}">${noteDay(n.date)}</time>` : ''}</span>
-          ${S.notebookSubscribe ? `<a class="note-sub" href="${esc(S.notebookSubscribe)}" target="_blank" rel="noopener">${esc(S.notebookSubscribeLabel || 'Subscribe')}${NEW_TAB}</a>` : ''}
-        </p>
-        ${n.title ? `<h3 class="note-title">${esc(n.title)}</h3>` : ''}
-        <div class="note-body">${n.paras.map((t) => `<p>${esc(t)}</p>`).join('')}</div>
-        ${n.link || canCopy ? `<p class="note-actions">
-          ${n.link ? `<a class="note-act" href="${esc(n.link)}" target="_blank" rel="noopener">${NOTE_ICONS.out}${esc(n.linkLabel || S.notebookLinkLabel || 'Read more')}${NEW_TAB}</a>` : ''}
-          ${canCopy ? `<button class="note-act" type="button" data-copy-note="${esc(n.id)}">${NOTE_ICONS.link}<span aria-live="polite">${esc(S.notebookCopy || 'Copy link')}</span></button>` : ''}
-        </p>` : ''}
-      </div>
-    </article>`;
-  let notebook = null;
-  if (NOTES.length) {
-    const tabs = document.createElement('div');
-    tabs.className = 'pane-tabs';
-    tabs.setAttribute('role', 'tablist');
-    tabs.setAttribute('aria-label', `${S.overviewTab || 'Overview'} and ${S.notebookTab || 'Notebook'}`);
-    tabs.innerHTML = `
-      <button class="pane-tab is-on" type="button" role="tab" id="tab-overview" aria-selected="true" aria-controls="messages" data-tab="overview">${NOTE_ICONS.overview}${esc(S.overviewTab || 'Overview')}</button>
-      <button class="pane-tab" type="button" role="tab" id="tab-notebook" aria-selected="false" aria-controls="notebook" data-tab="notebook" tabindex="-1">${NOTE_ICONS.notebook}${esc(S.notebookTab || 'Notebook')} <span class="tab-count">${NOTES.length}</span></button>`;
-    $('.pane-head').insertAdjacentElement('afterend', tabs);
-    notebook = document.createElement('div');
-    notebook.className = 'notebook';
-    notebook.id = 'notebook';
-    notebook.hidden = true;
-    notebook.setAttribute('role', 'tabpanel');
-    notebook.setAttribute('aria-labelledby', 'tab-notebook');
-    notebook.innerHTML = `<h2 class="sr-only">${esc(S.notebookTab || 'Notebook')}</h2><div class="notes">${NOTES.map(noteHtml).join('')}</div>`;
-    feed.insertAdjacentElement('afterend', notebook);
-    $$('.pane-tab').forEach((b) => {
-      b.addEventListener('click', () => {
-        if (b.dataset.tab === tab && !openView) return;
-        const nb = b.dataset.tab === 'notebook';
-        history.pushState({ view: null, tab: nb ? 'notebook' : 'overview' }, '', urlFor(null) + (nb ? '#notebook' : ''));
-        if (nb) showTab('notebook'); else { tab = 'overview'; showView(null); setActive('intro'); }
-      });
-      b.addEventListener('keydown', (e) => {
-        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-        e.preventDefault();
-        const other = $$('.pane-tab').find((x) => x !== b);
-        other.focus(); other.click();
-      });
-    });
-    notebook.addEventListener('click', (e) => {
-      const btn = e.target.closest ? e.target.closest('[data-copy-note]') : null;
-      if (!btn) return;
-      const label = btn.querySelector('span');
-      navigator.clipboard.writeText(location.origin + urlFor(null) + '#' + btn.dataset.copyNote).then(() => {
-        label.textContent = S.notebookCopied || 'Copied';
-        setTimeout(() => { label.textContent = S.notebookCopy || 'Copy link'; }, 2000);
-      }).catch(() => {});
-    });
-  }
-
   const views = {};
   CHANNELS.filter((c) => c.view).forEach((c) => {
     const panel = document.createElement('div');
@@ -455,33 +373,14 @@
     views[c.id] = panel;
   });
   let openView = null;
-  let tab = 'overview';
-  function paint() {
-    const nb = tab === 'notebook';
-    feed.hidden = nb || !!openView;
-    Object.entries(views).forEach(([k, el]) => { el.hidden = nb || k !== openView; });
-    if (notebook) notebook.hidden = !nb;
-    $$('.pane-tab').forEach((b) => {
-      const on = b.dataset.tab === tab;
-      b.classList.toggle('is-on', on);
-      b.setAttribute('aria-selected', String(on));
-      b.tabIndex = on ? 0 : -1;
-    });
-  }
   function showView(id) {
     openView = id;
-    if (id) tab = 'overview';
-    paint();
+    feed.hidden = !!openView;
+    Object.entries(views).forEach(([k, el]) => { el.hidden = k !== openView; });
     if (id) {
       views[id].querySelectorAll('.reveal').forEach((r) => r.classList.add('in'));
       setActive(id); $('.pane').scrollTop = 0;
     }
-  }
-  function showTab(name) {
-    tab = name === 'notebook' && notebook ? 'notebook' : 'overview';
-    if (tab === 'notebook') openView = null;
-    paint();
-    if (tab === 'notebook') { setActive('intro'); $('.pane').scrollTop = 0; notebook.scrollTop = 0; }
   }
   $$('[data-view-back]').forEach((b) => b.addEventListener('click', () => { history.back(); }));
 
@@ -497,14 +396,6 @@
   function openFromHash(replace) {
     const RENAMED = { 'selected-work': 'projects', proof: 'credentials' };
     const raw = location.hash.slice(1);
-    if (notebook && (raw === 'notebook' || /^note-/.test(raw))) {
-      showTab('notebook');
-      const note = raw === 'notebook' ? null : document.getElementById(raw);
-      if (note) note.scrollIntoView({ block: 'start' });
-      history.replaceState({ view: null, tab: 'notebook' }, '');
-      return;
-    }
-    tab = 'overview';
     const hashId = RENAMED[raw] || raw;
     if (RENAMED[raw] && !CHANNELS.some((c) => c.view && c.id === hashId)) {
       const el = document.getElementById(hashId);
@@ -522,7 +413,6 @@
   window.addEventListener('hashchange', () => openFromHash(true));
   window.addEventListener('popstate', (e) => {
     const id = e.state && e.state.view;
-    tab = notebook && e.state && e.state.tab === 'notebook' ? 'notebook' : 'overview';
     showView(CHANNELS.some((c) => c.view && c.id === id) ? id : null);
     if (!id) setActive('intro');
   });
@@ -557,8 +447,6 @@
       } else if (openView) {
         history.pushState({ view: null }, '', urlFor(null) + link.getAttribute('href'));
         showView(null);
-      } else if (tab === 'notebook') {
-        showTab('overview');
       }
     });
   });
@@ -566,7 +454,7 @@
   const sections = $$('[data-section]');
   let current = 'intro';
   const spy = new IntersectionObserver((entries) => {
-    if (openView || tab === 'notebook') return;
+    if (openView) return;
     entries.forEach((e) => { if (e.isIntersecting) current = e.target.dataset.section; });
     setActive(current);
   }, { root: getComputedStyle(feed).overflowY === 'visible' ? null : feed, rootMargin: '0px 0px -75% 0px', threshold: 0 });
@@ -731,7 +619,7 @@
     if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
     const at = document.activeElement;
     if (at && at !== document.body && at.id !== 'messages') return;
-    const el = [feed, ...Object.values(views), notebook].find((x) => x && !x.hidden);
+    const el = [feed, ...Object.values(views)].find((x) => !x.hidden);
     if (!el || el.scrollHeight <= el.clientHeight || getComputedStyle(el).overflowY === 'visible') return;
     const page = el.clientHeight * 0.9;
     const by = { PageDown: page, PageUp: -page, ' ': e.shiftKey ? -page : page,
