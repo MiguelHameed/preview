@@ -660,15 +660,12 @@
   });
 
   const root = document.documentElement;
-  const fromUrl = new URLSearchParams(location.search).get('theme');
-  let saved = null;
-  try { saved = localStorage.getItem('mh-theme'); } catch (e) { /* storage blocked */ }
   function setTheme(t) {
     root.dataset.theme = t;
     const meta = $('meta[name="theme-color"]');
     if (meta) meta.content = t === 'burgundy' ? '#241a19' : '#182024';
   }
-  setTheme(fromUrl === 'burgundy' || (fromUrl !== 'dark' && saved === 'burgundy') ? 'burgundy' : 'dark');
+  setTheme(root.dataset.theme === 'burgundy' ? 'burgundy' : 'dark');
   $$('[data-theme-toggle]').forEach((b) => b.addEventListener('click', () => {
     const next = root.dataset.theme === 'burgundy' ? 'dark' : 'burgundy';
     setTheme(next);

@@ -20,7 +20,6 @@ Object.assign(window.SITE, {
     bookingCta: null,
     bookingNote: null,
     motto: "I find what's broken, fix it, and keep it moving.",
-    headshot: 'images/site/headshot.jpg',
     avatar: 'images/site/headshot-avatar.jpg?v=2',
   },
 
